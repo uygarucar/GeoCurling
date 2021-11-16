@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { HomeScreen } from '../Home';
 import { PlayScreen } from '../Play/Screens/PlayScreen';
-import Stage1Screen from '../Play/Screens/Stage1Screen';
+import StageScreen from '../Play/Screens/StageScreen';
 
 
 const AppStack = createStackNavigator();
@@ -38,7 +38,7 @@ const AppNavigation = () => {
             />
             <AppStack.Screen
                 name="game-screen"
-                component={Stage1Screen}
+                component={StageScreen}
                 options={{
                     title:'Playing...',
                     headerTitleAlign: 'center',

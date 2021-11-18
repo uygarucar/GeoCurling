@@ -2,18 +2,23 @@ import React from 'react'
 import { Circle } from 'react-native-maps'
 import { TargetPlaces_Unit1 } from './TargetPlacesInfos'
 import GiveCoordinates from '../Utils/GiveCoordinates'
+import { useSelector } from 'react-redux'
+import { targetLatitudeSelector } from '../Redux/TargetLatitudeRedux'
+import { targetLongitudeSelector } from '../Redux/TargetLongitudeRedux'
 
 const CurlingShape = () => {
 
- const elements = GiveCoordinates(TargetPlaces_Unit1)
+ const latitude= useSelector(targetLatitudeSelector)
+ const longitude= useSelector(targetLongitudeSelector)
+
     
     return (
         <>
             <Circle
 
                 center={{
-                    latitude: elements.latitude,
-                    longitude: elements.longitude,
+                    latitude: latitude,
+                    longitude: longitude,
                 }}
                 radius={30000}
                 strokeWidth={1}
@@ -24,8 +29,8 @@ const CurlingShape = () => {
 
             <Circle
                 center={{
-                    latitude: elements.latitude,
-                    longitude: elements.longitude,
+                    latitude: latitude,
+                    longitude: longitude,
                 }}
                 radius={18000}
                 strokeWidth={1}
@@ -35,8 +40,8 @@ const CurlingShape = () => {
             />
             <Circle
                 center={{
-                    latitude: elements.latitude,
-                    longitude: elements.longitude,
+                    latitude: latitude,
+                    longitude: longitude,
                 }}
                 radius={9300}
                 strokeWidth={1}
@@ -46,8 +51,8 @@ const CurlingShape = () => {
             />
             <Circle
                 center={{
-                    latitude: elements.latitude,
-                    longitude: elements.longitude,
+                    latitude: latitude,
+                    longitude: longitude,
                 }}
                 radius={3750}
                 strokeWidth={1}

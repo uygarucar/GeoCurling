@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import MapView, {PROVIDER_GOOGLE } from 'react-native-maps';
 import RandomPlace from '../Components/RandomPlaces';
@@ -8,8 +8,14 @@ import Target_Prompt from '../Components/PromptTargetInfo';
 import DistanceToTarget_Prompt from '../Components/DistanceToTargetInfo'
 import CurlingShape from '../Components/TargetPlaceCurlingShape';
 import GiveCoordinates from '../Utils/GiveCoordinates';
+import { useDispatch, useSelector } from 'react-redux';
+import { TargetPlaces_Unit1 } from '../Components/TargetPlacesInfos';
+import { targetLatitudeCreator } from '../Redux/TargetLatitudeRedux';
+import { targetLongitudeCreator } from '../Redux/TargetLongitudeRedux';
+import { targetTextCreator } from '../Redux/TargetTextRedux';
 
 const StageScreen = (props) => {
+    const dispatch = useDispatch();
     //Aşağıdaki satır, topics objesindeki itemId değerini almamıza yardımcı olur ve
     //hangi 'ders konusu'na tıklanıldığını bilmemizi sağlar.
     // itemId'ye göre soruları değiştireceğiz.
@@ -17,9 +23,15 @@ const StageScreen = (props) => {
 
     const elements = GiveCoordinates(RandomPlace);
 
+    //setting up target location and text
+    useEffect(() => {
+        const targetElements= GiveCoordinates(TargetPlaces_Unit1);
+        dispatch(targetLatitudeCreator(targetElements.latitude));
+        dispatch(targetLongitudeCreator(targetElements.longitude));
+        dispatch(targetTextCreator(targetElements.text))
+    }, [])
 
-
-
+    console.log("Kaç defa yazılacak?");
     return (
         // <View>
         //     <Text>I'm Stage1</Text>

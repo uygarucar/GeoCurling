@@ -3,9 +3,9 @@ import RangeFunction from './RangeFunction'
 
 const GiveCoordinates = (CoordinateArray) => {
     const randomNumber = RangeFunction(CoordinateArray)
-    const {id, latitude, longitude} = CoordinateArray[randomNumber]
+    const {id, text, latitude, longitude} = CoordinateArray[randomNumber]
 
-    return {id, latitude, longitude}
+    return {id, text, latitude, longitude}
 }
 
 export default GiveCoordinates

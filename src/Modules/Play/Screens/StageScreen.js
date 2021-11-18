@@ -1,19 +1,23 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import RandomPlace from '../Components/RandomPlaces';
+import styles from '../styles/StageScreenStyles';
 import RangeFunction from '../Utils/RangeFunction';
-
+import Prompt from '../Components/PromptTargetInfo';
+import DistanceToTarget from '../Components/DistanceToTargetInfo'
 
 const StageScreen = (props) => {
     //Aşağıdaki satır, topics objesindeki itemId değerini almamıza yardımcı olur ve
     //hangi 'ders konusu'na tıklanıldığını bilmemizi sağlar.
     // itemId'ye göre soruları değiştireceğiz.
     const itemId = props.route.params?.itemId;
-    
-    const randomNumber = RangeFunction(RandomPlace)
 
-    const {id, latitude, longitude} = RandomPlace[randomNumber];
+    const randomNumber = RangeFunction(RandomPlace);
+ 
+    const { id, latitude, longitude } = RandomPlace[randomNumber];
+    
+    
 
     return (
         // <View>
@@ -21,20 +25,21 @@ const StageScreen = (props) => {
         //     <Text>{itemId}</Text>
 
         // </View>
-        <>
-            <View style={{flex: 0.05}}>
-
-            </View>
+        <View style={{ flex: 1 }}>
+            <View style={{ flex: 0.05 }}/>
             <MapView
                 provider={PROVIDER_GOOGLE}
-                style={{ flex: 0.95, backgroundColor: 'gray' }}
+                style={styles.mapView}
                 initialRegion={{
                     latitude: latitude,
                     longitude: longitude,
                     latitudeDelta: 1.1922,
                     longitudeDelta: 1.1421,
                 }} />
-        </>
+            <Prompt/>
+            <DistanceToTarget/>
+            
+        </View>
     )
 }
 

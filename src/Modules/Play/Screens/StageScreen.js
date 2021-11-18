@@ -4,8 +4,8 @@ import MapView, {PROVIDER_GOOGLE } from 'react-native-maps';
 import RandomPlace from '../Components/RandomPlaces';
 import styles from '../styles/StageScreenStyles';
 import RangeFunction from '../Utils/RangeFunction';
-import Prompt from '../Components/PromptTargetInfo';
-import DistanceToTarget from '../Components/DistanceToTargetInfo'
+import Target_Prompt from '../Components/PromptTargetInfo';
+import DistanceToTarget_Prompt from '../Components/DistanceToTargetInfo'
 import CurlingShape from '../Components/TargetPlaceCurlingShape';
 import GiveCoordinates from '../Utils/GiveCoordinates';
 
@@ -39,8 +39,8 @@ const StageScreen = (props) => {
                 }}>
                 <CurlingShape/>
             </MapView>
-            <Prompt />
-            <DistanceToTarget />
+            <Target_Prompt />
+            <DistanceToTarget_Prompt />
 
         </View>
     )

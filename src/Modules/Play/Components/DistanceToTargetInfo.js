@@ -2,7 +2,7 @@ import React from 'react'
 import { TouchableOpacity, Text } from 'react-native'
 import styles from '../styles/StageScreenStyles'
 
-const DistanceToTarget = () => {
+const DistanceToTarget_Prompt = () => {
   
 
     return (
@@ -12,4 +12,4 @@ const DistanceToTarget = () => {
     )
 }
 
-export default DistanceToTarget
+export default DistanceToTarget_Prompt

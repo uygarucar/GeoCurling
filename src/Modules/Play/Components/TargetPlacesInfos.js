@@ -18,3 +18,27 @@ export const TargetPlaces_Unit1 = [
         longitude: 26.6700
     },
 ]
+
+export const TargetPlaces_Unit2 = [
+    {
+        //Rize
+        id: 1,
+        text: 'Türkiye\'deki en fazla yağış alan il',
+        latitude: 41.0255,
+        longitude: 40.5177
+    },
+    {
+        //Tuz gölü
+        id: 2,
+        text: 'Türkiye\'deki en az yağış alan bölge',
+        latitude: 38.545910,
+        longitude: 44.185593
+    },
+    {
+        //Ağrı
+        id: 3,
+        text: 'Kar Yağışı ve Donma olaylarının en yüksek olduğu bölge',
+        latitude: 39.7189,
+        longitude: 43.0497
+    },
+]

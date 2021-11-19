@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import MapView, {PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import RandomPlace from '../Components/RandomPlaces';
 import styles from '../styles/StageScreenStyles';
 import RangeFunction from '../Utils/RangeFunction';
@@ -9,10 +9,11 @@ import DistanceToTarget_Prompt from '../Components/DistanceToTargetInfo'
 import CurlingShape from '../Components/TargetPlaceCurlingShape';
 import GiveCoordinates from '../Utils/GiveCoordinates';
 import { useDispatch, useSelector } from 'react-redux';
-import { TargetPlaces_Unit1 } from '../Components/TargetPlacesInfos';
+import { TargetPlaces_Unit1, TargetPlaces_Unit2 } from '../Components/TargetPlacesInfos';
 import { targetLatitudeCreator } from '../Redux/TargetLatitudeRedux';
 import { targetLongitudeCreator } from '../Redux/TargetLongitudeRedux';
 import { targetTextCreator } from '../Redux/TargetTextRedux';
+import useDispatchTarget from '../CustomHooks/useDispatchTarget';
 
 const StageScreen = (props) => {
     const dispatch = useDispatch();
@@ -22,22 +23,25 @@ const StageScreen = (props) => {
     const itemId = props.route.params?.itemId;
 
     const elements = GiveCoordinates(RandomPlace);
+    
+    let targetElements= {};
+    switch (itemId) {
+        case 1:
+            targetElements = GiveCoordinates(TargetPlaces_Unit1)
+            break;
+        case 2:
+            targetElements = GiveCoordinates(TargetPlaces_Unit2)
+        default:
+            break;
+    }
+    useDispatchTarget(targetElements)
 
-    //setting up target location and text
-    useEffect(() => {
-        const targetElements= GiveCoordinates(TargetPlaces_Unit1);
-        dispatch(targetLatitudeCreator(targetElements.latitude));
-        dispatch(targetLongitudeCreator(targetElements.longitude));
-        dispatch(targetTextCreator(targetElements.text))
-    }, [])
+ 
+
+
 
     console.log("Kaç defa yazılacak?");
     return (
-        // <View>
-        //     <Text>I'm Stage1</Text>
-        //     <Text>{itemId}</Text>
-
-        // </View>
         <View style={{ flex: 1 }}>
             <View style={{ flex: 0.05 }} />
             <MapView
@@ -49,7 +53,7 @@ const StageScreen = (props) => {
                     latitudeDelta: 1.1922,
                     longitudeDelta: 1.1421,
                 }}>
-                <CurlingShape/>
+                <CurlingShape />
             </MapView>
             <Target_Prompt />
             <DistanceToTarget_Prompt />

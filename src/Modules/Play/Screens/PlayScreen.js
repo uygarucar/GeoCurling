@@ -16,7 +16,7 @@ const topics = [
     {
         id: 2,
         name: 'İklim ve Bitki Örtüsü',
-        isLocked: true
+        isLocked: false
     },
     {
         id: 3,
@@ -78,11 +78,14 @@ const topics = [
 const _ItemSeparator = () => {
     return <View style={styles.separator} />
 }
+//Kullanıcı uygulamayı silerse ve geri yüklerse, açtığı kilitli bölümler
+//tekrar kapanacak mı?
+//Kapanacaksa cloud'tan alsın topics objesini
 
 const _RenderItem = ({ item }) => {
 
     return (
-        <TopicsItem id = {item.id} name={item.name}/>
+        <TopicsItem id = {item.id} name={item.name} isLocked={item.isLocked}/>
     )
 }
 

@@ -39,7 +39,8 @@ const styles = StyleSheet.create({
     text: {
         fontFamily: Fonts.type.semibold,
         fontSize: Fonts.size(16),
-        color: 'white'
+        color: 'white',
+        flex: 0.85
     },
     separator: {
         height: StyleSheet.hairlineWidth,

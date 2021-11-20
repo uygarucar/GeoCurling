@@ -4,7 +4,7 @@ import RadioUnchecked from '../Assets/Svgs/radio-unchecked.svg';
 import Settings from '../Assets/Svgs/settings.svg';
 import Send from '../Assets/Svgs/send.svg';
 import Camera from '../Assets/Svgs/camera.svg';
-
+import Lock from '../Assets/Svgs/lock.svg'
 
 // Exports
 export default {
@@ -13,4 +13,5 @@ export default {
     Settings,
     Send,
     Camera,
+    Lock,
 }

@@ -10,9 +10,7 @@ import CurlingShape from '../Components/TargetPlaceCurlingShape';
 import GiveCoordinates from '../Utils/GiveCoordinates';
 import { useDispatch, useSelector } from 'react-redux';
 import { TargetPlaces_Unit1, TargetPlaces_Unit2 } from '../Components/TargetPlacesInfos';
-import { targetLatitudeCreator } from '../Redux/TargetLatitudeRedux';
-import { targetLongitudeCreator } from '../Redux/TargetLongitudeRedux';
-import { targetTextCreator } from '../Redux/TargetTextRedux';
+ 
 import useDispatchTarget from '../CustomHooks/useDispatchTarget';
 
 const StageScreen = (props) => {
@@ -35,10 +33,6 @@ const StageScreen = (props) => {
             break;
     }
     useDispatchTarget(targetElements)
-
- 
-
-
 
     console.log("Kaç defa yazılacak?");
     return (

@@ -11,6 +11,7 @@ import GiveCoordinates from '../Utils/GiveCoordinates';
 import { useDispatch, useSelector } from 'react-redux';
 import { TargetPlaces_Unit1, TargetPlaces_Unit2 } from '../Components/TargetPlacesInfos';
 import { dispatchCoordinateForChosenTopic } from '../Utils/DispatchCoordinates';
+import StoneShape from '../Components/CurrentPlaceStoneShape';
 
 import useDispatchTarget from '../CustomHooks/useDispatchTarget';
 
@@ -20,12 +21,12 @@ const StageScreen = (props) => {
 
     const elements = GiveCoordinates(RandomPlace);
 
-    let targetElements= {};
+    let targetElements = {};
 
     //For assignment of a random coordinate regarding chosen topic
     dispatchCoordinateForChosenTopic(itemId, targetElements)
 
-    
+
     return (
         <View style={{ flex: 1 }}>
             <View style={{ flex: 0.05 }} />
@@ -38,6 +39,9 @@ const StageScreen = (props) => {
                     latitudeDelta: 1.1922,
                     longitudeDelta: 1.1421,
                 }}>
+                <StoneShape latitude={elements.latitude}
+                    longitude={elements.longitude}
+                />
                 <CurlingShape />
             </MapView>
             <Target_Prompt />

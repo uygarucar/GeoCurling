@@ -10,31 +10,22 @@ import CurlingShape from '../Components/TargetPlaceCurlingShape';
 import GiveCoordinates from '../Utils/GiveCoordinates';
 import { useDispatch, useSelector } from 'react-redux';
 import { TargetPlaces_Unit1, TargetPlaces_Unit2 } from '../Components/TargetPlacesInfos';
- 
+import { dispatchCoordinateForChosenTopic } from '../Utils/DispatchCoordinates';
+
 import useDispatchTarget from '../CustomHooks/useDispatchTarget';
 
 const StageScreen = (props) => {
-    const dispatch = useDispatch();
-    //Aşağıdaki satır, topics objesindeki itemId değerini almamıza yardımcı olur ve
-    //hangi 'ders konusu'na tıklanıldığını bilmemizi sağlar.
-    // itemId'ye göre soruları değiştireceğiz.
+    //itemId represents the topic chosen in previous page
     const itemId = props.route.params?.itemId;
 
     const elements = GiveCoordinates(RandomPlace);
-    
-    let targetElements= {};
-    switch (itemId) {
-        case 1:
-            targetElements = GiveCoordinates(TargetPlaces_Unit1)
-            break;
-        case 2:
-            targetElements = GiveCoordinates(TargetPlaces_Unit2)
-        default:
-            break;
-    }
-    useDispatchTarget(targetElements)
 
-    console.log("Kaç defa yazılacak?");
+    let targetElements= {};
+
+    //For assignment of a random coordinate regarding chosen topic
+    dispatchCoordinateForChosenTopic(itemId, targetElements)
+
+    
     return (
         <View style={{ flex: 1 }}>
             <View style={{ flex: 0.05 }} />

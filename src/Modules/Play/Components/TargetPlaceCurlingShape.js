@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 import { targetLatitudeSelector } from '../Redux/TargetLatitudeRedux'
 import { targetLongitudeSelector } from '../Redux/TargetLongitudeRedux'
 
-const CurlingShape = () => {
+const CurlingPitchShape = () => {
 
  const latitude= useSelector(targetLatitudeSelector)
  const longitude= useSelector(targetLongitudeSelector)
@@ -64,4 +64,4 @@ const CurlingShape = () => {
     )
 }
 
-export default CurlingShape
+export default CurlingPitchShape

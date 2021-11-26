@@ -7,8 +7,9 @@ import { userReducer, USER_NAMESPACE } from '../Modules/Auth';
 import { targetLatitudeReducer } from '../Modules/Play/Redux/TargetLatitudeRedux';
 import { targetLongitudeReducer } from '../Modules/Play/Redux/TargetLongitudeRedux';
 import { targetTextReducer  } from '../Modules/Play/Redux/TargetTextRedux';
-
+import { currentLatitudeReducer } from '../Modules/Play/Redux/CurrentLatitudeRedux';
 // Reducers
+import { currentLongitudeReducer } from '../Modules/Play/Redux/CurrentLongitudeRedux';
 
 export default combineReducers({
     [THEMING_NAMESPACE]: ThemeReducer,
@@ -18,6 +19,8 @@ export default combineReducers({
     targetLatitudeState: targetLatitudeReducer,
     targetLongitudeState: targetLongitudeReducer,
     targetTextState: targetTextReducer, 
+    currentLatitudeState: currentLatitudeReducer,
+    currentLongitudeState: currentLongitudeReducer
 });
 
 

@@ -1,9 +1,10 @@
 import React from 'react'
-import { Circle } from 'react-native-maps'
+import { Circle, Polygon } from 'react-native-maps'
 
 const StoneShape = (props) => {
 const latitude= props.latitude;
 const longitude= props.longitude;
+
 
     return (
         <>

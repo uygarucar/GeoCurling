@@ -21,7 +21,7 @@ import MapConfig from '../Components/MapConfig';
 const StageScreen = (props) => {
     //itemId represents the topic chosen in previous page
     const itemId = props.route.params?.itemId;
-
+    
     const elements = GiveCoordinates(RandomPlace)
     //Hiçbir zaman değişmeyecek başlangıç koordinatları
     let initialCoordinates;
@@ -29,8 +29,8 @@ const StageScreen = (props) => {
      
     useDispatchCurrent(elements)
 
-    const latitude = useSelector(currentLatitudeSelector)
-    const longitude = useSelector(currentLongitudeSelector)
+    const stoneLatitude = useSelector(currentLatitudeSelector)
+    const stoneLongitude = useSelector(currentLongitudeSelector)
 
     let targetElements = {};
     //For assignment of a random coordinate regarding chosen topic
@@ -42,12 +42,11 @@ const StageScreen = (props) => {
             <View style={{ flex: 0.05 }} />
             <MapConfig 
                 style={styles.mapView}
-                stoneLatitude={latitude}
-                stoneLongitude={longitude}
+                stoneLatitude={stoneLatitude}
+                stoneLongitude={stoneLongitude}
                 initialLatitude={initialCoordinates.current.latitude}
                 initialLongitude={initialCoordinates.current.longitude}
-                latitudeDelta={1.1922}
-                longitudeDelta={1.1421} />
+                 />
             <Target_Prompt />
             <DistanceToTarget_Prompt />
 

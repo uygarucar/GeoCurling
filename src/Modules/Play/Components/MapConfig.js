@@ -3,6 +3,7 @@ import { TouchableOpacity, View } from 'react-native'
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 import StoneShape from './CurrentPlaceStoneShape'
 import CurlingPitchShape from './TargetPlaceCurlingShape'
+import MarkerConfig from './MarkerConfig'
 import { UrlTile } from 'react-native-maps'
 import { Marker } from 'react-native-maps'
 
@@ -10,8 +11,8 @@ const MapConfig = (props) => {
     const [mapLatitude, setMapLatitude] = useState(props.initialLatitude);
     const [mapLongitude, setMapLongitude] = useState(props.initialLongitude);
 
-    const [latitudeDelta, setLatitudeDelta] = useState(1.1922)
-    const [longitudeDelta, setLongitudeDelta] = useState(1.1421)
+    const [mapLatitudeDelta, setMapLatitudeDelta] = useState(1.1922)
+    const [mapLongitudeDelta, setMapLongitudeDelta] = useState(1.1421)
 
     const styles = props.style;
 
@@ -19,12 +20,11 @@ const MapConfig = (props) => {
     const [markerLatitude, setMarkerLatitude] = useState(props.stoneLatitude + 0.15)
     const [markerLongitude, setMarkerLongitude] = useState(props.stoneLongitude + 0.15)
 
-    //When zooming out or zooming in, I want the zooming level not reset itself to its first values everytime the component rerenders
 
-
-    console.log("latitudeDelta", latitudeDelta)
-    console.log("longitudeDelta", longitudeDelta)
-    console.log("----------------------------------")
+    const _onDragEnd_SetMarkerCoordinates = (e) => {
+        setMarkerLatitude(e.nativeEvent.coordinate.latitude)
+        setMarkerLongitude(e.nativeEvent.coordinate.longitude)
+    }
     return (
         <MapView provider={PROVIDER_GOOGLE}
             minZoomLevel={8}
@@ -34,19 +34,19 @@ const MapConfig = (props) => {
             initialRegion={{
                 latitude: mapLatitude,
                 longitude: mapLongitude,
-                latitudeDelta: latitudeDelta,
-                longitudeDelta: longitudeDelta
+                latitudeDelta: mapLatitudeDelta,
+                longitudeDelta: mapLongitudeDelta
             }}
             region={{
                 latitude: mapLatitude,
                 longitude: mapLongitude,
-                latitudeDelta: latitudeDelta,
-                longitudeDelta: longitudeDelta
+                latitudeDelta: mapLatitudeDelta,
+                longitudeDelta: mapLongitudeDelta
             }}
             onRegionChangeComplete={(e) => {
-                console.log("Region Change Completed")
-                setLatitudeDelta(e.latitudeDelta);
-                setLongitudeDelta(e.longitudeDelta);
+
+                setMapLatitudeDelta(e.latitudeDelta);
+                setMapLongitudeDelta(e.longitudeDelta);
                 setMapLatitude(e.latitude);
                 setMapLongitude(e.longitude);
             }}
@@ -55,22 +55,10 @@ const MapConfig = (props) => {
                 latitude={props.stoneLatitude}
                 longitude={props.stoneLongitude}
             />
-
-            <Marker
-                draggable
-                onDragEnd={(e) => {
-                    setMarkerLatitude(e.nativeEvent.coordinate.latitude);
-                    setMarkerLongitude(e.nativeEvent.coordinate.longitude);
-                    
-                }
-
-                }
-                coordinate={{
-                    latitude: markerLatitude,
-                    longitude: markerLongitude,
-                }}
-
-                image={require('../../../Assets/Images/AdjustingDirectionMarker.png')} />
+            <MarkerConfig onDragEnd_SetMarkerCoordinates={_onDragEnd_SetMarkerCoordinates}
+                markerLatitude={markerLatitude}
+                markerLongitude={markerLongitude}
+            />
             <CurlingPitchShape />
 
         </MapView>

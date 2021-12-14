@@ -48,7 +48,9 @@ const StageScreen = (props) => {
                 initialLongitude={initialCoordinates.current.longitude}
                  />
             <Target_Prompt />
-            <DistanceToTarget_Prompt />
+            <DistanceToTarget_Prompt 
+            stoneLatitude={stoneLatitude}
+            stoneLongitude={stoneLongitude}/>
 
         </View>
     )

@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { TouchableOpacity, View } from 'react-native'
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
+import MapView, { PROVIDER_GOOGLE, Polyline } from 'react-native-maps'
 import StoneShape from './CurrentPlaceStoneShape'
 import CurlingPitchShape from './TargetPlaceCurlingShape'
 import MarkerConfig from './MarkerConfig'
 import { UrlTile } from 'react-native-maps'
 import { Marker } from 'react-native-maps'
+import { getDistance, getPreciseDistance } from 'geolib'
 
 const MapConfig = (props) => {
     const [mapLatitude, setMapLatitude] = useState(props.initialLatitude);
@@ -19,7 +20,6 @@ const MapConfig = (props) => {
     //Determine initial place of marker
     const [markerLatitude, setMarkerLatitude] = useState(props.stoneLatitude + 0.15)
     const [markerLongitude, setMarkerLongitude] = useState(props.stoneLongitude + 0.15)
-
 
     const _onDragEnd_SetMarkerCoordinates = (e) => {
         setMarkerLatitude(e.nativeEvent.coordinate.latitude)
@@ -54,6 +54,21 @@ const MapConfig = (props) => {
             <StoneShape
                 latitude={props.stoneLatitude}
                 longitude={props.stoneLongitude}
+            />
+            <Polyline
+                coordinates={[
+                    { latitude: props.stoneLatitude, longitude: props.stoneLongitude },
+                    { latitude: props.stoneLatitude + 0.1, longitude: props.stoneLongitude + 0.1 },
+                    { latitude: props.stoneLatitude + 0.1, longitude: props.stoneLongitude + 0.1 - 0.05 }
+
+                ]}
+                strokeColor="#000" // fallback for when `strokeColors` is not supported by the map-provider
+                strokeColors={[
+                    '#7F0000',
+                    '#00000000', // no color, creates a "long" gradient between the previous and next coordinate
+                    '#7F0000',
+                ]}
+                strokeWidth={6}
             />
             <MarkerConfig onDragEnd_SetMarkerCoordinates={_onDragEnd_SetMarkerCoordinates}
                 markerLatitude={markerLatitude}

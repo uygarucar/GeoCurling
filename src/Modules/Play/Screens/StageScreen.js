@@ -36,7 +36,7 @@ const StageScreen = (props) => {
     //For assignment of a random coordinate regarding chosen topic
     dispatchCoordinateForChosenTopic(itemId, targetElements)
 
-
+    
     return (
         <View style={{ flex: 1 }}>
             <View style={{ flex: 0.05 }} />

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Circle, Polygon } from 'react-native-maps'
+import { Circle, MarkerAnimated, Polygon } from 'react-native-maps'
 
 const StoneShape = (props) => {
 const latitude= props.latitude;
@@ -8,6 +8,13 @@ const longitude= props.longitude;
 
     return (
         <>
+            <MarkerAnimated
+            image={require('../../../Assets/Images/curlingStone.png')}
+            coordinate={{latitude: latitude,
+            longitude: longitude,
+            }}          
+            >
+            {/*
             <Circle
                 center={{
                     latitude: latitude,
@@ -30,6 +37,8 @@ const longitude= props.longitude;
                 fillColor="rgba(255, 0, 0, 1)"
                 zIndex={0}
             />
+             */}
+             </MarkerAnimated>
         </>
     )
 }

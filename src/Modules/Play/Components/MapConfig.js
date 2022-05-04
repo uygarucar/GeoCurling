@@ -27,8 +27,8 @@ const MapConfig = (props) => {
     }
     return (
         <MapView provider={PROVIDER_GOOGLE}
-            minZoomLevel={8}
-            maxZoomLevel={11}
+            minZoomLevel={9}
+            maxZoomLevel={9}
             style={styles}
             rotateEnabled={false}
             initialRegion={{
@@ -55,6 +55,7 @@ const MapConfig = (props) => {
                 latitude={props.stoneLatitude}
                 longitude={props.stoneLongitude}
             />
+            {/*
             <Polyline
                 coordinates={[
                     { latitude: props.stoneLatitude, longitude: props.stoneLongitude },
@@ -70,6 +71,7 @@ const MapConfig = (props) => {
                 ]}
                 strokeWidth={6}
             />
+             */}
             <MarkerConfig onDragEnd_SetMarkerCoordinates={_onDragEnd_SetMarkerCoordinates}
                 markerLatitude={markerLatitude}
                 markerLongitude={markerLongitude}

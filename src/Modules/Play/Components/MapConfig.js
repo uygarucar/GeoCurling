@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import MapView, { PROVIDER_GOOGLE, Polyline } from 'react-native-maps'
 import StoneShape from './CurrentPlaceStoneShape'
@@ -7,8 +7,12 @@ import MarkerConfig from './MarkerConfig'
 import { UrlTile } from 'react-native-maps'
 import { Marker } from 'react-native-maps'
 import { getDistance, getPreciseDistance } from 'geolib'
+import useDispatchCurrent from '../CustomHooks/UseDispatchCurrent'
 
 const MapConfig = (props) => {
+    
+    const mapRef = useRef(null)
+
     const [mapLatitude, setMapLatitude] = useState(props.initialLatitude);
     const [mapLongitude, setMapLongitude] = useState(props.initialLongitude);
 
@@ -17,7 +21,7 @@ const MapConfig = (props) => {
 
     const styles = props.style;
 
-    //Determine initial place of marker
+    //Determine initial place of 2nd marker
     const [markerLatitude, setMarkerLatitude] = useState(props.stoneLatitude + 0.15)
     const [markerLongitude, setMarkerLongitude] = useState(props.stoneLongitude + 0.15)
 
@@ -25,12 +29,19 @@ const MapConfig = (props) => {
         setMarkerLatitude(e.nativeEvent.coordinate.latitude)
         setMarkerLongitude(e.nativeEvent.coordinate.longitude)
     }
+    
+   
+    
     return (
         <MapView provider={PROVIDER_GOOGLE}
-            minZoomLevel={9}
-            maxZoomLevel={9}
+            ref= {mapRef}
+            minZoomLevel={10}
+            maxZoomLevel={10}
             style={styles}
             rotateEnabled={false}
+            scrollEnabled={false}
+            pitchEnabled={false}
+            zoomEnabled={false}
             initialRegion={{
                 latitude: mapLatitude,
                 longitude: mapLongitude,
@@ -54,6 +65,8 @@ const MapConfig = (props) => {
             <StoneShape
                 latitude={props.stoneLatitude}
                 longitude={props.stoneLongitude}
+
+                mapRef={mapRef}
             />
             {/*
             <Polyline

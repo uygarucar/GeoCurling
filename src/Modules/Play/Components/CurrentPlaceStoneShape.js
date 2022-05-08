@@ -1,20 +1,55 @@
-import React from 'react'
-import { Circle, MarkerAnimated, Polygon } from 'react-native-maps'
+import React, { useRef, useState } from 'react'
+import { Circle, MarkerAnimated, Polygon, AnimatedRegion } from 'react-native-maps'
+import useDispatchCurrent from '../CustomHooks/UseDispatchCurrent';
 
 const StoneShape = (props) => {
-const latitude= props.latitude;
-const longitude= props.longitude;
+    const latitude = props.latitude;
+    const longitude = props.longitude;
+    let mapRef= props.mapRef;
+    let [myMarker, setMyMarker] = useState();
+    
+    const [coordinate, setCoordinate] = useState(new AnimatedRegion({
+        latitude: latitude,
+        longitude: longitude,
+        latitudeDelta: 0.012,
+        longitudeDelta: 0.012,
+    }))
+    
+
+    const _onPress_animateCamera_And_Marker = () => {
+        let newCoordinate = {
+            latitude: latitude + 0.1,
+            longitude: longitude + 0.1,
+            latitudeDelta: 0.012,
+            longitudeDelta: 0.012,
+        }
+        const newCamera= {
+            center: {
+                latitude: latitude + 0.1,
+                longitude: longitude + 0.1,
+            },
+            pitch: 0,
+            heading: 0,
+            //zoom: 17  --Use it when required
+        }
+        if(myMarker){
+            myMarker.animateMarkerToCoordinate(newCoordinate, 4000)
+            mapRef.current.animateCamera(newCamera, {duration: 4000})
+        }
+    }
+
+    
 
 
     return (
         <>
             <MarkerAnimated
-            image={require('../../../Assets/Images/curlingStone.png')}
-            coordinate={{latitude: latitude,
-            longitude: longitude,
-            }}          
+                ref={marker => setMyMarker(marker)}
+                onPress={_onPress_animateCamera_And_Marker}
+                image={require('../../../Assets/Images/curlingStone.png')}
+                coordinate={coordinate}
             >
-            {/*
+                {/*
             <Circle
                 center={{
                     latitude: latitude,
@@ -38,7 +73,7 @@ const longitude= props.longitude;
                 zIndex={0}
             />
              */}
-             </MarkerAnimated>
+            </MarkerAnimated>
         </>
     )
 }

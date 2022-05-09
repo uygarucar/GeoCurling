@@ -2,10 +2,19 @@ import React, { useRef, useState } from 'react'
 import { Circle, MarkerAnimated, Polygon, AnimatedRegion } from 'react-native-maps'
 import useDispatchCurrent from '../CustomHooks/UseDispatchCurrent';
 import _onPress_fireMarker from './MarkerFiringFunction';
-
+import calculateNextCoordinates from './CalculateNextCoordinates';
 const StoneShape = (props) => {
     const latitude = props.latitude;
     const longitude = props.longitude;
+
+    const directionCreatorMarkerLatitude = props.directionCreatorMarkerLatitude
+    const directionCreatorMarkerLongitude = props.directionCreatorMarkerLongitude
+    const directionCreatorMarkerCoords = {
+        directionCreatorMarkerLatitude,
+        directionCreatorMarkerLongitude
+    }
+    console.log("directionCreatorMarkerCoords",directionCreatorMarkerCoords)
+
     let mapRef= props.mapRef;
     let [myMarker, setMyMarker] = useState();
     
@@ -16,17 +25,9 @@ const StoneShape = (props) => {
         longitudeDelta: 0.012,
     }))
     
-    const nextCoordinates = {
-        latitude: latitude + 0.2,
-        longitude: longitude + 0.2,
-    }
-
-    //_onPress_animateCamera_And_Marker(nextCoordinates, myMarker, mapRef.current);
+    const nextCoordinates = calculateNextCoordinates(directionCreatorMarkerCoords, null);
+    console.log("nextCoordinates", nextCoordinates)
     
-
-    
-
-
     return (
         <>
             <MarkerAnimated

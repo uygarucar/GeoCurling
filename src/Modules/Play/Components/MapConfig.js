@@ -67,6 +67,8 @@ const MapConfig = (props) => {
                 longitude={props.stoneLongitude}
 
                 mapRef={mapRef}
+                directionCreatorMarkerLatitude={markerLatitude}
+                directionCreatorMarkerLongitude={markerLongitude}
             />
             {/*
             <Polyline

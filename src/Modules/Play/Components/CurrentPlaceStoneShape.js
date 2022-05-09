@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Circle, MarkerAnimated, Polygon, AnimatedRegion } from 'react-native-maps'
 import useDispatchCurrent from '../CustomHooks/UseDispatchCurrent';
+import _onPress_fireMarker from './MarkerFiringFunction';
 
 const StoneShape = (props) => {
     const latitude = props.latitude;
@@ -15,28 +16,13 @@ const StoneShape = (props) => {
         longitudeDelta: 0.012,
     }))
     
-
-    const _onPress_animateCamera_And_Marker = () => {
-        let newCoordinate = {
-            latitude: latitude + 0.1,
-            longitude: longitude + 0.1,
-            latitudeDelta: 0.012,
-            longitudeDelta: 0.012,
-        }
-        const newCamera= {
-            center: {
-                latitude: latitude + 0.1,
-                longitude: longitude + 0.1,
-            },
-            pitch: 0,
-            heading: 0,
-            //zoom: 17  --Use it when required
-        }
-        if(myMarker){
-            myMarker.animateMarkerToCoordinate(newCoordinate, 4000)
-            mapRef.current.animateCamera(newCamera, {duration: 4000})
-        }
+    const nextCoordinates = {
+        latitude: latitude + 0.2,
+        longitude: longitude + 0.2,
     }
+
+    //_onPress_animateCamera_And_Marker(nextCoordinates, myMarker, mapRef.current);
+    
 
     
 
@@ -45,7 +31,7 @@ const StoneShape = (props) => {
         <>
             <MarkerAnimated
                 ref={marker => setMyMarker(marker)}
-                onPress={_onPress_animateCamera_And_Marker}
+                onPress={() => _onPress_fireMarker(nextCoordinates, myMarker, mapRef)}
                 image={require('../../../Assets/Images/curlingStone.png')}
                 coordinate={coordinate}
             >

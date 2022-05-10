@@ -10,31 +10,38 @@ import { getDistance, getPreciseDistance } from 'geolib'
 import useDispatchCurrent from '../CustomHooks/UseDispatchCurrent'
 
 const MapConfig = (props) => {
-    
+    console.log("MapConfig: first")
     const mapRef = useRef(null)
-
-    const [mapLatitude, setMapLatitude] = useState(props.initialLatitude);
-    const [mapLongitude, setMapLongitude] = useState(props.initialLongitude);
-
+    
+        const [mapLatitude, setMapLatitude] = useState(props.stoneLatitude);
+        const [mapLongitude, setMapLongitude] = useState(props.stoneLongitude);
+        console.log("MapConfig: second")
+    
+    
     const [mapLatitudeDelta, setMapLatitudeDelta] = useState(1.1922)
     const [mapLongitudeDelta, setMapLongitudeDelta] = useState(1.1421)
+    console.log("MapConfig: third")
 
     const styles = props.style;
 
     //Determine initial place of 2nd marker
-    const [markerLatitude, setMarkerLatitude] = useState(props.stoneLatitude + 0.15)
-    const [markerLongitude, setMarkerLongitude] = useState(props.stoneLongitude + 0.15)
+    const [markerLatitude, setMarkerLatitude] = useState(mapLatitude + 0.15)
+    //console.log("markerLatitude", markerLatitude)
+    const [markerLongitude, setMarkerLongitude] = useState(mapLongitude+ 0.15)
+    //console.log("markerLongitude", markerLongitude)
+
+    console.log("MapConfig: fourth")
 
     const _onDragEnd_SetMarkerCoordinates = (e) => {
         setMarkerLatitude(e.nativeEvent.coordinate.latitude)
         setMarkerLongitude(e.nativeEvent.coordinate.longitude)
     }
-    
-   
-    
+
+
+
     return (
         <MapView provider={PROVIDER_GOOGLE}
-            ref= {mapRef}
+            ref={mapRef}
             minZoomLevel={10}
             maxZoomLevel={10}
             style={styles}

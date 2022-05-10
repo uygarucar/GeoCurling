@@ -2,21 +2,25 @@ import React, { useRef, useState } from 'react'
 import { Circle, MarkerAnimated, Polygon, AnimatedRegion } from 'react-native-maps'
 import useDispatchCurrent from '../CustomHooks/UseDispatchCurrent';
 import _onPress_fireMarker from './MarkerFiringFunction';
-import calculateNextCoordinates from './CalculateNextCoordinates';
+import calculateNextCoordinates from '../Utils/CalculateNextCoordinates';
+import CustomizedMarkerAnimated from './CustomizedMarkerAnimated'
+
 const StoneShape = (props) => {
+    console.log("stoneShape: first")
     const latitude = props.latitude;
     const longitude = props.longitude;
-
+    const actualMarkerCoords = {
+        latitude,
+        longitude
+    }
     const directionCreatorMarkerLatitude = props.directionCreatorMarkerLatitude
     const directionCreatorMarkerLongitude = props.directionCreatorMarkerLongitude
     const directionCreatorMarkerCoords = {
-        directionCreatorMarkerLatitude,
-        directionCreatorMarkerLongitude
+        latitude: directionCreatorMarkerLatitude,
+        longitude: directionCreatorMarkerLongitude
     }
-    console.log("directionCreatorMarkerCoords",directionCreatorMarkerCoords)
-
+    
     let mapRef= props.mapRef;
-    let [myMarker, setMyMarker] = useState();
     
     const [coordinate, setCoordinate] = useState(new AnimatedRegion({
         latitude: latitude,
@@ -24,43 +28,19 @@ const StoneShape = (props) => {
         latitudeDelta: 0.012,
         longitudeDelta: 0.012,
     }))
+    console.log("stoneShape: second")
     
-    const nextCoordinates = calculateNextCoordinates(directionCreatorMarkerCoords, null);
-    console.log("nextCoordinates", nextCoordinates)
-    
+    //const nextCoordinates = calculateNextCoordinates(directionCreatorMarkerCoords, actualMarkerCoords);
     return (
         <>
-            <MarkerAnimated
-                ref={marker => setMyMarker(marker)}
-                onPress={() => _onPress_fireMarker(nextCoordinates, myMarker, mapRef)}
-                image={require('../../../Assets/Images/curlingStone.png')}
-                coordinate={coordinate}
-            >
-                {/*
-            <Circle
-                center={{
-                    latitude: latitude,
-                    longitude: longitude,
-                }}
-                radius={5000}
-                strokeWidth={1}
-                strokeColor="rgba(123, 123, 123, 1)"
-                fillColor="rgba(123, 123, 123, 1)"
-                zIndex={0}
+            <CustomizedMarkerAnimated
+                latitude= {latitude}
+                longitude= {longitude}
+                coordinate ={coordinate}
+                mapRef={mapRef}
+                directionCreatorMarkerCoords={directionCreatorMarkerCoords}
+                actualMarkerCoords= {actualMarkerCoords}
             />
-            <Circle
-                center={{
-                    latitude: latitude,
-                    longitude: longitude,
-                }}
-                radius={3000}
-                strokeWidth={1}
-                strokeColor="rgba(255, 0, 0, 1)"
-                fillColor="rgba(255, 0, 0, 1)"
-                zIndex={0}
-            />
-             */}
-            </MarkerAnimated>
         </>
     )
 }

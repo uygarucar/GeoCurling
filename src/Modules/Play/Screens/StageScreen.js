@@ -19,24 +19,25 @@ import { currentLongitudeSelector } from '../Redux/CurrentLongitudeRedux';
 import MapConfig from '../Components/MapConfig';
 
 const StageScreen = (props) => {
+    console.log("stageScreen: first area")
     //Beginning position elements {id, text, latitude, longitude} randomly created & assigned
     //Constant
     const elements = GiveCoordinates(RandomPlace)
     let initialCoordinates = useRef(elements);
-    
-    
+   
+    console.log("stageScreen: second area")
     //Marker Coordinates
     //Changable
     useDispatchCurrent(elements)
+
     const stoneLatitude = useSelector(currentLatitudeSelector)
     const stoneLongitude = useSelector(currentLongitudeSelector)
   
+    console.log("stageScreen: third area")
     //Chosen topic in previous navigation page
     const itemId = props.route.params?.itemId;
     //For assignment of a random coordinate regarding chosen topic
     dispatchCoordinateForChosenTopic(itemId)
-
-    
     return (
         <View style={{ flex: 1 }}>
             <View style={{ flex: 0.05 }} />
@@ -51,6 +52,7 @@ const StageScreen = (props) => {
             <DistanceToTarget_Prompt 
             stoneLatitude={stoneLatitude}
             stoneLongitude={stoneLongitude}/>
+            
 
         </View>
     )

@@ -10,17 +10,14 @@ import { getDistance, getPreciseDistance } from 'geolib'
 import useDispatchCurrent from '../CustomHooks/UseDispatchCurrent'
 
 const MapConfig = (props) => {
-    console.log("MapConfig: first")
     const mapRef = useRef(null)
-    
-        const [mapLatitude, setMapLatitude] = useState(props.stoneLatitude);
-        const [mapLongitude, setMapLongitude] = useState(props.stoneLongitude);
-        console.log("MapConfig: second")
+    console.log("MapConfig:1")
+    const [mapLatitude, setMapLatitude] = useState(props.stoneLatitude);
+    const [mapLongitude, setMapLongitude] = useState(props.stoneLongitude);
     
     
     const [mapLatitudeDelta, setMapLatitudeDelta] = useState(1.1922)
     const [mapLongitudeDelta, setMapLongitudeDelta] = useState(1.1421)
-    console.log("MapConfig: third")
 
     const styles = props.style;
 
@@ -29,8 +26,7 @@ const MapConfig = (props) => {
     //console.log("markerLatitude", markerLatitude)
     const [markerLongitude, setMarkerLongitude] = useState(mapLongitude+ 0.15)
     //console.log("markerLongitude", markerLongitude)
-
-    console.log("MapConfig: fourth")
+    console.log("MapConfig:2")
 
     const _onDragEnd_SetMarkerCoordinates = (e) => {
         setMarkerLatitude(e.nativeEvent.coordinate.latitude)

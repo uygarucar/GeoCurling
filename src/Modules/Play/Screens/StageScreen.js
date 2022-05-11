@@ -16,45 +16,32 @@ import useDispatchCurrent from '../CustomHooks/UseDispatchCurrent';
 import useDispatchTarget from '../CustomHooks/useDispatchTarget';
 import { currentLatitudeSelector } from '../Redux/CurrentLatitudeRedux';
 import { currentLongitudeSelector } from '../Redux/CurrentLongitudeRedux';
+import PhoneScreenView from '../Components/PhoneScreenView'
 import MapConfig from '../Components/MapConfig';
 
 const StageScreen = (props) => {
-    console.log("stageScreen: first area")
-    //Beginning position elements {id, text, latitude, longitude} randomly created & assigned
+    //Beginning position elements {id, text, latitude, longitude}
     //Constant
     const elements = GiveCoordinates(RandomPlace)
     let initialCoordinates = useRef(elements);
-   
-    console.log("stageScreen: second area")
+
     //Marker Coordinates
     //Changable
-    useDispatchCurrent(elements)
-
-    const stoneLatitude = useSelector(currentLatitudeSelector)
-    const stoneLongitude = useSelector(currentLongitudeSelector)
-  
-    console.log("stageScreen: third area")
+    
+    //What happens when I dispatch here and child is affected? Which one begins first?
+    useDispatchCurrent(initialCoordinates.current)
+    console.log("StageScreen:1")
     //Chosen topic in previous navigation page
     const itemId = props.route.params?.itemId;
-    //For assignment of a random coordinate regarding chosen topic
-    dispatchCoordinateForChosenTopic(itemId)
+    //dispatch random coordinate for target
+    dispatchCoordinateForChosenTopic(itemId);
     return (
-        <View style={{ flex: 1 }}>
-            <View style={{ flex: 0.05 }} />
-            <MapConfig 
-                style={styles.mapView}
-                stoneLatitude={stoneLatitude}
-                stoneLongitude={stoneLongitude}
+        <>
+            <PhoneScreenView
                 initialLatitude={initialCoordinates.current.latitude}
                 initialLongitude={initialCoordinates.current.longitude}
-                 />
-            <Target_Prompt />
-            <DistanceToTarget_Prompt 
-            stoneLatitude={stoneLatitude}
-            stoneLongitude={stoneLongitude}/>
-            
-
-        </View>
+            />
+        </>
     )
 }
 

@@ -8,6 +8,7 @@ const useDispatchCurrent = (currentElements) => {
 
     dispatch(currentLatitudeCreator(currentElements.latitude));
     dispatch(currentLongitudeCreator(currentElements.longitude));
+
 }
 
 export default useDispatchCurrent

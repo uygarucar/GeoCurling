@@ -10,7 +10,7 @@ import styles from '../styles/StageScreenStyles'
 const DistanceToTarget_Prompt = (props) => {
     const targetLatitude = useSelector(targetLatitudeSelector)
     const targetLongitude = useSelector(targetLongitudeSelector)
-    
+    console.log("DistanceToTargetPrompt");
     
     const distanceToTarget = distanceFinder(targetLatitude, targetLongitude, props.stoneLatitude, props.stoneLongitude)
 

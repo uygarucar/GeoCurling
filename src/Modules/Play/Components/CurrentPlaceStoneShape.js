@@ -4,21 +4,18 @@ import useDispatchCurrent from '../CustomHooks/UseDispatchCurrent';
 import _onPress_fireMarker from './MarkerFiringFunction';
 import calculateNextCoordinates from '../Utils/CalculateNextCoordinates';
 import CustomizedMarkerAnimated from './CustomizedMarkerAnimated'
+import combineCoordinates from '../Utils/CombineCoordinates'
 
 const StoneShape = (props) => {
-    console.log("stoneShape: first")
+    console.log("StoneShape:1")
     const latitude = props.latitude;
     const longitude = props.longitude;
-    const actualMarkerCoords = {
-        latitude,
-        longitude
-    }
+    const actualMarkerCoords = combineCoordinates(latitude, longitude)
+    
     const directionCreatorMarkerLatitude = props.directionCreatorMarkerLatitude
     const directionCreatorMarkerLongitude = props.directionCreatorMarkerLongitude
-    const directionCreatorMarkerCoords = {
-        latitude: directionCreatorMarkerLatitude,
-        longitude: directionCreatorMarkerLongitude
-    }
+    const directionCreatorMarkerCoords = combineCoordinates(directionCreatorMarkerLatitude, directionCreatorMarkerLongitude)
+
     
     let mapRef= props.mapRef;
     
@@ -28,7 +25,17 @@ const StoneShape = (props) => {
         latitudeDelta: 0.012,
         longitudeDelta: 0.012,
     }))
-    console.log("stoneShape: second")
+    console.log("StoneShape:2")
+    const _onPress_changeActMarkerCoordinate = () => {
+        console.log("_onPress_changeActMarkerCoordinate:1")
+        setCoordinate(new AnimatedRegion({
+            latitude: latitude,
+            longitude: longitude,
+            latitudeDelta: 0.012,
+            longitudeDelta: 0.012,
+        }))
+    }
+
     
     //const nextCoordinates = calculateNextCoordinates(directionCreatorMarkerCoords, actualMarkerCoords);
     return (
@@ -40,6 +47,7 @@ const StoneShape = (props) => {
                 mapRef={mapRef}
                 directionCreatorMarkerCoords={directionCreatorMarkerCoords}
                 actualMarkerCoords= {actualMarkerCoords}
+                onPress_changeActMarkerCoordinate= {_onPress_changeActMarkerCoordinate}
             />
         </>
     )

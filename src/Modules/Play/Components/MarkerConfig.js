@@ -5,6 +5,7 @@ const MarkerConfig = (props) => {
     const onDragEnd_SetMarkerCoordinates = props.onDragEnd_SetMarkerCoordinates;
     const markerLatitude = props.markerLatitude
     const markerLongitude = props.markerLongitude
+    console.log("MarkerConfig:1")
  
     return (
         <Marker

@@ -10,6 +10,7 @@ import { targetTextSelector } from '../Redux/TargetTextRedux'
 const Target_Prompt = () => {
     //Random text seçilir ve return içinde yazdırılır.
     const text= useSelector(targetTextSelector)
+    console.log("Target_Prompt:1")
 
     return (
         <TouchableOpacity style={styles.promptTargetArea} activeOpacity={1}>

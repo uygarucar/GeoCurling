@@ -1,8 +1,9 @@
 import distanceFinder from "./DistanceFinder"
 
 const calculateNextCoordinates = (secondMarkerCoordinates, actualMarkerCoordinates) => {
+    
     const distance= distanceFinder(secondMarkerCoordinates.latitude, secondMarkerCoordinates.longitude, actualMarkerCoordinates.latitude, actualMarkerCoordinates.longitude)
-    console.log("distance: ", distance)
+    console.log("*****distance:", distance)
 
     //Below will change
     const secondMarker = {

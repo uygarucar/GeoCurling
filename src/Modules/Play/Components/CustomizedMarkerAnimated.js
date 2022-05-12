@@ -28,13 +28,7 @@ useEffect(() => {
 //console.log("nextCoordinates", nextCoordinates)
 
 const dispatch= useDispatch();
-useEffect(() => {
 
-    dispatch(currentLatitudeCreator(nextCoordinates.latitude)),
-    dispatch(currentLongitudeCreator(nextCoordinates.longitude))
-    console.log("CustomizedMarkerAnimated:UseEffect")
-    
-}, [nextCoordinates])
 //useDispatchCurrent(nextCoordinates);
 const changeActMarkerCoordinate= props.onPress_changeActMarkerCoordinate;
 
@@ -42,7 +36,11 @@ const changeActMarkerCoordinate= props.onPress_changeActMarkerCoordinate;
     return (
         <MarkerAnimated
             image={require('../../../Assets/Images/curlingStone.png')}
-            onPress={() => _onPress_fireMarker(nextCoordinates, myMarker, mapRef, changeActMarkerCoordinate)}
+            onPress={() => 
+                {dispatch(currentLatitudeCreator(nextCoordinates.latitude));
+                dispatch(currentLongitudeCreator(nextCoordinates.longitude));
+                _onPress_fireMarker(nextCoordinates, myMarker, mapRef, changeActMarkerCoordinate);
+            }}
             ref={marker => { setMyMarker(marker) }}
             coordinate={coordinate}
         />

@@ -8,14 +8,15 @@ import { UrlTile } from 'react-native-maps'
 import { Marker } from 'react-native-maps'
 import { getDistance, getPreciseDistance } from 'geolib'
 import useDispatchCurrent from '../CustomHooks/UseDispatchCurrent'
+import ArrowDrawer from './ArrowDrawer'
 
 const MapConfig = (props) => {
     const mapRef = useRef(null)
     console.log("MapConfig:1")
     const [mapLatitude, setMapLatitude] = useState(props.stoneLatitude);
     const [mapLongitude, setMapLongitude] = useState(props.stoneLongitude);
-    
-    
+
+
     const [mapLatitudeDelta, setMapLatitudeDelta] = useState(1.1922)
     const [mapLongitudeDelta, setMapLongitudeDelta] = useState(1.1421)
 
@@ -24,7 +25,7 @@ const MapConfig = (props) => {
     //Determine initial place of 2nd marker
     const [markerLatitude, setMarkerLatitude] = useState(mapLatitude + 0.15)
     //console.log("markerLatitude", markerLatitude)
-    const [markerLongitude, setMarkerLongitude] = useState(mapLongitude+ 0.15)
+    const [markerLongitude, setMarkerLongitude] = useState(mapLongitude + 0.15)
     //console.log("markerLongitude", markerLongitude)
     console.log("MapConfig:2")
 
@@ -73,23 +74,30 @@ const MapConfig = (props) => {
                 directionCreatorMarkerLatitude={markerLatitude}
                 directionCreatorMarkerLongitude={markerLongitude}
             />
-            {/*
-            <Polyline
+            <ArrowDrawer
+                coordinates={{
+                    directionCreatorMarkerLatitude: markerLatitude,
+                    directionCreatorMarkerLongitude: markerLongitude,
+                    stoneLatitude: props.stoneLatitude,
+                    stoneLongitude: props.stoneLongitude
+                }}
+            />
+            {/*<Polyline
+                zIndex={2}
+                lineCap='round'
                 coordinates={[
-                    { latitude: props.stoneLatitude, longitude: props.stoneLongitude },
-                    { latitude: props.stoneLatitude + 0.1, longitude: props.stoneLongitude + 0.1 },
-                    { latitude: props.stoneLatitude + 0.1, longitude: props.stoneLongitude + 0.1 - 0.05 }
+                    { latitude: props.stoneLatitude + 0.05, longitude: props.stoneLongitude },
+                    { latitude: props.stoneLatitude + 0.2, longitude: props.stoneLongitude },
 
                 ]}
                 strokeColor="#000" // fallback for when `strokeColors` is not supported by the map-provider
                 strokeColors={[
                     '#7F0000',
                     '#00000000', // no color, creates a "long" gradient between the previous and next coordinate
-                    '#7F0000',
                 ]}
                 strokeWidth={6}
             />
-             */}
+            */}
             <MarkerConfig onDragEnd_SetMarkerCoordinates={_onDragEnd_SetMarkerCoordinates}
                 markerLatitude={markerLatitude}
                 markerLongitude={markerLongitude}

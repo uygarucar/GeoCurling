@@ -19,30 +19,32 @@ const CustomizedMarkerAnimated = (props) => {
     const actualMarkerCoords = props.actualMarkerCoords;
     const nextCoordinates = calculateNextCoordinates(directionCreatorMarkerCoords, actualMarkerCoords)
 
-/*
-useEffect(() => {
-        useDispatchCurrent(nextCoordinates);
-    }, [])
-*/
-//console.log("usDispatchCurrent(nextCoordinates) öncesi")
-//console.log("nextCoordinates", nextCoordinates)
+    /*
+    useEffect(() => {
+            useDispatchCurrent(nextCoordinates);
+        }, [])
+    */
+    //console.log("usDispatchCurrent(nextCoordinates) öncesi")
+    //console.log("nextCoordinates", nextCoordinates)
 
-const dispatch= useDispatch();
+    const dispatch = useDispatch();
 
-//useDispatchCurrent(nextCoordinates);
-const changeActMarkerCoordinate= props.onPress_changeActMarkerCoordinate;
+    //useDispatchCurrent(nextCoordinates);
+    const changeActMarkerCoordinate = props.onPress_changeActMarkerCoordinate;
 
 
     return (
         <MarkerAnimated
             image={require('../../../Assets/Images/curlingStone.png')}
-            onPress={() => 
-                {dispatch(currentLatitudeCreator(nextCoordinates.latitude));
-                dispatch(currentLongitudeCreator(nextCoordinates.longitude));
+            onPress={() => {
+                
                 _onPress_fireMarker(nextCoordinates, myMarker, mapRef, changeActMarkerCoordinate);
+                dispatch(currentLatitudeCreator(nextCoordinates.latitude));
+                dispatch(currentLongitudeCreator(nextCoordinates.longitude));
             }}
             ref={marker => { setMyMarker(marker) }}
             coordinate={coordinate}
+            anchor={{x:0.5, y: 0.5}}
         />
     )
 }

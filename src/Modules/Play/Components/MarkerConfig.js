@@ -9,6 +9,8 @@ const MarkerConfig = (props) => {
  
     return (
         <Marker
+            anchor={{x:0.5, y:0.5}}
+            zIndex={2}
             draggable
             onDragEnd={onDragEnd_SetMarkerCoordinates}
             coordinate={{

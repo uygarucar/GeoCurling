@@ -7,7 +7,7 @@ const TopicsItem = (props) => {
     
     const navigation = useNavigation();
     const _onPress_goToStage1 = () => {
-        navigation.navigate("game-screen", {
+        navigation.navigate("categories-screen", {
             itemId: props.id
         });
     }

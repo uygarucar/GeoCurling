@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { HomeScreen } from '../Home';
 import { PlayScreen } from '../Play/Screens/PlayScreen';
-import StageScreen from '../Play/Screens/StageScreen';
+import CategoriesScreen from '../Play/Screens/CategoriesScreen';
 
 
 const AppStack = createStackNavigator();
@@ -37,10 +37,10 @@ const AppNavigation = () => {
                 }}
             />
             <AppStack.Screen
-                name="game-screen"
-                component={StageScreen}
+                name="categories-screen"
+                component={CategoriesScreen}
                 options={{
-                    title:'Playing...',
+                    title:'Categories...',
                     headerTitleAlign: 'center',
                     headerStyle: {
                         backgroundColor: '#30D086'

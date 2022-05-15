@@ -12,13 +12,13 @@ const CustomizedButton = (props) => {
         <>
             {!props.isLocked ?
                 <TouchableOpacity
-                    onPress={props.onPress_goToStage1}
+                    onPress={props.onPress_goToCategories}
                     style={[styles.touchable, { marginBottom: Metrics.height * 0.05 }]}>
                     <Text style={styles.text}>{props.name}</Text>
                 </TouchableOpacity>
                 :
                 <TouchableOpacity
-                    onPress={props.onPress_goToStage1}
+                    onPress={props.onPress_goToCategories}
                     style={[styles.touchable, { marginBottom: Metrics.height * 0.05, backgroundColor: '#A9957B', flexDirection: 'row' }]}>
                     <Text style={styles.text}>{props.name}</Text>
                     <LockSvg width="10%" height="60%" style={{ color: 'black', flex: 0.15 }} />

@@ -19,7 +19,7 @@ import { currentLongitudeSelector } from '../Redux/CurrentLongitudeRedux';
 import PhoneScreenView from '../Components/PhoneScreenView'
 import MapConfig from '../Components/MapConfig';
 
-const CategoriesScreen = (props) => {
+const PlayScreen = (props) => {
     //Beginning position elements {id, text, latitude, longitude}
     //Constant
     const elements = GiveCoordinates(RandomPlace)
@@ -30,9 +30,10 @@ const CategoriesScreen = (props) => {
     
     //What happens when I dispatch here and child is affected? Which one begins first?
     useDispatchCurrent(initialCoordinates.current)
-    console.log("CategoriesScreen:1")
+    console.log("PlayScreen:1")
     //Chosen topic in previous navigation page
     const itemId = props.route.params?.itemId;
+    console.log("--------------------------------------itemId:", itemId)
     //dispatch random coordinate for target
     dispatchCoordinateForChosenTopic(itemId);
     return (
@@ -45,4 +46,4 @@ const CategoriesScreen = (props) => {
     )
 }
 
-export default CategoriesScreen
+export default PlayScreen

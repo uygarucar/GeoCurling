@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 import { addItem, deleteItem, subscribeToItemData, updateItem } from '../API/Firebase';
-import { PlayScreen } from '../../Play/Screens/PlayScreen';
+import { OuterCategoriesScreen } from '../../Play/Screens/OuterCategoriesScreen';
 
 import styles from '../Styles/HomeScreenStyles';
 import { useDispatch } from 'react-redux';

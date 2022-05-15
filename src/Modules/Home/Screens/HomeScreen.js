@@ -41,9 +41,9 @@ const HomeScreen = props => {
 
     // Silme modu kapalıyken ekleme sayfasına götürsün
     // Silme modu açıkken de silme modunu kapatsın.
-    const _onPress_GoToPlay = () => {
+    const _onPress_GoToOuterCategories = () => {
         
-            props.navigation.navigate('play-categories-screen');
+            props.navigation.navigate('outer-categories-screen');
        
     }
 
@@ -103,7 +103,7 @@ const HomeScreen = props => {
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity
                         style={styles.touchable}
-                        onPress={_onPress_GoToPlay}>
+                        onPress={_onPress_GoToOuterCategories}>
                         <Text style={styles.text}>
                             Oyna
                         </Text>

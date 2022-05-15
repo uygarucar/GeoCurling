@@ -89,7 +89,7 @@ const _RenderItem = ({ item }) => {
     )
 }
 
-const PlayScreen = (props) => {
+const OuterCategoriesScreen = (props) => {
     
     return (
         <SafeAreaView style={styles.safeArea}>
@@ -108,4 +108,4 @@ const PlayScreen = (props) => {
     )
 }
 
-export { PlayScreen }
+export { OuterCategoriesScreen }

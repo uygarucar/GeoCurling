@@ -22,8 +22,8 @@ const CurlingPitchShape = () => {
                 }}
                 radius={30000}
                 strokeWidth={1}
-                strokeColor="rgba(0, 0, 255, 1)"
-                fillColor="rgba(0, 0, 255, 1)"
+                strokeColor="rgba(0, 0, 255, 0.6)"
+                fillColor="rgba(0, 0, 255, 0.4)"
                 zIndex={0}
             />
 
@@ -34,8 +34,8 @@ const CurlingPitchShape = () => {
                 }}
                 radius={18000}
                 strokeWidth={1}
-                strokeColor="rgba(255, 255, 255, 0.99)"
-                fillColor="rgba(255, 255, 255, 0.99)"
+                strokeColor="rgba(255, 255, 255, 0.6)"
+                fillColor="rgba(255, 255, 255, 0.4)"
                 zIndex={1}
             />
             <Circle
@@ -45,8 +45,8 @@ const CurlingPitchShape = () => {
                 }}
                 radius={9300}
                 strokeWidth={1}
-                strokeColor="rgba(255, 0, 0, 0.99)"
-                fillColor="rgba(255, 0, 0, 0.99)"
+                strokeColor="rgba(255, 0, 0, 0.4)"
+                fillColor="rgba(255, 0, 0, 0.4)"
                 zIndex={2}
             />
             <Circle
@@ -56,8 +56,8 @@ const CurlingPitchShape = () => {
                 }}
                 radius={3750}
                 strokeWidth={1}
-                strokeColor="rgba(255, 255, 255, 0.99)"
-                fillColor="rgba(255, 255, 255, 0.99)"
+                strokeColor="rgba(255, 255, 255, 0.4)"
+                fillColor="rgba(255, 255, 255, 0.4)"
                 zIndex={3}
             />
         </>

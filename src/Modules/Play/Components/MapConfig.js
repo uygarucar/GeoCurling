@@ -9,13 +9,14 @@ import { Marker } from 'react-native-maps'
 import { getDistance, getPreciseDistance } from 'geolib'
 import useDispatchCurrent from '../CustomHooks/UseDispatchCurrent'
 import ArrowDrawer from './ArrowDrawer'
+import mapStyle from './CustomMapStyle'
 
 const MapConfig = (props) => {
     const mapRef = useRef(null)
     console.log("MapConfig:1")
     const [mapLatitude, setMapLatitude] = useState(props.stoneLatitude);
     const [mapLongitude, setMapLongitude] = useState(props.stoneLongitude);
-
+    
 
     const [mapLatitudeDelta, setMapLatitudeDelta] = useState(1.1922)
     const [mapLongitudeDelta, setMapLongitudeDelta] = useState(1.1421)
@@ -38,6 +39,7 @@ const MapConfig = (props) => {
 
     return (
         <MapView provider={PROVIDER_GOOGLE}
+            customMapStyle={mapStyle}
             ref={mapRef}
             minZoomLevel={10}
             maxZoomLevel={10}
@@ -65,6 +67,7 @@ const MapConfig = (props) => {
                 setMapLatitude(e.latitude);
                 setMapLongitude(e.longitude);
             }}
+
         >
             <StoneShape
                 latitude={props.stoneLatitude}

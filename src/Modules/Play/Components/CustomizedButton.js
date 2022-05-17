@@ -8,6 +8,7 @@ import { Metrics } from '../../../StylingConstants'
 
 const CustomizedButton = (props) => {
     const LockSvg = Svgs.Lock;
+    
     return (
         <>
             {!props.isLocked ?

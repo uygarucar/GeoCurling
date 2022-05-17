@@ -3,17 +3,15 @@ import { useNavigation } from '@react-navigation/core'
 import CustomizedButton from './CustomizedButton'
 
 
-const TopicsItem = (props) => {
-    const navigation = useNavigation();
-
+const TopicsItemForInnerCategory = (props) => {
+    const navigation = useNavigation()
 
     const _onPress_goToCategories = () => {
-        navigation.navigate("inner-categories-screen", {
-            outerCategoryId: props.id
+        navigation.navigate("play-screen", {
+            innerCategoryId: props.id,
+            outerCategoryId: props.outerCategoryId
         });
     }
-
-
     return (
         <>
             <CustomizedButton
@@ -24,5 +22,4 @@ const TopicsItem = (props) => {
     )
 }
 
-
-export default TopicsItem
+export default TopicsItemForInnerCategory

@@ -100,8 +100,6 @@ const OuterCategoriesScreen = (props) => {
                  data={topics}
                  keyExtractor={item => item.id}
                  ItemSeparatorComponent = {_ItemSeparator}
-
-
                     />
             </View>
         </SafeAreaView>

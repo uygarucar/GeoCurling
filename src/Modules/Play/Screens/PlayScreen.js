@@ -19,6 +19,39 @@ import { currentLongitudeSelector } from '../Redux/CurrentLongitudeRedux';
 import PhoneScreenView from '../Components/PhoneScreenView'
 import MapConfig from '../Components/MapConfig';
 
+const playingContent = {
+    1: [{
+        id: 1,
+        text: 'Ege bölgesindeki masif araziye git',
+        latitude: 37.7520,
+        longitude: 27.4057
+    },
+    {
+        id: 2,
+        text: 'Karadeniz bölgesindeki kıyı kumullarının bulunduğu yere git',
+        latitude: 41.0075,
+        longitude: 38.8146
+    }
+    ],
+    2: [
+        {
+            //Rize
+            id: 1,
+            text: 'Türkiye\'deki en fazla yağış alan il',
+            latitude: 41.0255,
+            longitude: 40.5177
+        },
+        {
+            //Tuz gölü
+            id: 2,
+            text: 'Türkiye\'deki en az yağış alan bölge',
+            latitude: 38.545910,
+            longitude: 44.185593
+        }
+    ]
+}
+
+
 const PlayScreen = (props) => {
     //Beginning position elements {id, text, latitude, longitude}
     //Constant
@@ -32,10 +65,11 @@ const PlayScreen = (props) => {
     useDispatchCurrent(initialCoordinates.current)
     console.log("PlayScreen:1")
     //Chosen topic in previous navigation page
-    const itemId = props.route.params?.itemId;
-    console.log("--------------------------------------itemId:", itemId)
+    const innerCategoryId = props.route.params?.innerCategoryId;
+    const outerCategoryId = props.route.params?.outerCategoryId;
+
     //dispatch random coordinate for target
-    dispatchCoordinateForChosenTopic(itemId);
+    dispatchCoordinateForChosenTopic(outerCategoryId, innerCategoryId);
     return (
         <>
             <PhoneScreenView

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigation } from '@react-navigation/core'
-import CustomizedButton from './CustomizedButton'
+import CustomizedButton from '../../OuterCategories/Components/CustomizedButton'
 
 
 const TopicsItemForInnerCategory = (props) => {

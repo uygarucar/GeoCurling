@@ -2,10 +2,8 @@ import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { FlatList } from 'react-native-gesture-handler';
-import TopicsItem from '../Components/TopicsItem';
 import styles from '../styles/PlayScreenStyles';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import CustomizedButton from '../Components/CustomizedButton';
 import TopicsItemForInnerCategory from '../Components/TopicsItemForInnerCategory';
 
 const subCategories = {

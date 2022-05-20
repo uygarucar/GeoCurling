@@ -1,7 +1,7 @@
 import React from 'react'
 import { TouchableOpacity, Text } from 'react-native'
 import { Svgs } from '../../../StylingConstants/index'
-import styles from '../styles/PlayScreenStyles'
+import styles from '../styles/OuterCategoriesScreenStyles'
 import { Metrics } from '../../../StylingConstants'
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { HomeScreen } from '../Home';
-import { OuterCategoriesScreen } from '../Play/Screens/OuterCategoriesScreen';
+import { OuterCategoriesScreen } from '../OuterCategories/Screens/OuterCategoriesScreen';
 import PlayScreen from '../Play/Screens/PlayScreen';
 import InnerCategoriesScreen from '../Play/Screens/InnerCategoriesScreen';
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import { FlatList, ScrollView } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -6,7 +6,12 @@ import styles from '../styles/OuterCategoriesScreenStyles'
 import TopicsItem from '../Components/TopicsItem'
 import database, { FirebaseDatabaseTypes } from '@react-native-firebase/database'
 import createFBAuth from '@react-native-firebase/auth'
-
+import writeFirebase_OuterCat from '../Utils/writeToFirebase'
+import PrintOuterCat from '../../OuterCategories_Print/Screens/PrintOuterCat'
+import toObject from '../Utils/convertArrayToObject'
+import ReadAndWrite_OuterCat from '../Utils/ReadAndWriteFirebase'
+import readFirebase_OuterCat from '../Utils/readFromFirebase'
+//import ReadAndWrite from '../Utils/ReadAndWriteFirebase'
 const topics = [
     {
         id: 1,
@@ -74,64 +79,15 @@ const topics = [
         isLocked: true
     },
 ]
- 
-const auth = createFBAuth();
-//const isOuterCategoryNull
-const writeToFirebase = () => {
-    let user = auth.currentUser.uid
-    //console.log("user", user)
-    database()
-        .ref(`outerCategory/${user}`)
-        .set(topics)
-        .then(() => console.log('Data set'))
-}
-
-const readFromFirebase = () => {
-    let user = auth.currentUser.uid
-    console.log("user",user)
-    database()
-        .ref(`outerCategory/${user}/`)
-        .once('value')
-        .then( snapshot => 
-            {console.log('User data: ', snapshot)})
-}
-
-const _ItemSeparator = () => {
-    return <View style={styles.separator} />
-}
-//Kullanıcı uygulamayı silerse ve geri yüklerse, açtığı kilitli bölümler
-//tekrar kapanacak mı?
-//Kapanacaksa cloud'tan alsın topics objesini
-
-const _RenderItem = ({ item }) => {
-
-    return (
-        <TopicsItem id={item.id} name={item.name} isLocked={item.isLocked} />
-    )
-}
 
 const OuterCategoriesScreen = (props) => {
+    
+    ReadAndWrite_OuterCat(readFirebase_OuterCat, writeFirebase_OuterCat)
 
     return (
-        <SafeAreaView style={styles.safeArea}>
-            <View style={styles.buttonContainer}>
-                <FlatList
-                    style={styles.flatList}
-                    renderItem={_RenderItem}
-                    data={topics}
-                    keyExtractor={item => item.id}
-                    ItemSeparatorComponent={_ItemSeparator}
-                />
-            </View>
-            <TouchableOpacity
-                onPress={writeToFirebase}>
-                    <Text>BUTONUM</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-                onPress={readFromFirebase}>
-                    <Text>Reading BUTONUM</Text>
-            </TouchableOpacity>
-        </SafeAreaView>
+        <PrintOuterCat
+            topics={topics}
+        />
     )
 }
 

@@ -1,7 +1,7 @@
 //Bu fonksiyon çalıştıgında databasein "topics" node'undaki değerini alır ve o değeri döndürür.
 import database from '@react-native-firebase/database'
 
-const ReadFirebase= async () => {
+const ReadFirebase_OuterCat= async () => {
     let topicsData;
     try {
         await database()
@@ -17,4 +17,4 @@ const ReadFirebase= async () => {
 
 }
 
-export default ReadFirebase
+export default ReadFirebase_OuterCat

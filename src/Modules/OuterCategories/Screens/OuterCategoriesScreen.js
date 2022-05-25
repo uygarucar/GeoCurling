@@ -6,11 +6,11 @@ import styles from '../styles/OuterCategoriesScreenStyles'
 import TopicsItem from '../Components/TopicsItem'
 import database, { FirebaseDatabaseTypes } from '@react-native-firebase/database'
 import createFBAuth from '@react-native-firebase/auth'
-import writeFirebase_OuterCat from '../Utils/writeToFirebase'
+import writeFirebase from '../Utils/writeToFirebase'
 import PrintOuterCat from '../../OuterCategories_Print/Screens/PrintOuterCat'
 import toObject from '../Utils/convertArrayToObject'
-import ReadAndWrite_OuterCat from '../Utils/ReadAndWriteFirebase'
-import readFirebase_OuterCat from '../Utils/readFromFirebase'
+import ReadAndWrite from '../Utils/ReadAndWriteFirebase'
+import readFirebase from '../Utils/readFromFirebase'
 //import ReadAndWrite from '../Utils/ReadAndWriteFirebase'
 const topics = [
     {
@@ -82,7 +82,7 @@ const topics = [
 
 const OuterCategoriesScreen = (props) => {
     
-    ReadAndWrite_OuterCat(readFirebase_OuterCat, writeFirebase_OuterCat)
+    ReadAndWrite(readFirebase, writeFirebase)
 
     return (
         <PrintOuterCat

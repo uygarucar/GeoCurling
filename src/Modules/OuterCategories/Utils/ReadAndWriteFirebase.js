@@ -1,6 +1,6 @@
 import toObject from "./convertArrayToObject";
 
-const ReadAndWrite = async (function1, function2) => {
+const ReadAndWrite_OuterCat = async (function1, function2) => {
     try {
         const categoriesList = await function1()
         let obj = toObject(categoriesList)
@@ -11,4 +11,4 @@ const ReadAndWrite = async (function1, function2) => {
 
 }
 
-export default ReadAndWrite
+export default ReadAndWrite_OuterCat

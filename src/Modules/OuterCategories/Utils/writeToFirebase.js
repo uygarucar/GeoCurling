@@ -2,7 +2,7 @@ import createFBAuth from '@react-native-firebase/auth'
 import database, { FirebaseDatabaseTypes } from '@react-native-firebase/database'
 import toObject from './convertArrayToObject';
 
-const writeFirebase =  (topics) => {
+const writeFirebase_OuterCat =  (topics) => {
     const auth = createFBAuth();
     const user = auth.currentUser.uid
     try {
@@ -16,4 +16,4 @@ const writeFirebase =  (topics) => {
     }
 }
 
-export default writeFirebase
+export default writeFirebase_OuterCat

@@ -7,10 +7,12 @@ import TopicsItem from '../Components/TopicsItem'
 import database, { FirebaseDatabaseTypes } from '@react-native-firebase/database'
 import createFBAuth from '@react-native-firebase/auth'
 import writeFirebase from '../Utils/writeToFirebase'
-import PrintOuterCat from '../../OuterCategories_Print/Screens/PrintOuterCat'
+import GetOuterCat from '../../OuterCategories_Get/Screens/GetOuterCat'
 import toObject from '../Utils/convertArrayToObject'
 import ReadAndWrite from '../Utils/ReadAndWriteFirebase'
 import readFirebase from '../Utils/readFromFirebase'
+import yieldUserId from '../../Utils/GetUserId'
+import writeFirebase_ShouldDownload from '../Utils/writeToFirebase_ShouldDownload'
 //import ReadAndWrite from '../Utils/ReadAndWriteFirebase'
 const topics = [
     {
@@ -80,12 +82,50 @@ const topics = [
     },
 ]
 
+//Will be used later
+const ShouldDownload_Read = async () => {
+    const userId = yieldUserId()
+    let ShouldDLoad
+    try {
+        await database()
+            .ref(`shouldDownload/${userId}/outerCategory/`)
+            .once('value')
+            .then(snapshot => {
+                ShouldDLoad = snapshot.val()
+            })
+
+        return ShouldDLoad
+    } catch (error) {
+        throw error
+    }
+
+}
+
+
+
 const OuterCategoriesScreen = (props) => {
-    
-    ReadAndWrite(readFirebase, writeFirebase)
+    let shouldDownload
+    let sDLoad;
+
+    //Initial write to Firebase if shouldDownload null or undefined
+    if (shouldDownload == null || shouldDownload == undefined) {
+        ReadAndWrite(readFirebase, writeFirebase)
+            .then(writeFirebase_ShouldDownload(true, "outerCategory"))
+    }
+    try {
+        //Will be used later
+        shouldDownload = ShouldDownload_Read()
+
+    } catch (error) {
+        throw error
+    }
+
+    shouldDownload
+        .then(data => { console.log("datas", data.shouldDownload) })
+        .catch(error => { console.log(error) })
 
     return (
-        <PrintOuterCat
+        <GetOuterCat
             topics={topics}
         />
     )

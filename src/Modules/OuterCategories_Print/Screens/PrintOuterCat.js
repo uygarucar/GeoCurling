@@ -1,24 +1,23 @@
 import React from 'react'
-import { Text, View, FlatList } from "react-native"
-import styles from '../../OuterCategories/styles/OuterCategoriesScreenStyles'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import styles from '../../OuterCategories/styles/OuterCategoriesScreenStyles'
+import { Flatlist, View, Text } from 'react-native'
 import TopicsItem from '../../OuterCategories/Components/TopicsItem'
-const _ItemSeparator = () => {
-    return <View style={styles.separator} />
-}
-
-
-const _RenderItem = ({ item }) => {
-
-    return (
-        <TopicsItem id={item.id} name={item.name} isLocked={item.isLocked} />
-    )
-}
+import { FlatList } from 'react-native-gesture-handler'
 
 const PrintOuterCat = (props) => {
-    const topics = props.topics;
+    
+    const _ItemSeparator = () => {
+        return <View style={styles.separator} />
+    }
 
 
+    const _RenderItem = ({ item }) => {
+
+        return (
+            <TopicsItem id={item.id} name={item.name} isLocked={item.isLocked} />
+        )
+    }
 
     return (
         <SafeAreaView style={styles.safeArea}>
@@ -26,7 +25,7 @@ const PrintOuterCat = (props) => {
                 <FlatList
                     style={styles.flatList}
                     renderItem={_RenderItem}
-                    data={topics}
+                    data={props.newTopics}
                     keyExtractor={item => item.id}
                     ItemSeparatorComponent={_ItemSeparator}
                 />
@@ -36,3 +35,4 @@ const PrintOuterCat = (props) => {
 }
 
 export default PrintOuterCat
+

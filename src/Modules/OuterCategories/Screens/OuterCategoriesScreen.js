@@ -13,6 +13,7 @@ import ReadAndWrite from '../Utils/ReadAndWriteFirebase'
 import readFirebase from '../Utils/readFromFirebase'
 import yieldUserId from '../../Utils/GetUserId'
 import writeFirebase_ShouldDownload from '../Utils/writeToFirebase_ShouldDownload'
+import ShouldDownload_Read from '../Utils/shouldDownload_Read'
 //import ReadAndWrite from '../Utils/ReadAndWriteFirebase'
 const topics = [
     {
@@ -83,23 +84,7 @@ const topics = [
 ]
 
 //Will be used later
-const ShouldDownload_Read = async () => {
-    const userId = yieldUserId()
-    let ShouldDLoad
-    try {
-        await database()
-            .ref(`shouldDownload/${userId}/outerCategory/`)
-            .once('value')
-            .then(snapshot => {
-                ShouldDLoad = snapshot.val()
-            })
 
-        return ShouldDLoad
-    } catch (error) {
-        throw error
-    }
-
-}
 
 
 
@@ -115,6 +100,7 @@ const OuterCategoriesScreen = (props) => {
     try {
         //Will be used later
         shouldDownload = ShouldDownload_Read()
+        
 
     } catch (error) {
         throw error

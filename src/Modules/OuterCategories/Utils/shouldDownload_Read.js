@@ -1,3 +1,6 @@
+import yieldUserId from '../../Utils/GetUserId'
+import database from '@react-native-firebase/database'
+
 const ShouldDownload_Read = async () => {
     const userId = yieldUserId()
     let ShouldDLoad

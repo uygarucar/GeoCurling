@@ -11,7 +11,6 @@ import GetOuterCat from '../../OuterCategories_Get/Screens/GetOuterCat'
 import toObject from '../Utils/convertArrayToObject'
 import ReadAndWrite from '../Utils/ReadAndWriteFirebase'
 import readFirebase from '../Utils/readFromFirebase'
-import yieldUserId from '../../Utils/GetUserId'
 import writeFirebase_ShouldDownload from '../Utils/writeToFirebase_ShouldDownload'
 import ShouldDownload_Read from '../Utils/shouldDownload_Read'
 //import ReadAndWrite from '../Utils/ReadAndWriteFirebase'
@@ -112,7 +111,6 @@ const OuterCategoriesScreen = (props) => {
 
     return (
         <GetOuterCat
-            topics={topics}
         />
     )
 }

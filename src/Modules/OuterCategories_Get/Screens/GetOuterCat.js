@@ -8,7 +8,7 @@ import PrintOuterCat from '../../OuterCategories_Print/Screens/PrintOuterCat'
 
 
 
-const GetOuterCat = (props) => {
+const GetAndSetOuterCat = (props) => {
     const [topics, setTopics] = useState()
 
     useEffect(() => {
@@ -25,4 +25,4 @@ const GetOuterCat = (props) => {
     )
 }
 
-export default GetOuterCat
+export default GetAndSetOuterCat

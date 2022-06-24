@@ -16,7 +16,7 @@ const AppNavigation = () => {
                 name="home-screen"
                 component={HomeScreen}
                 options={{
-                    title: 'Anasayfa',
+                    title: 'Home Screen',
                     headerTitleAlign: 'center',
                     headerStyle: {
                         backgroundColor: '#30D086'

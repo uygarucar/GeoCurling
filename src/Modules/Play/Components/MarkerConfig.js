@@ -18,6 +18,7 @@ const MarkerConfig = (props) => {
                 longitude: markerLongitude
             }}
             image={require('../../../Assets/Images/AdjustingDirectionMarker.png')}
+            onTouchMove= {false}
         />
     )
 }

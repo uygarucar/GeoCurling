@@ -48,6 +48,7 @@ const MapConfig = (props) => {
             scrollEnabled={false}
             pitchEnabled={false}
             zoomEnabled={false}
+            moveOnMarkerPress={false}
             initialRegion={{
                 latitude: mapLatitude,
                 longitude: mapLongitude,

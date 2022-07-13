@@ -9,7 +9,7 @@ const writeFirebase_OuterCat =  (topics) => {
          database()
             .ref(`outerCategory/${user}/topics/`)
             .set(topics)
-            .then(console.log("Succesfully Set!"))
+            .then(console.log("Topics Succesfully Set!"))
     } catch (error) {
 
         console.log("error:", error)

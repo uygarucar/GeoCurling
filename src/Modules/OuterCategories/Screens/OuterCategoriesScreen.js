@@ -19,7 +19,7 @@ import functions from '@react-native-firebase/database'
 
 const OuterCategoriesScreen = (props) => {
     ReadAndWrite(readFirebase, writeFirebase)
-    .then(writeFirebase_ShouldDownload(true, "outerCategory"))
+    //.then(writeFirebase_ShouldDownload(true, "outerCategory"))
     return (
         <GetAndSetOuterCat
         />

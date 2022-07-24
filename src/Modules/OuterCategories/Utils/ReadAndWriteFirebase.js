@@ -8,6 +8,7 @@ const ReadAndWrite_OuterCat = async (readGeneral, writeSpecialized) => {
         console.log("categoriesList", categoriesList)
         let obj = await toObject(categoriesList)
         console.log("obj", obj)
+        writeSpecialized(obj);
         //Değişiklikler aşağıdakini tetikliyor
         takeUserSpecificObject()
             .then(

@@ -19,13 +19,24 @@ import takeUserSpecificObject from '../Utils/takeUserSpecificObject'
 import shouldWriteAgain from '../Utils/shouldWriteAgain'
 import changeIfTriggeredInside from '../Utils/changeIfTriggeredInside'
 
-const OuterCategoriesScreen = (props) => {
+const OuterCategoriesScreen =  (props) => {
+    let value;
     //aşağıdaki işlem kullanıcı ilk giriş yaptığında bir defaya mahsus yapılacak
-    let value = shouldWriteAgain()
+    shouldWriteAgain()
+        .then(
+            data => { value = data }
+        )
+        .catch(
+            data => { console.log(data) }
+        )
+    console.log("value:", value)
+//BURAYI shouldWriteAgain().then İçine almazsan value belirsiz gelecek (ilk giren kullanıcılar için)
+//Nested yapmadan çözmenin yolunu bul veya stackoverflowa sor
     if (value !== true) {
         ReadAndWrite(readFirebase, writeFirebase)
             //bir daha bu işlemleri yapmamak için değeri true'ya çekiyoruz.
             .then(writeFirebase_ShouldWrite(true, "outerCategory"))
+        //        console.log("value'yu true olarak aldıysam -->" + value + " Bunun bir daha yazılmaması gerekir")
     }
 
     //aşağıdaki işlem ise kaynak data değişikliklerine karşı HER ZAMAN tetikte olacak şekildedir.

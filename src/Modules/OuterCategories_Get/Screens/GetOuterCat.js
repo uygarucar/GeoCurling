@@ -9,20 +9,22 @@ import PrintOuterCat from '../../OuterCategories_Print/Screens/PrintOuterCat'
 
 
 const GetAndSetOuterCat = (props) => {
-    const [topics, setTopics] = useState()
-
+    const [topics, setTopics] = useState([])
+    
+    //Kategorileri Çekme ve yazdırma işlemleri uzun sürdüğü için ...
     useEffect(() => {
-        const categories = ReadFirebase_OuterCat();
-        categories
-            .then(
-                data => {
-                    setTopics(data)
-                })
+        ReadFirebase_OuterCat()
+            .then(categories => {
+                setTopics(categories)
+            })
+            .catch(data => { console.log(data) })
     }, [])
-
+    //... console.log NULL geliyor ve ilk girişte liste gelmiyor.
+  
     return (
         <PrintOuterCat newTopics={topics} />
     )
+
 }
 
 export default GetAndSetOuterCat

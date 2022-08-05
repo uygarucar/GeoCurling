@@ -7,15 +7,18 @@ const fetch_shouldWrite = async() => {
     let value;
     try {
         await database()
-            .ref(`shouldWrite/${user}/outerCategory/`)
+            .ref(`shouldWrite/${user}/outerCategory/shouldWrite/`)
             .once('value')
             .then(snapshot => {
                 value = snapshot.val()
+                console.log("valueee 2", value)
             })
-        return value
+        console.log("Valueee3", value)
     } catch (error) {
         throw error
     }
+
+    return value
 }
 
 

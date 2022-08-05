@@ -5,63 +5,28 @@ import { FlatList } from 'react-native-gesture-handler';
 import styles from '../styles/innerCategoriesScreenStyles';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import TopicsItemForInnerCategory from '../Components/TopicsItemForInnerCategory';
-
-const subCategories = {
-    1: [
-        {
-            id: 1,
-            name: 'Jeolojik Şekiller',
-            isLocked: true
-        },
-        {
-            id: 2,
-            name: 'Dağlar 1',
-            isLocked: true
-        },
-        {
-            id: 3,
-            name: 'Dağlar 2',
-            isLocked: true
-        },
-        {
-            id: 4,
-            name: 'Göller 1',
-            isLocked: true
-        },
-        {
-            id: 5,
-            name: 'Göller 2',
-            isLocked: true
-        },
-    ],
-    2:
-        [
-            {
-                id: 1,
-                name: 'Türkiyede İklim 1',
-                isLocked: true
-            },
-            {
-                id: 2,
-                name: 'Türkiyede İklim 2',
-                isLocked: true
-            },
-            {
-                id: 3,
-                name: 'Türkiyede Topraklar 1',
-                isLocked: true
-            },
-            {
-                id: 4,
-                name: 'Türkiyede Topraklar 2',
-                isLocked: true
-            }
-        ]
-}
+import subCategories from '../Data/subCategories'
+import shouldWriteAgain from '../../InnerCategories/Utils/shouldWriteAgain';
+import writeFirebase from '../Utils/writeToFirebase';
+import writeFirebase_ShouldWrite from '../Utils/writeToFirebase_ShouldWrite';
 
 
+/////////////////Bu kısım yeni/////////////////////
 const InnerCategoriesScreen = (props) => {
-
+    let value;
+    shouldWriteAgain()
+    .then(
+        data => { value = data }
+    )
+    .catch(
+        data => { console.log(data) }
+    )
+    //Sadece 1 defaya mahsus kullanıcıya özgü alt kategorilerin atanması
+    if(value !== true){
+        writeFirebase(subCategories)
+        .then(writeFirebase_ShouldWrite(true, "innerCategory"))
+    }
+    ////////////////////
     const outerCategoryId = props.route.params?.outerCategoryId;
 
     const _ItemSeparator = () => {

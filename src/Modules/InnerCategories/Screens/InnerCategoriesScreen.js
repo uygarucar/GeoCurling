@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { FlatList } from 'react-native-gesture-handler';
-import styles from '../styles/PlayScreenStyles';
+import styles from '../styles/innerCategoriesScreenStyles';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import TopicsItemForInnerCategory from '../Components/TopicsItemForInnerCategory';
 
@@ -71,7 +71,7 @@ const InnerCategoriesScreen = (props) => {
     const render_InnerCategories = ({ item }) => {
 
         return (
-            <TopicsItemForInnerCategory id={item.id} name={item.name} isLocked={item.isLocked} outerCategoryId={outerCategoryId}/>
+            <TopicsItemForInnerCategory id={item.id} name={item.name} isLocked={item.isLocked} outerCategoryId={outerCategoryId} />
         )
     }
     return (
@@ -82,7 +82,7 @@ const InnerCategoriesScreen = (props) => {
                     renderItem={render_InnerCategories}
                     data={subCategories[outerCategoryId]}
                     keyExtractor={item => item.id}
-                    ItemSeparatorComponent = {_ItemSeparator}
+                    ItemSeparatorComponent={_ItemSeparator}
                 />
             </View>
         </SafeAreaView>

@@ -9,7 +9,7 @@ import subCategories from '../Data/subCategories'
 import shouldWriteAgain from '../../InnerCategories/Utils/shouldWriteAgain';
 import writeFirebase from '../Utils/writeToFirebase';
 import writeFirebase_ShouldWrite from '../Utils/writeToFirebase_ShouldWrite';
-
+import GetAndSetInnerCat from '../../InnerCategories_Get/Screens/GetInnerCat'
 
 /////////////////Bu kısım yeni/////////////////////
 const InnerCategoriesScreen = (props) => {
@@ -22,6 +22,7 @@ const InnerCategoriesScreen = (props) => {
         data => { console.log(data) }
     )
     //Sadece 1 defaya mahsus kullanıcıya özgü alt kategorilerin atanması
+    //Kullanıcı data değiştirdiğinde tekrar default'a geri döner mi?
     if(value !== true){
         writeFirebase(subCategories)
         .then(writeFirebase_ShouldWrite(true, "innerCategory"))
@@ -29,29 +30,12 @@ const InnerCategoriesScreen = (props) => {
     ////////////////////
     const outerCategoryId = props.route.params?.outerCategoryId;
 
-    const _ItemSeparator = () => {
-        return <View style={styles.separator} />
-    }
-
-    const render_InnerCategories = ({ item }) => {
-
-        return (
-            <TopicsItemForInnerCategory id={item.id} name={item.name} isLocked={item.isLocked} outerCategoryId={outerCategoryId} />
-        )
-    }
-    return (
-        <SafeAreaView style={styles.safeArea}>
-            <View style={styles.buttonContainer}>
-                <FlatList
-                    styles={styles.flatList}
-                    renderItem={render_InnerCategories}
-                    data={subCategories[outerCategoryId]}
-                    keyExtractor={item => item.id}
-                    ItemSeparatorComponent={_ItemSeparator}
-                />
-            </View>
-        </SafeAreaView>
-    )
+return(
+    <>
+        <GetAndSetInnerCat
+            outerCategoryId={outerCategoryId}
+        />
+    </>
+)
 }
-
 export default InnerCategoriesScreen

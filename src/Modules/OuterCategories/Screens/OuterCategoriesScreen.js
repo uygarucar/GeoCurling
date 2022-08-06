@@ -51,7 +51,7 @@ const OuterCategoriesScreen = (props) => {
 
     //aşağıdaki işlem kaynak data değişikliklerine karşı HER ZAMAN tetikte olacak şekilde ayarlandı.
     changeIfTriggeredInside(readFromFirebase, writeToFirebase)
-
+            
     //Aşağıdaki GetOuterCat, daha önce çalışıyor
     return (
         <GetOuterCat statee={statee}

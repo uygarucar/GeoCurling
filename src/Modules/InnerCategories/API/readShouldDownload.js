@@ -11,7 +11,7 @@ const shouldWrite_InnerCat= async () => {
             .ref(`shouldWrite/${userId}/innerCategory/shouldWrite/`)
             .once('value')
             .then(snapshot => {
-                topicsData = snapshot.val()
+                shouldWrite = snapshot.val()
             })
         return shouldWrite
     } catch (error) {

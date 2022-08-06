@@ -20,7 +20,7 @@ import shouldWriteAgain from '../Utils/shouldWriteAgain'
 import changeIfTriggeredInside from '../Utils/changeIfTriggeredInside'
 import isFirstWriteOccured from '../../OuterCategories/API/readShouldWrite'
 const OuterCategoriesScreen = (props) => {
-    const [state, setState] = useState("")
+    const [statee, setStatee] = useState("heyo")
     isFirstWriteOccured()
         .then(
             data => {
@@ -29,15 +29,18 @@ const OuterCategoriesScreen = (props) => {
                 if (value !== true) {
                     ReadAndWrite(readFromFirebase, writeToFirebase)
                         //bir daha bu işlemleri yapmamak için değeri true'ya çekiyoruz.
-                        .then(writeFirebase_ShouldWrite(true, "outerCategory")
-                            .then(
-                            //console.log("0. alan")
-                            setState("abc")
-                        ))
-                        .catch()
+                        .then(
+                            writeFirebase_ShouldWrite(true, "outerCategory")
+                                .then(
+                                //console.log("0. alan")
+                            )
+                                .catch()
+                            
+                        )
                         .catch(
                             data => { console.log(data) }
                         )
+                        setStatee("abc")
                 }
             }
 
@@ -51,7 +54,7 @@ const OuterCategoriesScreen = (props) => {
 
     //Aşağıdaki GetOuterCat, daha önce çalışıyor
     return (
-        <GetOuterCat state={state}
+        <GetOuterCat statee={statee}
         />
     )
 }

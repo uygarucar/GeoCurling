@@ -11,15 +11,26 @@ import PrintOuterCat from '../../OuterCategories_Print/Screens/PrintOuterCat'
 const GetOuterCat = (props) => {
     const [topics, setTopics] = useState([])
     console.log("2. alan")
-    console.log("props.state:::", props.state)
+    console.log("props.state:::", props.statee)
     //Kategorileri Çekme ve yazdırma işlemleri uzun sürdüğü için ...
+
+
     useEffect(() => {
         ReadFirebase_OuterCat() //Şunu useEffect dışına çıkarsam ???
             .then(categories => {
                 setTopics(categories)
             })
             .catch(data => { console.log(data) })
-    }, [])
+    }, [props.statee])
+
+
+    /*
+    ReadFirebase_OuterCat() //Şunu useEffect dışına çıkarsam ???
+        .then(categories => {
+            setTopics(categories)
+        })
+        .catch(data => { console.log(data) })
+*/
 
     return (
         <PrintOuterCat newTopics={topics} />

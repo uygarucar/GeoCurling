@@ -18,28 +18,39 @@ import functions from '@react-native-firebase/database'
 import takeUserSpecificObject from '../Utils/takeUserSpecificObject'
 import shouldWriteAgain from '../Utils/shouldWriteAgain'
 import changeIfTriggeredInside from '../Utils/changeIfTriggeredInside'
+import shouldWrite_InnerCat from '../../InnerCategories/API/readShouldDownload'
+const OuterCategoriesScreen = (props) => {
 
-const OuterCategoriesScreen =  (props) => {
-    let value;
-    //aşağıdaki işlem kullanıcı ilk giriş yaptığında bir defaya mahsus yapılacak
-    shouldWriteAgain()
+    shouldWrite_InnerCat()
         .then(
-            data => { value = data }
+            data => {
+                let value = data
+                if (value !== true) {
+                    //aşağıdaki işlem kullanıcı ilk giriş yaptığında bir defaya mahsus yapılacak
+                    shouldWriteAgain()
+                        .then(
+                            data => {
+                                value = data
+                                ReadAndWrite(readFirebase, writeFirebase)
+                                    //bir daha bu işlemleri yapmamak için değeri true'ya çekiyoruz.
+                                    .then(writeFirebase_ShouldWrite(true, "outerCategory"))
+                            }
+                        )
+                        .catch(
+                            data => { console.log(data) }
+                        )
+                        .catch(
+                            data => { console.log(data) }
+                        )
+                }
+            }
+
         )
         .catch(
-            data => { console.log(data) }
+            data => { console.log(data)}
         )
-    console.log("value:", value)
-//BURAYI shouldWriteAgain().then İçine almazsan value belirsiz gelecek (ilk giren kullanıcılar için)
-//Nested yapmadan çözmenin yolunu bul veya stackoverflowa sor
-    if (value !== true) {
-        ReadAndWrite(readFirebase, writeFirebase)
-            //bir daha bu işlemleri yapmamak için değeri true'ya çekiyoruz.
-            .then(writeFirebase_ShouldWrite(true, "outerCategory"))
-        //        console.log("value'yu true olarak aldıysam -->" + value + " Bunun bir daha yazılmaması gerekir")
-    }
 
-    //aşağıdaki işlem ise kaynak data değişikliklerine karşı HER ZAMAN tetikte olacak şekildedir.
+    //aşağıdaki işlem kaynak data değişikliklerine karşı HER ZAMAN tetikte olacak şekilde ayarlandı.
     changeIfTriggeredInside(readFirebase, writeFirebase)
 
     return (

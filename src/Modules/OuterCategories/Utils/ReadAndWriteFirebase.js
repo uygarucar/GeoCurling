@@ -5,11 +5,13 @@ import hasEqualLength from "./hasEqualLength"
 const ReadAndWrite_OuterCat = async (readGeneral, writeSpecialized) => {
     try {
         const categoriesList = await readGeneral()
-        console.log("categoriesList", categoriesList)
+       // console.log("categoriesList", categoriesList)
         let obj = await toObject(categoriesList)
-        console.log("obj", obj)
-        writeSpecialized(obj);
+       // console.log("obj", obj)
+        await writeSpecialized(obj);
         //Değişiklikler aşağıdakini tetikliyor
+
+        /*
         takeUserSpecificObject()
             .then(
                 data => {
@@ -24,7 +26,7 @@ const ReadAndWrite_OuterCat = async (readGeneral, writeSpecialized) => {
                 }
             )
             .catch(error => { console.log(error) })
-
+*/
     } catch (error) {
         throw error
     }

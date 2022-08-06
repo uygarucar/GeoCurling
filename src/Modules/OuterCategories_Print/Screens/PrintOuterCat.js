@@ -6,7 +6,7 @@ import TopicsItem from '../../OuterCategories/Components/TopicsItem'
 import { FlatList } from 'react-native-gesture-handler'
 
 const PrintOuterCat = (props) => {
-    console.log("yoksa bu mu? ", props.newTopics)
+    //console.log("yoksa bu mu? ", props.newTopics)
     const _ItemSeparator = () => {
         return <View style={styles.separator} />
     }

@@ -13,11 +13,11 @@ const takeUserSpecificObject = async (props) => {
             .then(snapshot => {
                 object = snapshot.val()
             })
-        return object
+
     } catch (error) {
         throw error
     }
-
+    return object
 }
 
 export default takeUserSpecificObject

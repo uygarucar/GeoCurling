@@ -10,11 +10,11 @@ const ReadFirebase_OuterCat= async () => {
             .then(snapshot => {
                 topicsData = snapshot.val()
             })
-        return topicsData
+        
     } catch (error) {
         throw error
     }
-
+    return topicsData
 }
 
 export default ReadFirebase_OuterCat

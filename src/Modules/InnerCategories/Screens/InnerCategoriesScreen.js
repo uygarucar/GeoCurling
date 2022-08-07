@@ -16,25 +16,6 @@ import ReadAndWrite from '../../OuterCategories/Utils/ReadAndWriteFirebase';
 const InnerCategoriesScreen = (props) => {
     const isFocused= useIsFocused()
     let outerCategoryId;
-    /*
-    isFirstWriteOccured()
-        .then(
-            data => {
-                let value = data;
-                if (value !== true) {
-                    writeFirebase(subCategories)
-                        .then(writeFirebase_ShouldWrite(true, "innerCategory"))
-                        .catch(error => {console.log(error)})
-                }
-            }
-        )
-        .catch(
-            error => {console.log(error)}
-        )
-
-    const outerCategoryId = props.route.params?.outerCategoryId;
-*/
-
     useEffect(()=> {
         isFirstWriteOccured()
         .then(

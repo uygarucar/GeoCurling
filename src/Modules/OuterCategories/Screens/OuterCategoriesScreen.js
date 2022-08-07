@@ -29,7 +29,6 @@ const OuterCategoriesScreen = (props) => {
         .then(
             isFirstWrite => {
                 let value = isFirstWrite
-                //console.log("1. sinde null:::", value)
                 if (value !== true) {
                     ReadAndWrite(readFromFirebase, writeToFirebase)
                         //bir daha bu işlemleri yapmamak için değeri true'ya çekiyoruz.

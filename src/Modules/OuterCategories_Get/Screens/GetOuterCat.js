@@ -6,26 +6,24 @@ import TopicsItem from '../../OuterCategories/Components/TopicsItem'
 import ReadFirebase_OuterCat from '../API/readOuterCat'
 import PrintOuterCat from '../../OuterCategories_Print/Screens/PrintOuterCat'
 import isFirstWriteOccured from '../../OuterCategories/API/readShouldWrite'
-
-
-
+import { useIsFocused } from '@react-navigation/native'
 const GetOuterCat = (props) => {
     const [topics, setTopics] = useState([])
     console.log("2. alan")
     console.log("props.state:::", props.statee)
     //Kategorileri Çekme ve yazdırma işlemleri uzun sürdüğü için ...
-
+    const isFocused = useIsFocused()
     useEffect(() => {
         isFirstWriteOccured()
             .then(
-                data => {
-                    if (data !== true) {
+                isFirstWrite => {
+                    if (isFirstWrite !== true) {
                         setTimeout(() => {
                             ReadFirebase_OuterCat() //Şunu useEffect dışına çıkarsam ???
                                 .then(categories => {
                                     setTopics(categories)
                                 })
-                                .catch(data => { console.log(data) })
+                       //         .catch(data => { console.log(data) })
                         }, 1000)
                     }
                     else {
@@ -33,12 +31,15 @@ const GetOuterCat = (props) => {
                             .then(categories => {
                                 setTopics(categories)
                             })
-                            .catch(data => { console.log(data) })
+//                            .catch(data => { console.log(data) })
                     }
                 }
+
+
             )
+
     },
-        [])
+        [isFocused])
 
 
 

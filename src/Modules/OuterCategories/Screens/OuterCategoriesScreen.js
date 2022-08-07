@@ -19,12 +19,16 @@ import takeUserSpecificObject from '../Utils/takeUserSpecificObject'
 import shouldWriteAgain from '../Utils/shouldWriteAgain'
 import changeIfTriggeredInside from '../Utils/changeIfTriggeredInside'
 import isFirstWriteOccured from '../../OuterCategories/API/readShouldWrite'
+import { useIsFocused } from '@react-navigation/native'
 const OuterCategoriesScreen = (props) => {
     const [statee, setStatee] = useState("heyo")
-    isFirstWriteOccured()
+    const isFocused= useIsFocused()
+
+    useEffect(()=>{
+        isFirstWriteOccured()
         .then(
-            data => {
-                let value = data
+            isFirstWrite => {
+                let value = isFirstWrite
                 //console.log("1. sinde null:::", value)
                 if (value !== true) {
                     ReadAndWrite(readFromFirebase, writeToFirebase)
@@ -42,12 +46,17 @@ const OuterCategoriesScreen = (props) => {
                         )
                         setStatee("abc")
                 }
+                else{
+
+                }
             }
 
         )
         .catch(
             data => { console.log(data) }
         )
+    },[isFocused])
+    
 
     //aşağıdaki işlem kaynak data değişikliklerine karşı HER ZAMAN tetikte olacak şekilde ayarlandı.
     changeIfTriggeredInside(readFromFirebase, writeToFirebase)

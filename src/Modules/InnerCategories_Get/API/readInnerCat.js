@@ -1,10 +1,10 @@
 import database from '@react-native-firebase/database'
 import createFBAuth from '@react-native-firebase/auth'
 
-const ReadFirebase_InnerCat= async () => {
+const ReadFirebase_InnerCat = async () => {
 
     const auth = createFBAuth();
-    const userId= auth.currentUser.uid;
+    const userId = auth.currentUser.uid;
     let topicsData;
     try {
         await database()
@@ -12,12 +12,13 @@ const ReadFirebase_InnerCat= async () => {
             .once('value')
             .then(snapshot => {
                 topicsData = snapshot.val()
+                
             })
-        return topicsData
+
     } catch (error) {
         throw error
     }
-
+    return topicsData
 }
 
 export default ReadFirebase_InnerCat

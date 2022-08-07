@@ -1,10 +1,10 @@
 import database from '@react-native-firebase/database'
 import createFBAuth from '@react-native-firebase/auth'
 
-const shouldWrite_InnerCat= async () => {
+const shouldWrite_InnerCat = async () => {
 
     const auth = createFBAuth();
-    const userId= auth.currentUser.uid;
+    const userId = auth.currentUser.uid;
     let shouldWrite;
     try {
         await database()
@@ -13,11 +13,11 @@ const shouldWrite_InnerCat= async () => {
             .then(snapshot => {
                 shouldWrite = snapshot.val()
             })
-        return shouldWrite
+
     } catch (error) {
         throw error
     }
-
+    return shouldWrite
 }
 
 export default shouldWrite_InnerCat

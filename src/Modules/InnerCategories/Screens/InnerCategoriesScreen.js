@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
+import { useIsFocused, useNavigation } from '@react-navigation/native'
 import { FlatList } from 'react-native-gesture-handler';
 import styles from '../styles/innerCategoriesScreenStyles';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -9,33 +9,60 @@ import subCategories from '../Data/subCategories'
 import shouldWriteAgain from '../../InnerCategories/Utils/shouldWriteAgain';
 import writeFirebase from '../Utils/writeToFirebase';
 import writeFirebase_ShouldWrite from '../Utils/writeToFirebase_ShouldWrite';
-import GetAndSetInnerCat from '../../InnerCategories_Get/Screens/GetInnerCat'
-
+import GetInnerCat from '../../InnerCategories_Get/Screens/GetInnerCat'
+import isFirstWriteOccured from '../API/readShouldDownload';
+import ReadAndWrite from '../../OuterCategories/Utils/ReadAndWriteFirebase';
 /////////////////Bu kısım yeni/////////////////////
 const InnerCategoriesScreen = (props) => {
-    let value;
-    shouldWriteAgain()
-    .then(
-        data => { value = data }
-    )
-    .catch(
-        data => { console.log(data) }
-    )
-    //Sadece 1 defaya mahsus kullanıcıya özgü alt kategorilerin atanması
-    //Kullanıcı data değiştirdiğinde tekrar default'a geri döner mi?
-    if(value !== true){
-        writeFirebase(subCategories)
-        .then(writeFirebase_ShouldWrite(true, "innerCategory"))
-    }
-    ////////////////////
-    const outerCategoryId = props.route.params?.outerCategoryId;
+    const isFocused= useIsFocused()
+    let outerCategoryId;
+    /*
+    isFirstWriteOccured()
+        .then(
+            data => {
+                let value = data;
+                if (value !== true) {
+                    writeFirebase(subCategories)
+                        .then(writeFirebase_ShouldWrite(true, "innerCategory"))
+                        .catch(error => {console.log(error)})
+                }
+            }
+        )
+        .catch(
+            error => {console.log(error)}
+        )
 
-return(
-    <>
-        <GetAndSetInnerCat
-            outerCategoryId={outerCategoryId}
-        />
-    </>
-)
+    const outerCategoryId = props.route.params?.outerCategoryId;
+*/
+
+    useEffect(()=> {
+        isFirstWriteOccured()
+        .then(
+            data => {
+                let value = data;
+                console.log("valueee===", value)
+                if (value !== true) {
+                    writeFirebase(subCategories)
+                        .then(writeFirebase_ShouldWrite(true, "innerCategory"))
+                        .catch(error => {console.log(error)})
+                }
+            }
+        )
+        .catch(
+            error => {console.log(error)}
+        )
+    
+    console.log("outerCategoryId:::,", outerCategoryId)
+
+    }, [isFocused])
+    
+    outerCategoryId = props.route.params?.outerCategoryId;
+    return (
+        <>
+            <GetInnerCat
+                outerCategoryId={outerCategoryId}
+            />
+        </>
+    )
 }
 export default InnerCategoriesScreen

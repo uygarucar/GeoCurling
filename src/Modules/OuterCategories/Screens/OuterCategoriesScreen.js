@@ -21,7 +21,7 @@ import changeIfTriggeredInside from '../Utils/changeIfTriggeredInside'
 import isFirstWriteOccured from '../../OuterCategories/API/readShouldWrite'
 import { useIsFocused } from '@react-navigation/native'
 const OuterCategoriesScreen = (props) => {
-    const [statee, setStatee] = useState("heyo")
+    //const [statee, setStatee] = useState("heyo")
     const isFocused= useIsFocused()
 
     useEffect(()=>{
@@ -43,7 +43,7 @@ const OuterCategoriesScreen = (props) => {
                         .catch(
                             data => { console.log(data) }
                         )
-                        setStatee("abc")
+                        //setStatee("abc")
                 }
                 else{
 
@@ -62,7 +62,7 @@ const OuterCategoriesScreen = (props) => {
             
     //Aşağıdaki GetOuterCat, daha önce çalışıyor
     return (
-        <GetOuterCat statee={statee}
+        <GetOuterCat //statee={statee}
         />
     )
 }

@@ -37,14 +37,14 @@ const playingContent = {
         {
             //Rize
             id: 1,
-            text: 'Türkiye\'deki en fazla yağış alan il',
+            text: 'Türkiye\'deki en fazla yağışşş alan il',
             latitude: 41.0255,
             longitude: 40.5177
         },
         {
             //Tuz gölü
             id: 2,
-            text: 'Türkiye\'deki en az yağış alan bölge',
+            text: 'Türkiye\'deki en az yağışşş alan bölge',
             latitude: 38.545910,
             longitude: 44.185593
         }

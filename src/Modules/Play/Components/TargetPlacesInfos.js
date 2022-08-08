@@ -1,22 +1,23 @@
 export const TargetPlaces_Unit1 = [
     {
         id: 1,
-        text: 'Ege bölgesindeki masif araziye git',
-        latitude: 37.7520,
-        longitude: 27.4057
+        text: '4. Jeolojik zaman volkanik arazilerinin bulunduğu bölgemizdeki bir masif arazi!',
+        latitude: 38.254,
+        longitude: 27.134
     },
     {
         id: 2,
-        text: 'Karadeniz bölgesindeki kıyı kumullarının bulunduğu yere git',
-        latitude: 41.0075,
-        longitude: 38.8146
-    },
+        text: 'Yükseltisi en fazla olan bölgemizdeki bir masif arazi',
+        latitude: 38.40115,
+        longitude: 42.10784
+    }
+    ,
     {
         id: 3,
-        text: 'Marmara bölgesinde yer alan bir kıyı kumulu',
-        latitude: 40.4140,
-        longitude: 26.6700
-    },
+        text: 'Akdeniz bölgesindeki masif arazi',
+        latitude: 36.077286,
+        longitude:32.832890 ,
+    }
 ]
 
 export const TargetPlaces_Unit2 = [

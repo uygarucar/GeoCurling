@@ -1,5 +1,6 @@
 import distanceFinder from "./DistanceFinder"
 import findSlope from "./FindSlope"
+import nextCoordinates from "./NextCoordinates"
 
 const calculateNextCoordinates = (secondMarkerCoordinates, actualMarkerCoordinates) => {
     
@@ -15,7 +16,10 @@ const calculateNextCoordinates = (secondMarkerCoordinates, actualMarkerCoordinat
 
     const slope = findSlope(secondMarkerCoordinates.latitude, secondMarkerCoordinates.longitude, actualMarkerCoordinates.latitude, actualMarkerCoordinates.longitude)
     console.log("Slope is :", slope)
-    return secondMarker 
+
+    const nextCoords= nextCoordinates(distance, actualMarkerCoordinates.latitude, actualMarkerCoordinates.longitude, secondMarkerCoordinates.latitude, secondMarkerCoordinates.longitude)
+
+    return nextCoords 
 }
 
 export default calculateNextCoordinates

@@ -24,9 +24,9 @@ const MapConfig = (props) => {
     const styles = props.style;
 
     //Determine initial place of 2nd marker
-    const [markerLatitude, setMarkerLatitude] = useState(mapLatitude + 0.15)
+    const [markerLatitude, setMarkerLatitude] = useState(mapLatitude)
     //console.log("markerLatitude", markerLatitude)
-    const [markerLongitude, setMarkerLongitude] = useState(mapLongitude + 0.15)
+    const [markerLongitude, setMarkerLongitude] = useState(mapLongitude)
     //console.log("markerLongitude", markerLongitude)
     console.log("MapConfig:2")
 
@@ -67,7 +67,10 @@ const MapConfig = (props) => {
                 setMapLongitudeDelta(e.longitudeDelta);
                 setMapLatitude(e.latitude);
                 setMapLongitude(e.longitude);
+                setMarkerLatitude(e.latitude);
+                setMarkerLongitude(e.longitude);
             }}
+            
 
         >
             <StoneShape

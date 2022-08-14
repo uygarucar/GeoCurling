@@ -8,7 +8,7 @@ const findSlope = (secMarkerLat, secMarkerLong, firstMarkerLat, firstMarkerLong)
     console.log("secMarker-firstMarkerLong :::", secMarkerLong-firstMarkerLong)
     console.log("secMarker-firstMarkerLat :::", secMarkerLat-firstMarkerLat)
 
-    const slope= (secMarkerLong-firstMarkerLong) / (secMarkerLat - firstMarkerLat);
+    const slope= (secMarkerLat - firstMarkerLat) / (secMarkerLong-firstMarkerLong) ;
 
     //const result = (-0.194) /  (-0.250)
 

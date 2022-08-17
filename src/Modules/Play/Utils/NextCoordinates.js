@@ -1,5 +1,5 @@
 
-const nextCoordinates = (distance, stoneMarkerLatitude, stoneMarkerLongitude, directionMarkerLatitude, directionMarkerLongitude) => {
+const nextCoordinates = (stoneMarkerLatitude, stoneMarkerLongitude, directionMarkerLatitude, directionMarkerLongitude) => {
     
     let newCoords = {
         latitude: null,
@@ -9,8 +9,8 @@ const nextCoordinates = (distance, stoneMarkerLatitude, stoneMarkerLongitude, di
     let latUnit = directionMarkerLatitude - stoneMarkerLatitude
     let longUnit= directionMarkerLongitude - stoneMarkerLongitude
 
-    newCoords.latitude=  stoneMarkerLatitude - 5 * latUnit;
-    newCoords.longitude=  stoneMarkerLongitude - 5 * longUnit;
+    newCoords.latitude=  stoneMarkerLatitude - 15 * latUnit;
+    newCoords.longitude=  stoneMarkerLongitude - 15 * longUnit;
 
     return newCoords
 }

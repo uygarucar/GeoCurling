@@ -6,6 +6,8 @@ import useDispatchCurrent from '../CustomHooks/UseDispatchCurrent';
 import { useDispatch } from 'react-redux';
 import { currentLatitudeCreator } from '../Redux/CurrentLatitudeRedux';
 import { currentLongitudeCreator } from '../Redux/CurrentLongitudeRedux';
+import calculateDistanceToNextPlace from '../Utils/calculateDistanceToAim';
+import calculateTime from '../Utils/calculateTime';
 
 const CustomizedMarkerAnimated = (props) => {
     console.log("CustomizedMarkerAnimated:1")
@@ -17,8 +19,15 @@ const CustomizedMarkerAnimated = (props) => {
 
     const directionCreatorMarkerCoords = props.directionCreatorMarkerCoords;
     const actualMarkerCoords = props.actualMarkerCoords;
-    const nextCoordinates = calculateNextCoordinates(directionCreatorMarkerCoords, actualMarkerCoords)
 
+    const nextCoordinates = calculateNextCoordinates(directionCreatorMarkerCoords, actualMarkerCoords)
+    console.log("nextCoordinatesssss:", nextCoordinates)
+
+    const distanceToAim = calculateDistanceToNextPlace(actualMarkerCoords.latitude, actualMarkerCoords.longitude, nextCoordinates.latitude, nextCoordinates.longitude)
+    console.log("distanceTOAim,", distanceToAim)
+
+    const time = calculateTime(distanceToAim)
+    console.log("time", time)
     /*
     useEffect(() => {
             useDispatchCurrent(nextCoordinates);
@@ -37,10 +46,10 @@ const CustomizedMarkerAnimated = (props) => {
         <MarkerAnimated
             image={require('../../../Assets/Images/curlingStone.png')}
             onPress={() => {
-                
-                _onPress_fireMarker(nextCoordinates, myMarker, mapRef, changeActMarkerCoordinate);
                 dispatch(currentLatitudeCreator(nextCoordinates.latitude));
                 dispatch(currentLongitudeCreator(nextCoordinates.longitude));
+                _onPress_fireMarker(nextCoordinates, myMarker, mapRef, changeActMarkerCoordinate, time);
+                
             }}
             ref={marker => { setMyMarker(marker) }}
             coordinate={coordinate}

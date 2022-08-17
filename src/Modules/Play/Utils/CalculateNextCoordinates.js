@@ -4,20 +4,20 @@ import nextCoordinates from "./NextCoordinates"
 
 const calculateNextCoordinates = (secondMarkerCoordinates, actualMarkerCoordinates) => {
     
-    const distance= distanceFinder(secondMarkerCoordinates.latitude, secondMarkerCoordinates.longitude, actualMarkerCoordinates.latitude, actualMarkerCoordinates.longitude)
-    console.log("*****distance:", distance)
+   // const distance= distanceFinder(secondMarkerCoordinates.latitude, secondMarkerCoordinates.longitude, actualMarkerCoordinates.latitude, actualMarkerCoordinates.longitude)
+    // console.log("*****distance:", distance)
 
     //Below will change
-    const secondMarker = {
-        latitude: secondMarkerCoordinates.latitude,
-        longitude: secondMarkerCoordinates.longitude
-    }
+    //const secondMarker = {
+    //    latitude: secondMarkerCoordinates.latitude,
+    //    longitude: secondMarkerCoordinates.longitude
+    //}
     //Above will change
 
-    const slope = findSlope(secondMarkerCoordinates.latitude, secondMarkerCoordinates.longitude, actualMarkerCoordinates.latitude, actualMarkerCoordinates.longitude)
-    console.log("Slope is :", slope)
+    //const slope = findSlope(secondMarkerCoordinates.latitude, secondMarkerCoordinates.longitude, actualMarkerCoordinates.latitude, actualMarkerCoordinates.longitude)
+    //console.log("Slope is :", slope)
 
-    const nextCoords= nextCoordinates(distance, actualMarkerCoordinates.latitude, actualMarkerCoordinates.longitude, secondMarkerCoordinates.latitude, secondMarkerCoordinates.longitude)
+    const nextCoords= nextCoordinates(actualMarkerCoordinates.latitude, actualMarkerCoordinates.longitude, secondMarkerCoordinates.latitude, secondMarkerCoordinates.longitude)
 
     return nextCoords 
 }

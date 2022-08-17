@@ -1,11 +1,11 @@
-const _onPress_markerFiringFunction = (nextCoordinates, myMarker, mapRef, changeActMarkerCoordinate) => {
+const _onPress_markerFiringFunction = (nextCoordinates, myMarker, mapRef, changeActMarkerCoordinate, time) => {
     console.log("FireMarker:1")
     
     let newCoordinate = {
         latitude: nextCoordinates.latitude,
         longitude: nextCoordinates.longitude,
-        latitudeDelta: 0.012,
-        longitudeDelta: 0.012,
+        latitudeDelta: 0.022,
+        longitudeDelta: 0.022,
     }
     const newCamera= {
         center: {
@@ -17,8 +17,8 @@ const _onPress_markerFiringFunction = (nextCoordinates, myMarker, mapRef, change
         //zoom: 17  --Use it when required
     }
     if(myMarker){
-        myMarker.animateMarkerToCoordinate(newCoordinate, 2000)
-        mapRef.current.animateCamera(newCamera, {duration: 2000})
+        myMarker.animateMarkerToCoordinate(newCoordinate, time)
+        mapRef.current.animateCamera(newCamera, {duration: time})
     }
     console.log("FireMarker:2")
     changeActMarkerCoordinate()

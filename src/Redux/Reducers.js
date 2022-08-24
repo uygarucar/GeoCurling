@@ -10,7 +10,7 @@ import { targetTextReducer  } from '../Modules/Play/Redux/TargetTextRedux';
 import { currentLatitudeReducer } from '../Modules/Play/Redux/CurrentLatitudeRedux';
 // Reducers
 import { currentLongitudeReducer } from '../Modules/Play/Redux/CurrentLongitudeRedux';
-
+import { ArrowVisibilityReducer } from '../Modules/Play/Redux/ArrowVisibilityRedux';
 export default combineReducers({
     [THEMING_NAMESPACE]: ThemeReducer,
     [LOCALIZATION_NAMESPACE]: LocalizationReducer,
@@ -20,7 +20,8 @@ export default combineReducers({
     targetLongitudeState: targetLongitudeReducer,
     targetTextState: targetTextReducer, 
     currentLatitudeState: currentLatitudeReducer,
-    currentLongitudeState: currentLongitudeReducer
+    currentLongitudeState: currentLongitudeReducer,
+    arrowVisibilityState: ArrowVisibilityReducer,
 });
 
 

@@ -10,13 +10,15 @@ import { getDistance, getPreciseDistance } from 'geolib'
 import useDispatchCurrent from '../CustomHooks/UseDispatchCurrent'
 import ArrowDrawer from './ArrowDrawer'
 import mapStyle from './CustomMapStyle'
+import { arrowVisibilityCreator } from '../Redux/ArrowVisibilityRedux'
+import { useDispatch } from 'react-redux'
 
 const MapConfig = (props) => {
     const mapRef = useRef(null)
     console.log("MapConfig:1")
     const [mapLatitude, setMapLatitude] = useState(props.stoneLatitude);
     const [mapLongitude, setMapLongitude] = useState(props.stoneLongitude);
-    
+    const dispatch= useDispatch()
 
     const [mapLatitudeDelta, setMapLatitudeDelta] = useState(1.1922)
     const [mapLongitudeDelta, setMapLongitudeDelta] = useState(1.1421)
@@ -69,6 +71,7 @@ const MapConfig = (props) => {
                 setMapLongitude(e.longitude);
                 setMarkerLatitude(e.latitude);
                 setMarkerLongitude(e.longitude);
+                dispatch(arrowVisibilityCreator(true))
             }}
             
 
@@ -82,11 +85,12 @@ const MapConfig = (props) => {
                 directionCreatorMarkerLongitude={markerLongitude}
             />
             <ArrowDrawer
+                arrowVisibility= {props.arrowVisibility}
                 coordinates={{
                     directionCreatorMarkerLatitude: markerLatitude,
                     directionCreatorMarkerLongitude: markerLongitude,
                     stoneLatitude: props.stoneLatitude,
-                    stoneLongitude: props.stoneLongitude
+                    stoneLongitude: props.stoneLongitude,
                 }}
             />
             {/*<Polyline

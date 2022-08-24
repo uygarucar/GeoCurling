@@ -8,6 +8,7 @@ import { currentLatitudeCreator } from '../Redux/CurrentLatitudeRedux';
 import { currentLongitudeCreator } from '../Redux/CurrentLongitudeRedux';
 import calculateDistanceToNextPlace from '../Utils/calculateDistanceToAim';
 import calculateTime from '../Utils/calculateTime';
+import { arrowVisibilityCreator } from '../Redux/ArrowVisibilityRedux';
 
 const CustomizedMarkerAnimated = (props) => {
     console.log("CustomizedMarkerAnimated:1")
@@ -49,7 +50,7 @@ const CustomizedMarkerAnimated = (props) => {
                 dispatch(currentLatitudeCreator(nextCoordinates.latitude));
                 dispatch(currentLongitudeCreator(nextCoordinates.longitude));
                 _onPress_fireMarker(nextCoordinates, myMarker, mapRef, changeActMarkerCoordinate, time);
-                
+                dispatch(arrowVisibilityCreator(false))
             }}
             ref={marker => { setMyMarker(marker) }}
             coordinate={coordinate}

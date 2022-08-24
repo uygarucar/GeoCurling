@@ -12,7 +12,7 @@ const ArrowDrawer = (props) => {
     const arrowVisibility = props.arrowVisibility
 
     const arrowEdgeCoordinates = arrowEdgeFinder(firstMarkerLat, firstMarkerLong, secondMarkerLat, secondMarkerLong)
-    console.log("arrowEdgeCoordinates", arrowEdgeCoordinates)
+    console.log("arrowEdgeCoordinatesssssssssssssss", arrowEdgeCoordinates)
 
     const color = colorOfArrowFinder(firstMarkerLat, firstMarkerLong, secondMarkerLat, secondMarkerLong)
     console.log("color:", color)

@@ -12,6 +12,7 @@ import ArrowDrawer from './ArrowDrawer'
 import mapStyle from './CustomMapStyle'
 import { arrowVisibilityCreator } from '../Redux/ArrowVisibilityRedux'
 import { useDispatch } from 'react-redux'
+import distanceFinder from '../Utils/DistanceFinder'
 
 const MapConfig = (props) => {
     const mapRef = useRef(null)
@@ -32,6 +33,8 @@ const MapConfig = (props) => {
     //console.log("markerLongitude", markerLongitude)
     console.log("MapConfig:2")
 
+    const myDistance= distanceFinder(props.stoneLatitude, props.stoneLongitude, markerLatitude, markerLongitude)
+    console.log("myDistancemyDistancemyDistancemyDistance", myDistance)
     const _onDragEnd_SetMarkerCoordinates = (e) => {
         setMarkerLatitude(e.nativeEvent.coordinate.latitude)
         setMarkerLongitude(e.nativeEvent.coordinate.longitude)
@@ -43,8 +46,8 @@ const MapConfig = (props) => {
         <MapView provider={PROVIDER_GOOGLE}
             customMapStyle={mapStyle}
             ref={mapRef}
-            minZoomLevel={10}
-            maxZoomLevel={10}
+            minZoomLevel={9.2}
+            maxZoomLevel={9.2}
             style={styles}
             rotateEnabled={false}
             scrollEnabled={false}

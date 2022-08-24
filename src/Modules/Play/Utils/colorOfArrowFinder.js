@@ -6,35 +6,32 @@ const colorOfArrowFinder = (lat1stMarker, long1stMarker, lat2ndMarker, long2ndMa
     console.log("distance", distance)
     let color = null;
     switch (true) {
-        case distance >= 19000:
+        case distance >= 40000:
             color = '#EE3B1E'
             break;
-        case distance >= 17000:
-            color = '#EE541E'
+        case distance >= 32000:
+            color = '#d9590b'
             break;
-        case distance >= 16000:
+        case distance >= 26000:
             color = '#EE6D1E'
             break;
-        case distance >= 15000:
-            color = '#EE961E'
+        case distance >= 19000:
+            color = '#e07c24'
             break;
-        case distance >= 14000:
+        case distance >= 16000:
             color = '#EEBC1E'
             break;
         case distance >= 13000:
-            color = '#EEDB1E'
+            color = '#228B22'
+            break;
+        case distance >= 13000:
+            color = '#037f51'
             break;
         case distance >= 10000:
-            color = '#99EE1E'
-            break;
-        case distance >= 6000:
-            color = '#99EE1E'
-            break;
-        case distance >= 2000:
-            color = '#5DEE1E'
+            color = '#35ab02'
             break;
         default:
-            color = '#4CCD14'
+            color = '#35ab02'
             break;
     }
 

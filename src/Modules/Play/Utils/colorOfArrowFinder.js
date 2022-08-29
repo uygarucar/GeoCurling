@@ -24,9 +24,6 @@ const colorOfArrowFinder = (lat1stMarker, long1stMarker, lat2ndMarker, long2ndMa
         case distance >= 13000:
             color = '#228B22'
             break;
-        case distance >= 13000:
-            color = '#037f51'
-            break;
         case distance >= 10000:
             color = '#35ab02'
             break;

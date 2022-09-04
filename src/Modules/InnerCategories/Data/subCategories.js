@@ -2,47 +2,27 @@ const subCategories = {
     1: [
         {
             id: 1,
-            name: 'Masif Araziler 1',
+            name: 'Dağlar',
             isLocked: true
         },
         {
             id: 2,
-            name: 'Masif Araziler 2',
+            name: 'Volkanizma',
             isLocked: true
         },
         {
             id: 3,
-            name: 'Dağlar 1',
+            name: 'Masif Araziler',
             isLocked: true
         },
         {
             id: 4,
-            name: 'Dağlar 2',
+            name: 'Platolar',
             isLocked: true
         },
         {
             id: 5,
-            name: 'Dağlar 3',
-            isLocked: true
-        },
-        {
-            id: 6,
-            name: 'Göller 1',
-            isLocked: true
-        },
-        {
-            id:7,
-            name:'Göller 2',
-            isLocked: true
-        },
-        {
-            id:8,
-            name:'Platolar 1',
-            isLocked: true
-        },
-        {
-            id:9,
-            name:'Platolar 2',
+            name: 'Fay Hatları',
             isLocked: true
         },
     ],
@@ -50,42 +30,32 @@ const subCategories = {
         
         {
             id:1,
-            name: 'Volkanik Araziler 1',
+            name: 'Ovalar',
             isLocked: true
         },
         {
             id:2,
-            name: 'Volkanik Araziler 2',
+            name: 'Akarsuların oluşturduğu şekiller',
             isLocked: true
         },
         {
             id:3,
-            name: 'Ovalar 1',
+            name: 'Şelalelerimiz',
             isLocked: true
         },
         {  
             id:4,
-            name: 'Ovalar 2',
+            name: 'Rüzgarın oluşturduğu şekiller',
             isLocked: true
         },
         {
             id:5,
-            name: 'Karstik Şekiller',
+            name: 'Karstik Şekiller 1',
             isLocked: true
         },
         {
             id:6,
-            name: 'Kıyı Şekillenmesi 1',
-            isLocked: true
-        },
-        {
-            id:7,
-            name: 'Kıyı Şekillenmesi 2',
-            isLocked: true
-        },
-        {
-            id:8,
-            name: 'Kıyı Tipleri',
+            name: 'Karstik Şekiller 2',
             isLocked: true
         },
     ],

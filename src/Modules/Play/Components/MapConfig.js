@@ -11,15 +11,21 @@ import useDispatchCurrent from '../CustomHooks/UseDispatchCurrent'
 import ArrowDrawer from './ArrowDrawer'
 import mapStyle from './CustomMapStyle'
 import { arrowVisibilityCreator } from '../Redux/ArrowVisibilityRedux'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import distanceFinder from '../Utils/DistanceFinder'
+import { targetLatitudeSelector } from '../Redux/TargetLatitudeRedux'
+import { targetLongitudeSelector } from '../Redux/TargetLongitudeRedux'
+import checkIfGameFinished from './CheckIfGameFinished'
 
 const MapConfig = (props) => {
+    const targetLatitude = useSelector(targetLatitudeSelector)
+    const targetLongitude = useSelector(targetLongitudeSelector)
+
     const mapRef = useRef(null)
     console.log("MapConfig:1")
     const [mapLatitude, setMapLatitude] = useState(props.stoneLatitude);
     const [mapLongitude, setMapLongitude] = useState(props.stoneLongitude);
-    const dispatch= useDispatch()
+    const dispatch = useDispatch()
 
     const [mapLatitudeDelta, setMapLatitudeDelta] = useState(1.1922)
     const [mapLongitudeDelta, setMapLongitudeDelta] = useState(1.1421)
@@ -33,7 +39,7 @@ const MapConfig = (props) => {
     //console.log("markerLongitude", markerLongitude)
     console.log("MapConfig:2")
 
-    const myDistance= distanceFinder(props.stoneLatitude, props.stoneLongitude, markerLatitude, markerLongitude)
+    const myDistance = distanceFinder(props.stoneLatitude, props.stoneLongitude, markerLatitude, markerLongitude)
     console.log("myDistancemyDistancemyDistancemyDistance", myDistance)
     const _onDragEnd_SetMarkerCoordinates = (e) => {
         setMarkerLatitude(e.nativeEvent.coordinate.latitude)
@@ -75,8 +81,9 @@ const MapConfig = (props) => {
                 setMarkerLatitude(e.latitude);
                 setMarkerLongitude(e.longitude);
                 dispatch(arrowVisibilityCreator(true))
+                checkIfGameFinished(targetLatitude, targetLongitude, props.stoneLatitude, props.stoneLongitude)
             }}
-            
+
 
         >
             <StoneShape
@@ -88,7 +95,7 @@ const MapConfig = (props) => {
                 directionCreatorMarkerLongitude={markerLongitude}
             />
             <ArrowDrawer
-                arrowVisibility= {props.arrowVisibility}
+                arrowVisibility={props.arrowVisibility}
                 coordinates={{
                     directionCreatorMarkerLatitude: markerLatitude,
                     directionCreatorMarkerLongitude: markerLongitude,
@@ -116,7 +123,10 @@ const MapConfig = (props) => {
                 markerLatitude={markerLatitude}
                 markerLongitude={markerLongitude}
             />
-            <CurlingPitchShape />
+            <CurlingPitchShape
+                latitude={targetLatitude}
+                longitude={targetLongitude}
+            />
 
         </MapView>
     )

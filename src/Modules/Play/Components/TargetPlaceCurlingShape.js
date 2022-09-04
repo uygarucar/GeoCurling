@@ -3,14 +3,12 @@ import { Circle } from 'react-native-maps'
 import { TargetPlaces_Unit1 } from './TargetPlacesInfos'
 import GiveCoordinates from '../Utils/GiveCoordinates'
 import { useSelector } from 'react-redux'
-import { targetLatitudeSelector } from '../Redux/TargetLatitudeRedux'
-import { targetLongitudeSelector } from '../Redux/TargetLongitudeRedux'
 
-const CurlingPitchShape = () => {
 
- const latitude= useSelector(targetLatitudeSelector)
- const longitude= useSelector(targetLongitudeSelector)
+const CurlingPitchShape = (props) => {
 
+ const latitude= props.latitude 
+ const longitude= props.longitude
     
     return (
         <>

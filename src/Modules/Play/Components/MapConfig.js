@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import MapView, { PROVIDER_GOOGLE, Polyline } from 'react-native-maps'
 import StoneShape from './CurrentPlaceStoneShape'
@@ -20,9 +20,13 @@ import checkIfGameFinished from './CheckIfGameFinished'
 const MapConfig = (props) => {
     const targetLatitude = useSelector(targetLatitudeSelector)
     const targetLongitude = useSelector(targetLongitudeSelector)
-
+    let fireNumber = useRef(-1)
+    const _onPress_increaseFireNo = () => {
+        fireNumber.current = fireNumber.current + 1
+        console.log("<3<3<3<3<3<3<3<3<3<3<3<3FIRENUMBER.CURRENT<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3>", fireNumber.current)
+    }
     const mapRef = useRef(null)
-    console.log("MapConfig:1")
+
     const [mapLatitude, setMapLatitude] = useState(props.stoneLatitude);
     const [mapLongitude, setMapLongitude] = useState(props.stoneLongitude);
     const dispatch = useDispatch()
@@ -37,7 +41,7 @@ const MapConfig = (props) => {
     //console.log("markerLatitude", markerLatitude)
     const [markerLongitude, setMarkerLongitude] = useState(mapLongitude)
     //console.log("markerLongitude", markerLongitude)
-    console.log("MapConfig:2")
+
 
     const myDistance = distanceFinder(props.stoneLatitude, props.stoneLongitude, markerLatitude, markerLongitude)
     console.log("myDistancemyDistancemyDistancemyDistance", myDistance)
@@ -45,8 +49,6 @@ const MapConfig = (props) => {
         setMarkerLatitude(e.nativeEvent.coordinate.latitude)
         setMarkerLongitude(e.nativeEvent.coordinate.longitude)
     }
-
-
 
     return (
         <MapView provider={PROVIDER_GOOGLE}
@@ -73,7 +75,6 @@ const MapConfig = (props) => {
                 longitudeDelta: mapLongitudeDelta
             }}
             onRegionChangeComplete={(e) => {
-
                 setMapLatitudeDelta(e.latitudeDelta);
                 setMapLongitudeDelta(e.longitudeDelta);
                 setMapLatitude(e.latitude);
@@ -82,6 +83,9 @@ const MapConfig = (props) => {
                 setMarkerLongitude(e.longitude);
                 dispatch(arrowVisibilityCreator(true))
                 checkIfGameFinished(targetLatitude, targetLongitude, props.stoneLatitude, props.stoneLongitude)
+                if (fireNumber.current == 3) {
+                    console.log("***************************************HAKKIN BİTTİ********************************************")
+                }
             }}
 
 
@@ -89,7 +93,7 @@ const MapConfig = (props) => {
             <StoneShape
                 latitude={props.stoneLatitude}
                 longitude={props.stoneLongitude}
-
+                onPress_increaseFireNo={_onPress_increaseFireNo}
                 mapRef={mapRef}
                 directionCreatorMarkerLatitude={markerLatitude}
                 directionCreatorMarkerLongitude={markerLongitude}

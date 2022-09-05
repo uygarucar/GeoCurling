@@ -1,8 +1,10 @@
 import distanceFinder from "../Utils/DistanceFinder"
 
-const checkIfGameFinished = (tLat, tLong, sLat, sLong) => {
-    // 5 elden fazla sürdüyse giveOneMoreShot dönsün
-    //aşağıdaki caselerden birindeyse YouPassed'e dönsün
+const checkIfGameFinished = (tLat, tLong, sLat, sLong, fireNumber) => {
+    //Redux'ta bir value tut
+    //Henüz 5. ele gelmediyse
+    // 5 elden fazla sürdüyse giveOneMoreShot dönsün-> Tamam veya devam (Reklam).
+    //aşağıdaki caselerden birindeyse YouPassed'e dönsün -> yani bilgi verdikten sonra innerCat sayfasına dönsün.
     //Her Oyunun başında tekrar null'a çekilsin
     
     //Sırada modal eklemek var
@@ -26,7 +28,16 @@ const checkIfGameFinished = (tLat, tLong, sLat, sLong) => {
         default:
             break;
     }
-
+    //Bütün oyunlarda
+    //Targeti bulduysan, en temel öge bittiyse
+    //1. -> modal ekranı ile
+    //sonucu açıkla & bilgi ver
+    //Son oyunda belli bir puana gelemediyse reklam seçeneğini ortaya çıkart
+    //2.1Kabul ederse reklam ve oyuna devam
+    //2.Inner Cat uzunluğu kadar oyun oynanmamışsa yani hala oyun kalmışsa
+    //Yeni oyunu çağır - Daha önce oynanmamış olmalı (Reduxa göndererek tetikleyebilirsin.)
+    //3. inn. cat. oyunları bittiyse
+    //İsLocked'ı false yaparak innerCat sayfasına dönmelisin.
 }
 
 export default checkIfGameFinished

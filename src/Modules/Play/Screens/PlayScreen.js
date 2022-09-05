@@ -9,7 +9,7 @@ import DistanceToTarget_Prompt from '../Components/DistanceToTargetInfo'
 import CurlingPitchShape from '../Components/TargetPlaceCurlingShape';
 import GiveCoordinates from '../Utils/GiveCoordinates';
 import { useDispatch, useSelector } from 'react-redux';
-import { TargetPlaces_Unit1, TargetPlaces_Unit2 } from '../Components/TargetPlacesInfos';
+
 import { dispatchCoordinateForChosenTopic } from '../Utils/DispatchCoordinates';
 import StoneShape from '../Components/CurrentPlaceStoneShape';
 import useDispatchCurrent from '../CustomHooks/UseDispatchCurrent';

@@ -1,4 +1,4 @@
-import { Daglar, MasifAraziler, Platolar, Volkanizma, FayHatları } from "../Components/TargetPlacesInfos";
+import { Daglar, MasifAraziler, Platolar, Volkanizma, FayHatları } from '../Data/TargetPlacesInfos_Unit1_1'
 import GiveCoordinates from "./GiveCoordinates";
 import useDispatchTarget from "../CustomHooks/useDispatchTarget";
 

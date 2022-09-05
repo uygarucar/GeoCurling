@@ -1,6 +1,6 @@
 import React from 'react'
 import { Circle } from 'react-native-maps'
-import { TargetPlaces_Unit1 } from './TargetPlacesInfos'
+
 import GiveCoordinates from '../Utils/GiveCoordinates'
 import { useSelector } from 'react-redux'
 

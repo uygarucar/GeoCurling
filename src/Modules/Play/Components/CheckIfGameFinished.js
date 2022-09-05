@@ -1,6 +1,13 @@
 import distanceFinder from "../Utils/DistanceFinder"
 
 const checkIfGameFinished = (tLat, tLong, sLat, sLong) => {
+    // 5 elden fazla sürdüyse giveOneMoreShot dönsün
+    //aşağıdaki caselerden birindeyse YouPassed'e dönsün
+    //Her Oyunun başında tekrar null'a çekilsin
+    
+    //Sırada modal eklemek var
+    //Modal diye arat linkten
+    //https://github.com/beyzatopcu-ba/rn-egitim-mekan/commits/master?after=919ee61bcf865f156822eb0807035ed36b5f243c+34&branch=master&qualified_name=refs%2Fheads%2Fmaster
 
     const distance = distanceFinder(tLat, tLong, sLat, sLong)
     switch (true) {

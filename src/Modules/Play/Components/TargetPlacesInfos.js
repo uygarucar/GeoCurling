@@ -49,7 +49,7 @@ export const Volkanizma = [
         longitude: 29.213647872546154
     },
 ]
-export const yedek = [
+export const MasifAraziler = [
     {
         id: 1,
         text: '4. Jeolojik zaman volkanik arazilerinin bulunduğu bölgemizdeki bir masif arazi!',
@@ -70,7 +70,57 @@ export const yedek = [
         longitude: 32.832890,
     }
 ]
-export const TargetPlaces_Unit1_2 = [
+
+export const Platolar = [
+    {
+        //Kocaeli
+        id: 1,
+        text: 'En yoğun nüfuslu aşınım düzlüğü platosu',
+        latitude: 40.945317723668275,
+        longitude: 29.5579235653009
+    },
+    {
+        id: 2,
+        text: 'En geniş yer kaplayan plato hangi ilimizdedir?',
+        latitude: 39.755630120802216 ,
+        longitude: 34.84885581785901
+    }
+    ,
+    {
+        id: 3,
+        text: 'İsmini aldığı Obruk şekillerden meydana gelen plato hangi ilimizdedir?',
+        latitude: 37.606307017772515,
+        longitude: 33.59706017738192,
+    }
+]
+
+export const FayHatları = [
+    {
+        //Erzincan 
+        id: 1,
+        text: 'Türkiye\'de gerçekleşen en büyük deprem nerede oldu?',
+        latitude: 39.74588032538926, 
+        longitude: 39.479199134379584
+    },
+    {
+        //Bingöl
+        id: 2,
+        text: 'Türkiye\'de en tehlikeli 2 fay hattının kesişme noktası hangi ilimizdir?',
+        latitude: 38.885349 ,
+        longitude: 40.498291
+    }
+    ,
+    {
+        //Mersin
+        id: 3,
+        text: 'Fay hatlarından en uzakta Akdeniz bölgesi ili neresidir?',
+        latitude: 36.81110790740455,
+        longitude: 34.64146149178453,
+    }, 
+]
+
+
+export const yedek = [
     {
         //Rize
         id: 1,

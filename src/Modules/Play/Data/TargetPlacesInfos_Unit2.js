@@ -2,181 +2,174 @@ export const Ovalar = [
     {//Bursa
         id: 1,
         text: 'Dağ eteği ovası hangi şehrimizdedir?',
-        latitude: 39.71944,
-        longitude: 43.05139
+        latitude: 40.2455,
+        longitude: 29.0434
     },
     {//Muş
         id: 2,
         text: 'Dağ içi ovası hangi şehrimizdedir?',
-        latitude: 36.7477,
-        longitude: 36.3327
+        latitude: 38.7826,
+        longitude: 41.5729
     }
     ,
-    {//Burdur, Isparta, Antalya tarafları
+    {//Burdur, Isparta, Antalya tarafları - ELMALI'yı verdim
         id: 3,
         text: 'Karstik bir ova nerede olabilir? (Gölovası olarak da sorabilirsin.)',
-        latitude: 40.587580134,
-        longitude: 37.178795716,
-    },
-    {
-        //Adana???
-        id: 4,
-        text: 'En verimli ova',
-        latitude: 40.587580134,
-        longitude: 37.178795716,
+        latitude: 36.7378,
+        longitude: 29.9167,
     },
 ]
 export const AkarsuSekilleri = [
-    {
+    { 
         //Erzurum Narman
         id: 1,
         text: 'Kırmızı peripacalarının bulunduğu yer?',
-        latitude: 37.6889,
-        longitude: 43.1047
+        latitude: 40.31548905889101,
+        longitude: 41.87622112934995
     },
-    {
+    { 
         //Van
         id: 2,
-        text: 'En fazla ülkeye sınırı olan bölgemizdeki peri bacaları hangi ilimizde yer alır',
-        latitude: 37.688716932396964,
-        longitude: 33.63490922641875
+        text: 'En fazla ülkeye sınırı olan bölgemizdeki peri bacaları hangi ilimizdedir?',
+        latitude: 38.29613102404278,
+        longitude: 44.28567263968824
     },
     {
         //Aydın
         id: 3,
         text: 'Birikinti konisi üzerinde kurulan şehrimiz',
-        latitude: 39.71944,
-        longitude: 43.05139
+        latitude: 37.83807765262981,
+        longitude: 27.846214140508145
     },
     
 ]
 export const Selalelerimiz = [
-    {//Kurşunlu Şelalesi
+    {//Kurşunlu Şelalesi 
         id: 1,
-        text: 'Kurşunlu şelalesi nerededir?',
-        latitude: 38.254,
-        longitude: 27.134
+        text: 'Akdeniz bölgesindeki Kurşunlu şelalesine git',
+        latitude: 37.02144710212169,
+        longitude: 30.8271431179999
     },
     {//Kayseri
         id: 2,
         text: 'Kapuzbaşı şelalesi nerededir?',
-        latitude: 38.40115,
-        longitude: 42.10784
+        latitude: 37.77634383058749,
+        longitude: 35.39354146468027
     }
     ,
-    {//Erzincan
+    {//Erzincan , 
         id: 3,
         text: 'Girlevik Şelalesi nerededir?',
-        latitude: 36.077286,
-        longitude: 32.832890,
+        latitude: 39.58659131920753,
+        longitude: 39.73127771076952,
     }
     ,
-    {//Sinop
+    {//Sinop  
         id: 4,
         text: 'Tatlıca Şelalesi nerededir?',
-        latitude: 36.077286,
-        longitude: 32.832890,
+        latitude: 41.840551812149506,
+        longitude: 34.779725095505285,
     }
     ,
     {//Rize
         id: 5,
         text: 'Bulut Şelalesi nerededir?',
-        latitude: 36.077286,
-        longitude: 32.832890,
+        latitude: 41.00430300306042,
+        longitude: 41.06184877014826,
     }
 ]
 
 export const RuzgarSekilleri = [
     {
-        //Iğdır
+        //Iğdır , 
         id: 1,
         text: 'En fazla yükseltinin olduğu bölgemizde yer alan rüzgar şekillendirmesinin fazla olduğu il',
-        latitude: 40.945317723668275,
-        longitude: 29.5579235653009
+        latitude: 39.9215370976554,
+        longitude: 44.04360878996121
     },
-    {   //Kayseri Develi
+    {   //Kayseri Develi , 
         id: 2,
         text: 'En eski ticaret şehrinin bulunduğu bölgemizde yer alan rüzgar şekillendirmesinin bulunduğu yer?',
-        latitude: 39.755630120802216 ,
-        longitude: 34.84885581785901
+        latitude: 38.408501753954965 ,
+        longitude: 35.493523370703606
     }
     ,
-    {//Nevşehir
+    {//Nevşehir , 
         id: 3,
         text: 'Şahit Kaya ve Mantar kaya rüzgar şekillendirmesi türlerinin bulunduğu yerimiz?',
-        latitude: 37.606307017772515,
-        longitude: 33.59706017738192,
+        latitude: 38.652154353524814,
+        longitude: 34.716343876473374,
     }
     ,
-    {//Manisa
-        id: 3,
+    {//Manisa , 
+        id: 4,
         text: 'Ege bölgesinde yer alan kara kumulu bulunan ilimiz',
-        latitude: 37.606307017772515,
-        longitude: 33.59706017738192,
+        latitude: 38.65822073951893,
+        longitude: 27.498885564497776,
     }
 ]
 
 export const KarstikSekiller1 = [
     {
-        //Çankırı 
+        //Çankırı  , 
         id: 1,
         text: 'Kaya tuzunun bulunduğu il',
-        latitude: 39.74588032538926, 
-        longitude: 39.479199134379584
+        latitude: 40.61590395293314, 
+        longitude: 33.6231990997058
     },
     {
-        //Ankara, Sivas
+        //Ankara, Sivas , 
         id: 2,
-        text: 'Jips/Alçı Taşının bulunduğu bir iç anadolu bölgesi ili',
-        latitude: 38.885349 ,
-        longitude: 40.498291
+        text: 'Jips/Alçı Taşının bulunduğu bir iç anadolu ili',
+        latitude: 39.82750342576617 ,
+        longitude: 37.00131827002091
     }
     ,
     {
-        //Burdur
+        //Burdur , 
         id: 3,
         text: 'İnsuyu mağarasının yer aldığı ilimiz?',
-        latitude: 36.81110790740455,
-        longitude: 34.64146149178453,
+        latitude: 37.7511610544238,
+        longitude: 30.274731845852628,
     }, 
     {
-        //Tokat
+        //Tokat ,  , 
         id: 4,
         text: 'Ballıca mağarasının yer aldığı ilimiz?',
-        latitude: 36.81110790740455,
-        longitude: 34.64146149178453,
+        latitude: 40.37583454789833,
+        longitude: 36.56344514640216,
     }, 
 ]
 
 
 export const KarstikSekiller2 = [
     {
-        //Mersin
+        //Mersin , 
         id: 1,
         text: 'Cennet ve Cehennem obruklarının yer aldığı il',
-        latitude: 41.0255,
-        longitude: 40.5177
+        latitude: 36.95445585045037,
+        longitude: 34.60874947610532
     },
     {
-        //Hatay Hassa
+        //Hatay Hassa , 
         id: 2,
-        text: 'Karstik oluşumlu olmayan tek mağara',
-        latitude: 38.545910,
-        longitude: 44.185593
+        text: 'Karstik oluşumlu olmayan tek mağaramız nerededir?',
+        latitude: 36.81197398641462,
+        longitude: 36.52394043563585
     },
     {
-        //Antalya
+        //Antalya , 
         id: 3,
         text: 'Traverten platosu üzerine kurulan kent',
-        latitude: 39.71944,
-        longitude: 43.05139
+        latitude: 36.98477687567547,
+        longitude: 30.71526954566616
     },
     {
-        //Konya ovası
+        //Konya ovası ,
         id: 4,
         text: 'Yer altı sularının sondajla çekilmesiyle oluşan obrukların bulunduğu ilimiz',
-        latitude: 39.71944,
-        longitude: 43.05139
+        latitude: 38.07171706483853,
+        longitude:  32.51142461607822
     }
 ]
 

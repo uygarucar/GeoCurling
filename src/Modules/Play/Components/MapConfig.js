@@ -15,11 +15,31 @@ import { useDispatch, useSelector } from 'react-redux'
 import distanceFinder from '../Utils/DistanceFinder'
 import { targetLatitudeSelector } from '../Redux/TargetLatitudeRedux'
 import { targetLongitudeSelector } from '../Redux/TargetLongitudeRedux'
-import checkIfGameFinished from './CheckIfGameFinished'
+import checkIfGameUnitFinished from './CheckIfGameFinished'
+import calculateScoring from '../Utils/CalculateScoring'
 
 const MapConfig = (props) => {
+
+
     const targetLatitude = useSelector(targetLatitudeSelector)
     const targetLongitude = useSelector(targetLongitudeSelector)
+
+    const distanceAtFirst = distanceFinder(props.stoneLatitude, props.stoneLongitude, targetLatitude, targetLongitude)
+    let constantDistance = useRef(distanceAtFirst)
+    
+
+    const isInPitchCoords = {
+        targetLatitude: targetLatitude,
+        targetLongitude: targetLongitude,
+        stoneLatitude: props.stoneLatitude,
+        stoneLongitude: props.stoneLongitude
+    }
+    //beginningDistance used for scoring calculations
+
+    console.log("constantDistance::", constantDistance)
+
+
+
     let fireNumber = useRef(-1)
     const _onPress_increaseFireNo = () => {
         fireNumber.current = fireNumber.current + 1
@@ -44,12 +64,13 @@ const MapConfig = (props) => {
 
 
     const myDistance = distanceFinder(props.stoneLatitude, props.stoneLongitude, markerLatitude, markerLongitude)
-    console.log("myDistancemyDistancemyDistancemyDistance", myDistance)
+    //console.log("myDistancemyDistancemyDistancemyDistance", myDistance)
     const _onDragEnd_SetMarkerCoordinates = (e) => {
         setMarkerLatitude(e.nativeEvent.coordinate.latitude)
         setMarkerLongitude(e.nativeEvent.coordinate.longitude)
     }
-
+    let curlingPitchPoint = null;
+    let score;
     return (
         <MapView provider={PROVIDER_GOOGLE}
             customMapStyle={mapStyle}
@@ -82,10 +103,16 @@ const MapConfig = (props) => {
                 setMarkerLatitude(e.latitude);
                 setMarkerLongitude(e.longitude);
                 dispatch(arrowVisibilityCreator(true))
-                checkIfGameFinished(targetLatitude, targetLongitude, props.stoneLatitude, props.stoneLongitude)
-                if (fireNumber.current == 3) {
+                if (curlingPitchPoint = checkIfGameUnitFinished(isInPitchCoords)) {
+                    console.log("curlingPitchPoint", curlingPitchPoint)
+                    score = calculateScoring(curlingPitchPoint, fireNumber.current, constantDistance.current)
+                    console.log("ISSS<3<3<3<3<3 YOUR SCORE ISSS<3<3<3<3<3:", score)
+                }
+                else if (fireNumber.current == 3) {
+
                     console.log("***************************************HAKKIN BİTTİ********************************************")
                 }
+
             }}
 
 

@@ -4,6 +4,9 @@ const calculateScoring = (curlPitchPoint, noOfFires, beginningDistance) => {
     let tryingPoint
 
     switch (true) {
+        case beginningDistance >= 900000:
+            howFarPoint = 85
+            break;
         case beginningDistance >= 800000:
             howFarPoint = 80
             break;
@@ -48,12 +51,12 @@ const calculateScoring = (curlPitchPoint, noOfFires, beginningDistance) => {
             tryingPoint = -25
             break;
         default:
-            tryingPoint= -30
+            tryingPoint = -30
             break;
     }
     console.log("howFarPoint", howFarPoint)
-   const score= curlPitchPoint+ howFarPoint+ tryingPoint
-return score
+    const score = curlPitchPoint + howFarPoint + tryingPoint
+    return score
 }
 
 export default calculateScoring 

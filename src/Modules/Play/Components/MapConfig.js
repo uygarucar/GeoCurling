@@ -17,6 +17,7 @@ import { targetLatitudeSelector } from '../Redux/TargetLatitudeRedux'
 import { targetLongitudeSelector } from '../Redux/TargetLongitudeRedux'
 import checkIfGameUnitFinished from './CheckIfGameFinished'
 import calculateScoring from '../Utils/CalculateScoring'
+import calculateScore_notInPitch from '../Utils/CalculateScore_notInPitch'
 
 const MapConfig = (props) => {
 
@@ -24,8 +25,10 @@ const MapConfig = (props) => {
     const targetLatitude = useSelector(targetLatitudeSelector)
     const targetLongitude = useSelector(targetLongitudeSelector)
 
-    const distanceAtFirst = distanceFinder(props.stoneLatitude, props.stoneLongitude, targetLatitude, targetLongitude)
-    let constantDistance = useRef(distanceAtFirst)
+    let upToDate_DistanceToTarget = distanceFinder(props.stoneLatitude, props.stoneLongitude, targetLatitude, targetLongitude)
+    let initial_DistanceToTarget = useRef(upToDate_DistanceToTarget)
+    console.log("upToDate_DistanceToTarget:::<^3:", upToDate_DistanceToTarget)
+    console.log("inital_DistanceToTarget::<3:", initial_DistanceToTarget.current)
     
 
     const isInPitchCoords = {
@@ -36,7 +39,7 @@ const MapConfig = (props) => {
     }
     //beginningDistance used for scoring calculations
 
-    console.log("constantDistance::", constantDistance)
+    console.log("constantDistance::", initial_DistanceToTarget)
 
 
 
@@ -63,7 +66,7 @@ const MapConfig = (props) => {
     //console.log("markerLongitude", markerLongitude)
 
 
-    const myDistance = distanceFinder(props.stoneLatitude, props.stoneLongitude, markerLatitude, markerLongitude)
+    //const myDistance = distanceFinder(props.stoneLatitude, props.stoneLongitude, props.initialLatitude, props.initialLongitude)
     //console.log("myDistancemyDistancemyDistancemyDistance", myDistance)
     const _onDragEnd_SetMarkerCoordinates = (e) => {
         setMarkerLatitude(e.nativeEvent.coordinate.latitude)
@@ -105,12 +108,12 @@ const MapConfig = (props) => {
                 dispatch(arrowVisibilityCreator(true))
                 if (curlingPitchPoint = checkIfGameUnitFinished(isInPitchCoords)) {
                     console.log("curlingPitchPoint", curlingPitchPoint)
-                    score = calculateScoring(curlingPitchPoint, fireNumber.current, constantDistance.current)
+                    score = calculateScoring(curlingPitchPoint, fireNumber.current, initial_DistanceToTarget.current)
                     console.log("ISSS<3<3<3<3<3 YOUR SCORE ISSS<3<3<3<3<3:", score)
                 }
                 else if (fireNumber.current == 3) {
-
-                    console.log("***************************************HAKKIN BİTTİ********************************************")
+                    score= calculateScore_notInPitch(initial_DistanceToTarget.current, upToDate_DistanceToTarget)
+                    console.log("****************HAKKIN BİTTİ*************"+"Puanın:", score)
                 }
 
             }}

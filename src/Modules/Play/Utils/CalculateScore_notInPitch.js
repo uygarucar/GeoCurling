@@ -24,6 +24,7 @@ console.log("---initialDistance", initialDistance)
             point_lastDistance = 20
             break;
         default:
+            point_lastDistance= point_lastDistance
             break;
     }
 
@@ -44,6 +45,7 @@ console.log("---initialDistance", initialDistance)
             point_initialDistance = 1
             break;
         default:
+            point_initialDistance= null
             break;
     }
 

@@ -20,11 +20,11 @@ console.log("---initialDistance", initialDistance)
         case lastDistance >= 100000:
             point_lastDistance = 17
             break;
-        case lastDistance >= 49000:
+        case lastDistance >= 35000:
             point_lastDistance = 20
             break;
         default:
-            point_lastDistance= point_lastDistance
+            point_lastDistance= 20
             break;
     }
 
@@ -45,7 +45,7 @@ console.log("---initialDistance", initialDistance)
             point_initialDistance = 1
             break;
         default:
-            point_initialDistance= null
+            point_initialDistance= 13
             break;
     }
 

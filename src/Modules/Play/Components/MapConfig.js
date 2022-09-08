@@ -110,10 +110,14 @@ const MapConfig = (props) => {
                     console.log("curlingPitchPoint", curlingPitchPoint)
                     score = calculateScoring(curlingPitchPoint, fireNumber.current, initial_DistanceToTarget.current)
                     console.log("ISSS<3<3<3<3<3 YOUR SCORE ISSS<3<3<3<3<3:", score)
+                    props.onPress_setIsModalTrue()
+                    props.onGameUnit_finish(score)
                 }
                 else if (fireNumber.current == 3) {
                     score= calculateScore_notInPitch(initial_DistanceToTarget.current, upToDate_DistanceToTarget)
                     console.log("****************HAKKIN BİTTİ*************"+"Puanın:", score)
+                    props.onPress_setIsModalTrue()
+                    props.onGameUnit_finish(score)
                 }
 
             }}

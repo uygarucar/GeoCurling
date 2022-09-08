@@ -15,10 +15,10 @@ const styles = StyleSheet.create({
     },
     flatList: {
         flexGrow: 0.8,
-        
+
 
     },
-    scrollview:{
+    scrollview: {
         flex: 0.8,
         backgroundColor: 'blue'
     },
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flex: 0.8,
         justifyContent: 'space-evenly',
-        
+
     },
     touchable: {
         backgroundColor: 'orange',
@@ -54,6 +54,18 @@ const styles = StyleSheet.create({
         fontFamily: Fonts.type.medium,
         fontSize: Fonts.size(16),
     },
+    //modal: {
+    //    justifyContent: 'center',
+    //    alignItems: 'center',
+    //    animationIn: 'bounceIn',
+    //    animationOut:'bounceOut',
+    //    animationInTiming:{1000},
+    //    animationOutTiming:{2000},
+     //   backdropTransitionInTiming:{2000},
+     //   backdropColor: 'blue',
+     //   backdropOpacity:{0.8},
+    //}
+    
 })
 
 export default styles

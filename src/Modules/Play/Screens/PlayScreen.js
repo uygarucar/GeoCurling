@@ -18,6 +18,7 @@ import { currentLatitudeSelector } from '../Redux/CurrentLatitudeRedux';
 import { currentLongitudeSelector } from '../Redux/CurrentLongitudeRedux';
 import PhoneScreenView from '../Components/PhoneScreenView'
 import MapConfig from '../Components/MapConfig';
+import noOfGameInUnit from '../Utils/noOfGameInUnit';
 
 const playingContent = {
     1: [{
@@ -70,6 +71,8 @@ const PlayScreen = (props) => {
 
     //dispatch random coordinate for target
     dispatchCoordinateForChosenTopic(outerCategoryId, innerCategoryId);
+    const lengthOfGame = noOfGameInUnit(outerCategoryId, innerCategoryId)
+    console.log("lengthOfGame", lengthOfGame)
     return (
         <>
             <PhoneScreenView

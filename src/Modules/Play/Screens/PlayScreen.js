@@ -76,6 +76,8 @@ const PlayScreen = (props) => {
     return (
         <>
             <PhoneScreenView
+                innerCategoryId={innerCategoryId}
+                outerCategoryId={outerCategoryId}
                 initialLatitude={initialCoordinates.current.latitude}
                 initialLongitude={initialCoordinates.current.longitude}
             />

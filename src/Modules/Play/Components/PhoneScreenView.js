@@ -39,14 +39,15 @@ const PhoneScreenView = (props) => {
     const arrowVisibility = useSelector(arrowVisibilitySelector)
     console.log("PhoneScreenView:2")
 
-
+    const innerCategoryId = props.innerCategoryId
+    const outerCategoryId = props.outerCategoryId
     return (
         <>
             <View style={{ flex: 1 }}>
                 <View style={{ flex: 0.05 }} />
                 <MapConfig
                     onGameUnit_finish={onGameUnit_finish}
-                    onPress_setIsModalTrue= {_onPress_setIsModalTrue}
+                    onPress_setIsModalTrue={_onPress_setIsModalTrue}
                     style={styles.mapView}
                     stoneLatitude={currentLatitude}
                     stoneLongitude={currentLongitude}
@@ -74,7 +75,10 @@ const PhoneScreenView = (props) => {
                     backdropColor: 'blue',
                     backdropOpacity: 0.8
                 }}>
-                <WhenGameUnitEnded totalScore={totalScore}/>
+                <WhenGameUnitEnded
+                    innerCategoryId={innerCategoryId}
+                    outerCategoryId={outerCategoryId}
+                    totalScore={totalScore} />
             </Modal>
         </>
     )

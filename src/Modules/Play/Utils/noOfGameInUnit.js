@@ -1,5 +1,5 @@
 import { Daglar, Volkanizma, MasifAraziler, Platolar, FayHatları } from "../Data/TargetPlacesInfos_Unit1"
-import { AkarsuSekilleri, KarstikSekiller1, Ovalar, RuzgarSekilleri, Selalelerimiz } from "../Data/TargetPlacesInfos_Unit2";
+import { AkarsuSekilleri, KarstikSekiller1, KarstikSekiller2, Ovalar, RuzgarSekilleri, Selalelerimiz } from "../Data/TargetPlacesInfos_Unit2";
 const noOfGameInUnit = (outerId, innerId) => {
     let length;
     if (outerId == 1) {

@@ -11,13 +11,20 @@ import { arrowVisibilitySelector } from '../Redux/ArrowVisibilityRedux';
 import Modal from 'react-native-modal'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import WhenGameUnitEnded from './WhenGameUnitEnded';
+import { totalScoreSelector } from '../Redux/TotalScoreRedux';
 
 
 
 const PhoneScreenView = (props) => {
     const [isModalVisible, setIsModalVisible] = useState(false)
+
+    //
     let [totalScore, setTotalScore] = useState(null)
 
+    
+    const totalScorePerUnit = useSelector(totalScoreSelector)
+
+    //
     const onGameUnit_finish = (score) => {
         setTotalScore(score)
         console.log("TOtaaaal", totalScore)
@@ -54,6 +61,7 @@ const PhoneScreenView = (props) => {
                     initialLatitude={initialLatitude}
                     initialLongitude={initialLongitude}
                     arrowVisibility={arrowVisibility}
+                    totalScorePerUnit={totalScorePerUnit}
                 />
                 <Target_Prompt />
                 <DistanceToTarget_Prompt
@@ -78,7 +86,8 @@ const PhoneScreenView = (props) => {
                 <WhenGameUnitEnded
                     innerCategoryId={innerCategoryId}
                     outerCategoryId={outerCategoryId}
-                    totalScore={totalScore} />
+                    totalScore={totalScore} 
+                    totalScorePerUnit= {totalScorePerUnit}/>
             </Modal>
         </>
     )

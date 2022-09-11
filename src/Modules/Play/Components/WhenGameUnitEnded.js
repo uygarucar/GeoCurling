@@ -3,11 +3,14 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import { Metrics } from '../../../StylingConstants'
 import { useNavigation } from '@react-navigation/native'
 
+
+
+
 const WhenGameUnitEnded = (props) => {
 
     let navigation = useNavigation()
-
-    const _onPress_GoBack = () => {
+    const totalScorePerUnit=  props.totalScorePerUnit
+    const _onPress_GoBackAndForth = () => {
         navigation.goBack()
         navigation.navigate("play-screen", {
             innerCategoryId: props.innerCategoryId,
@@ -38,9 +41,10 @@ const WhenGameUnitEnded = (props) => {
                 <>
                     <Text style={{ fontSize: 24, alignSelf: 'center', color: 'green' }}>GEÇTİN</Text>
                     <Text style={{ fontSize: 24, alignSelf: 'center' }}> Skorun---{'>'} {props.totalScore}</Text>
+                    <Text style={{ fontSize: 24, alignSelf: 'center' }}> TOPLAMDA---{'>'} {totalScorePerUnit}</Text>
                     <Text>BİLGİ</Text>
                     <TouchableOpacity
-                        onPress={_onPress_GoBack}
+                        onPress={_onPress_GoBackAndForth}
                         style={{ backgroundColor: 'green', flex: 0.3, borderColor: 'red', borderWidth: 1, paddingVertical: Metrics.height * 0.01 }}>
                         <Text style={{ color: 'purple', alignSelf: 'center' }}>İLERLE</Text>
                     </TouchableOpacity>
@@ -50,6 +54,7 @@ const WhenGameUnitEnded = (props) => {
                 <>
                     <Text style={{ fontSize: 24, alignSelf: 'center' }}>GEÇEMEDİN</Text>
                     <Text style={{ fontSize: 22, alignSelf: 'center' }}> Skorun---{'>'} {props.totalScore}</Text>
+                    <Text style={{ fontSize: 24, alignSelf: 'center' }}> TOPLAMDA---{'>'} {totalScorePerUnit}</Text>
                     <Text>BİLGİ</Text>
                     <View style={{ flex: 1, justifyContent: 'space-around', flexDirection: 'row', alignItems: 'flex-end' }}>
                         {/*
@@ -58,7 +63,7 @@ const WhenGameUnitEnded = (props) => {
                         </TouchableOpacity>
                          */}
                         <TouchableOpacity
-                            onPress={_onPress_GoBack}
+                            onPress={_onPress_GoBackAndForth}
                             style={{ backgroundColor: 'green', flex: 0.3, borderColor: 'red', borderWidth: 1, paddingVertical: Metrics.height * 0.01 }}>
                             <Text style={{ color: 'purple', alignSelf: 'center' }}>İLERLE</Text>
                         </TouchableOpacity>

@@ -18,13 +18,13 @@ import { targetLongitudeSelector } from '../Redux/TargetLongitudeRedux'
 import checkIfGameUnitFinished from './CheckIfGameFinished'
 import calculateScoring from '../Utils/CalculateScoring'
 import calculateScore_notInPitch from '../Utils/CalculateScore_notInPitch'
+import { totalScoreCreator } from '../Redux/TotalScoreRedux'
 
 const MapConfig = (props) => {
-
-
+    const totalScorePerUnit = props.totalScorePerUnit
     const targetLatitude = useSelector(targetLatitudeSelector)
     const targetLongitude = useSelector(targetLongitudeSelector)
-
+    
     let upToDate_DistanceToTarget = distanceFinder(props.stoneLatitude, props.stoneLongitude, targetLatitude, targetLongitude)
     let initial_DistanceToTarget = useRef(upToDate_DistanceToTarget)
     console.log("upToDate_DistanceToTarget:::<^3:", upToDate_DistanceToTarget)
@@ -109,6 +109,7 @@ const MapConfig = (props) => {
                 if (curlingPitchPoint = checkIfGameUnitFinished(isInPitchCoords)) {
                     console.log("curlingPitchPoint", curlingPitchPoint)
                     score = calculateScoring(curlingPitchPoint, fireNumber.current, initial_DistanceToTarget.current)
+                    dispatch(totalScoreCreator(score/2 + totalScorePerUnit))                    
                     console.log("ISSS<3<3<3<3<3 YOUR SCORE ISSS<3<3<3<3<3:", score)
                     props.onPress_setIsModalTrue()
                     props.onGameUnit_finish(score)
@@ -118,6 +119,7 @@ const MapConfig = (props) => {
                     console.log("****************HAKKIN BİTTİ*************"+"Puanın:", score)
                     props.onPress_setIsModalTrue()
                     props.onGameUnit_finish(score)
+                    dispatch(totalScoreCreator(score/2 + totalScorePerUnit))    
                 }
 
             }}
@@ -131,6 +133,7 @@ const MapConfig = (props) => {
                 mapRef={mapRef}
                 directionCreatorMarkerLatitude={markerLatitude}
                 directionCreatorMarkerLongitude={markerLongitude}
+                
             />
             <ArrowDrawer
                 arrowVisibility={props.arrowVisibility}

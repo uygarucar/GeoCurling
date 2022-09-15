@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native'
 
 
 const WhenGameUnitEnded = (props) => {
-
+    const totalScore= props.totalScore
     let navigation = useNavigation()
     const totalScorePerUnit=  props.totalScorePerUnit
     const _onPress_GoBackAndForth = () => {
@@ -18,12 +18,18 @@ const WhenGameUnitEnded = (props) => {
         })
     }
 
-    let passed;
-    if (props.totalScore >= 65) {
-        passed = true;
+    let message;
+    if (totalScore >= 65) {
+        message = "ÇOOK İYİ";
     }
-    else {
-        passed = false;
+    else if (totalScore >=43){
+        message = "İYİSİİN!";
+    }
+    else if (totalScore >=34){
+        message = "DAHA İYİ OLABİLİR!";
+    }
+    else if(totalScore >= 0){
+        message= "EH İŞTE"
     }
 
     return (
@@ -37,24 +43,10 @@ const WhenGameUnitEnded = (props) => {
             marginHorizontal: Metrics.width * 0.1,
             marginVertical: Metrics.width * 0.4
         }}>
-            {passed ?
                 <>
-                    <Text style={{ fontSize: 24, alignSelf: 'center', color: 'green' }}>GEÇTİN</Text>
-                    <Text style={{ fontSize: 24, alignSelf: 'center' }}> Skorun---{'>'} {props.totalScore}</Text>
-                    <Text style={{ fontSize: 24, alignSelf: 'center' }}> TOPLAMDA---{'>'} {totalScorePerUnit}</Text>
-                    <Text>BİLGİ</Text>
-                    <TouchableOpacity
-                        onPress={_onPress_GoBackAndForth}
-                        style={{ backgroundColor: 'green', flex: 0.3, borderColor: 'red', borderWidth: 1, paddingVertical: Metrics.height * 0.01 }}>
-                        <Text style={{ color: 'purple', alignSelf: 'center' }}>İLERLE</Text>
-                    </TouchableOpacity>
-
-                </>
-                :
-                <>
-                    <Text style={{ fontSize: 24, alignSelf: 'center' }}>GEÇEMEDİN</Text>
-                    <Text style={{ fontSize: 22, alignSelf: 'center' }}> Skorun---{'>'} {props.totalScore}</Text>
-                    <Text style={{ fontSize: 24, alignSelf: 'center' }}> TOPLAMDA---{'>'} {totalScorePerUnit}</Text>
+                    <Text style={{ fontSize: 24, alignSelf: 'center' }}>{message}</Text>
+                    <Text style={{ fontSize: 22, alignSelf: 'center' }}> Skorun---{'>'} {totalScore}</Text>
+                    {/*<Text style={{ fontSize: 24, alignSelf: 'center' }}> TOPLAMDA---{'>'} {totalScorePerUnit}</Text>*/}
                     <Text>BİLGİ</Text>
                     <View style={{ flex: 1, justifyContent: 'space-around', flexDirection: 'row', alignItems: 'flex-end' }}>
                         {/*
@@ -69,7 +61,6 @@ const WhenGameUnitEnded = (props) => {
                         </TouchableOpacity>
                     </View>
                 </>
-            }
         </View>
     )
 }

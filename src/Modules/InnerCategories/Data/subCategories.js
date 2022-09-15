@@ -3,7 +3,7 @@ const subCategories = {
         {
             id: 1,
             name: 'Dağlar',
-            isLocked: true
+            isLocked: false
         },
         {
             id: 2,
@@ -31,7 +31,7 @@ const subCategories = {
         {
             id:1,
             name: 'Ovalar',
-            isLocked: true
+            isLocked: false
         },
         {
             id:2,
@@ -64,7 +64,7 @@ const subCategories = {
             {
                 id: 1,
                 name: 'Türkiyede İklim 1',
-                isLocked: true
+                isLocked: false
             },
             {
                 id: 2,

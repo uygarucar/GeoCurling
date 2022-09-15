@@ -1,16 +1,17 @@
 import React from 'react'
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity, View, Text } from 'react-native'
 import { Metrics } from '../../../StylingConstants'
-import { View } from 'react-native'
-import { Text } from 'react-native'
+import updateFB_isLocked from '../Utils/updateFB_isLocked'
 const AdPrompt = (props) => {
-    const onPress_goToCategories = props.onPress_goToCategories
-
+    const _onPress_goToCategories = props.onPress_goToCategories
+    const _setModalVisibility = props.setModalVisibility
     const message = 'Reklam izle ve bölümü aç'
+    const innerCategoryId = props.innerCategoryId
+    const outerCategoryId = props.outerCategoryId
 
-    const _onPress_enterTheSectionAndMakeItUnlocked = props => {
-        console.log("Section entered and the section is ulocked")
-        onPress_goToCategories()
+    const _onPress_enterTheSectionAndMakeItUnlocked = (val_isLocked, id_outer, id_inner) => {
+        _onPress_goToCategories()
+        updateFB_isLocked(false, id_outer, id_inner -1)
     }
     return (
         <View style={{
@@ -26,7 +27,7 @@ const AdPrompt = (props) => {
 
             <Text style={{ fontSize: 24, alignSelf: 'center', color: 'green' }}>{message}</Text>
             <TouchableOpacity
-                onPress={_onPress_enterTheSectionAndMakeItUnlocked}
+                onPress={() => _onPress_enterTheSectionAndMakeItUnlocked(false, outerCategoryId, innerCategoryId)}
                 style={{
 
                     borderRadius: 20, justifyContent: 'center', alignContent: 'center',
@@ -35,6 +36,7 @@ const AdPrompt = (props) => {
                 <Text style={{ color: 'purple', alignSelf: 'center', flex: 1 }}>TAMAM!</Text>
             </TouchableOpacity>
             <TouchableOpacity
+                onPress={() => _setModalVisibility(false)}
                 style={{
                     marginVertical: Metrics.height * 0.01,
                     borderRadius: 20,

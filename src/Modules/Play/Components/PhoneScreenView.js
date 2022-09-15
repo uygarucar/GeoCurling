@@ -51,7 +51,7 @@ const PhoneScreenView = (props) => {
     return (
         <>
             <View style={{ flex: 1 }}>
-                <View style={{ flex: 0.05 }} />
+                {/** <View style={{ flex: 0.05 }} /> */}
                 <MapConfig
                     onGameUnit_finish={onGameUnit_finish}
                     onPress_setIsModalTrue={_onPress_setIsModalTrue}

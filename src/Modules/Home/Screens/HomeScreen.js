@@ -104,7 +104,7 @@ const HomeScreen = props => {
                         style={styles.touchable}
                         onPress={_onPress_GoToOuterCategories}>
                         <Text style={styles.text}>
-                            Play
+                            Oyna
                         </Text>
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -112,7 +112,7 @@ const HomeScreen = props => {
                         onPress={_onPress_SignOut}
                         >
                         <Text style={styles.text}>
-                            Sign Out
+                            Çıkış Yap
                         </Text>
                     </TouchableOpacity>
                 </View>

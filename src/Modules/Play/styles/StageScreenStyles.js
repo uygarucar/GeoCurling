@@ -4,7 +4,7 @@ import { Metrics, Fonts } from '../../../StylingConstants'
 
 const styles = StyleSheet.create({
     mapView: {
-        flex: 0.95,
+        flex: 1,
         backgroundColor: 'gray'
     },
     promptTargetArea: {

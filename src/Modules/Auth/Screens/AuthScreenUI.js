@@ -85,7 +85,7 @@ const AuthScreen = props => {
                         </TouchableOpacity>
                     </View>
                     <View style={styles.appNameContainer}>
-                        <Text style={styles.appNameText}>CURLING TURKEY</Text>
+                        <Text style={styles.appNameText}>Ne Nerede</Text>
                     </View>
                 </TouchableOpacity>
             </KeyboardAvoidingView>

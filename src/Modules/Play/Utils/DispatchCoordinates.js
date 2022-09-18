@@ -1,7 +1,9 @@
 import { Daglar, MasifAraziler, Platolar, Volkanizma, FayHatları } from '../Data/TargetPlacesInfos_Unit1'
 import { Ovalar, AkarsuSekilleri, Selalelerimiz, RuzgarSekilleri, KarstikSekiller1, KarstikSekiller2 } from '../Data/TargetPlacesInfos_Unit2';
+import { BesiUreticiligiVeToprak, IklimlerVeBesiUretimi1, IklimlerVeBesiUretimi2, IklimlerVeBesiUretimi3, Mikroklima } from '../Data/TargetPlacesInfos_Unit3';
 import GiveCoordinates from "./GiveCoordinates";
 import useDispatchTarget from "../CustomHooks/useDispatchTarget";
+import { Enerji, NehirlerVeMadenler, SuVarligi1 } from '../Data/TargetPlacesInfos_Unit4';
 
 const dispatchCoordinateForChosenTopic = (outerCategoryId, innerCategoryId) => {
     let coordinate;
@@ -50,8 +52,41 @@ const dispatchCoordinateForChosenTopic = (outerCategoryId, innerCategoryId) => {
                 coordinate = GiveCoordinates(KarstikSekiller2)
                 break;
             }
+        case 3:
+            if (innerCategoryId == 1) {
+                coordinate = GiveCoordinates(IklimlerVeBesiUretimi1)
+                break;
+            } else if (innerCategoryId == 2) {
+                coordinate = GiveCoordinates(IklimlerVeBesiUretimi2)
+                break;
+            }
+            else if (innerCategoryId == 3) {
+                coordinate = GiveCoordinates(IklimlerVeBesiUretimi3)
+                break;
+            }
+            else if (innerCategoryId == 4) {
+                coordinate = GiveCoordinates(BesiUreticiligiVeToprak)
+                break;
+            }
+            else if (innerCategoryId == 5) {
+                coordinate = GiveCoordinates(Mikroklima)
+                break;
+            }
+        case 4:
+            if (innerCategoryId == 1) {
+                coordinate = GiveCoordinates(SuVarligi1)
+                break;
+            } else if (innerCategoryId == 2) {
+                coordinate = GiveCoordinates(NehirlerVeMadenler)
+                break;
+            }
+            else if (innerCategoryId == 3) {
+                coordinate = GiveCoordinates(Enerji)
+                break;
+            }
 
         default:
+            coordinate = GiveCoordinates(Mikroklima)
             break;
     }
 

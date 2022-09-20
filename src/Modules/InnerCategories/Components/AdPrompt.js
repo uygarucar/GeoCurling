@@ -8,10 +8,17 @@ const AdPrompt = (props) => {
     const message = 'Reklam izle ve bölümü aç'
     const innerCategoryId = props.innerCategoryId
     const outerCategoryId = props.outerCategoryId
+    const rewarded = props.rewarded
 
     const _onPress_enterTheSectionAndMakeItUnlocked = (val_isLocked, id_outer, id_inner) => {
-        _onPress_goToCategories()
-        updateFB_isLocked(false, id_outer, id_inner -1)
+        if (rewarded.loaded) {
+            rewarded.show()
+            _onPress_goToCategories()
+            updateFB_isLocked(val_isLocked, id_outer, id_inner - 1)
+        }
+        else {
+            
+        }
     }
     return (
         <View style={{

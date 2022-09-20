@@ -4,9 +4,9 @@ import hasEqualLength from "./hasEqualLength"
 
 const changeIfTriggeredInside = async (readFromFirebase, writeToFirebase) => {
     const categoriesList = await readFromFirebase()
-    console.log("categoriesList", categoriesList)
+    //console.log("categoriesList", categoriesList)
     let obj = await toObject(categoriesList)
-    console.log("obj", obj)
+    //console.log("obj", obj)
     takeUserSpecificObject()
         .then(
             data => {

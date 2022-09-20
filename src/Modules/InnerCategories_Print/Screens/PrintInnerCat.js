@@ -8,7 +8,7 @@ import TopicsItemForInnerCategory from '../../InnerCategories/Components/TopicsI
 import subCategories from '../../InnerCategories/Data/subCategories'
 
 const PrintInnerCat = (props) => {
-    console.log("Özelleri Ekrana yazdırma işlemi-newTopics:", props.newTopics)
+    //console.log("Özelleri Ekrana yazdırma işlemi-newTopics:", props.newTopics)
     let newTopics = props.newTopics
     let outerCategoryId= props.outerCategoryId
     const _ItemSeparator = () => {

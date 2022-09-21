@@ -76,7 +76,7 @@ const MapConfig = (props) => {
     let score;
     return (
         <MapView provider={PROVIDER_GOOGLE}
-            customMapStyle={mapStyle}
+            //customMapStyle={mapStyle}
             ref={mapRef}
             minZoomLevel={9.2}
             maxZoomLevel={9.2}

@@ -23,7 +23,9 @@ const dummy = [
 const HomeScreen = props => {
 
     const dispatch = useDispatch();
-    
+    const _onPress_GoToHelpPage = () =>{
+        props.navigation.navigate('help-screen');
+    }
     const _onPress_SignOut = () => {
         dispatch(signOutRequest());
     }
@@ -41,9 +43,9 @@ const HomeScreen = props => {
     // Silme modu kapalıyken ekleme sayfasına götürsün
     // Silme modu açıkken de silme modunu kapatsın.
     const _onPress_GoToOuterCategories = () => {
-        
-            props.navigation.navigate('outer-categories-screen');
-       
+
+        props.navigation.navigate('outer-categories-screen');
+
     }
 
     // Silme modu açıkken basılınca silinsin
@@ -108,9 +110,16 @@ const HomeScreen = props => {
                         </Text>
                     </TouchableOpacity>
                     <TouchableOpacity
+                        onPress={_onPress_GoToHelpPage}
+                        style={styles.touchable}>
+                        <Text style={styles.text}>
+                            Nasıl Oynanır?
+                        </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
                         style={styles.touchable}
                         onPress={_onPress_SignOut}
-                        >
+                    >
                         <Text style={styles.text}>
                             Çıkış Yap
                         </Text>

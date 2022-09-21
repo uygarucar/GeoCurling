@@ -4,7 +4,7 @@ import { HomeScreen } from '../Home';
 import { OuterCategoriesScreen } from '../OuterCategories/Screens/OuterCategoriesScreen';
 import PlayScreen from '../Play/Screens/PlayScreen';
 import InnerCategoriesScreen from '../InnerCategories/Screens/InnerCategoriesScreen';
-
+import HelpScreen from '../Help/Screen/HelpScreen';
 const AppStack = createStackNavigator();
 
 const AppNavigation = () => {
@@ -17,6 +17,18 @@ const AppNavigation = () => {
                 component={HomeScreen}
                 options={{
                     title: 'Home Screen',
+                    headerTitleAlign: 'center',
+                    headerStyle: {
+                        backgroundColor: '#30D086'
+                    },
+                    headerTintColor: 'white',
+                }}
+            />
+            <AppStack.Screen
+                name="help-screen"
+                component={HelpScreen}
+                options={{
+                    title: 'Help Screen',
                     headerTitleAlign: 'center',
                     headerStyle: {
                         backgroundColor: '#30D086'

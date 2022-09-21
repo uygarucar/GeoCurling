@@ -19,17 +19,22 @@ const WhenGameUnitEnded = (props) => {
     }
 
     let message;
+    let color;
     if (totalScore >= 65) {
         message = "ÇOOK İYİ";
+        color = '#40E58E'
     }
     else if (totalScore >=43){
-        message = "İYİSİİN!";
+        message = "İYİSİN";
+        color = '#4DE540';
     }
     else if (totalScore >=34){
         message = "DAHA İYİ OLABİLİR!";
+        color = '#E5CC40';
     }
     else if(totalScore >= 0){
-        message= "EH İŞTE"
+        message= "EH İŞTE";
+        color = '#DE5127';
     }
 
     return (
@@ -44,7 +49,7 @@ const WhenGameUnitEnded = (props) => {
             marginVertical: Metrics.width * 0.4
         }}>
                 <>
-                    <Text style={{ fontSize: 24, alignSelf: 'center' }}>{message}</Text>
+                    <Text style={{ fontSize: 24, alignSelf: 'center', color: color }}>{message}</Text>
                     <Text style={{ fontSize: 22, alignSelf: 'center' }}> Skorun---{'>'} {totalScore}</Text>
                     {/*<Text style={{ fontSize: 24, alignSelf: 'center' }}> TOPLAMDA---{'>'} {totalScorePerUnit}</Text>*/}
                     <Text>BİLGİ</Text>

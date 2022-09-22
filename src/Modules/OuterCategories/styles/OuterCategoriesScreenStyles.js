@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         
     },
     touchable: {
-        backgroundColor: 'orange',
+        backgroundColor: '#7997DE',
         borderRadius: Metrics.width * 0.02,
         justifyContent: 'center',
         alignItems: 'center',

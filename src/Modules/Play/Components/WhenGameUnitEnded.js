@@ -27,13 +27,13 @@ const WhenGameUnitEnded = (props) => {
         message = "İYİSİN";
         color = '#4DE540';
     }
-    else if (totalScore >= 34) {
+    else if (totalScore >= 33) {
         message = "DAHA İYİ OLABİLİR!";
         color = '#E5CC40';
     }
     else if (totalScore >= 0) {
         message = "EH İŞTE";
-        color = '#DE5127';
+        color = '#F00F0F';
     }
 
     return (
@@ -42,13 +42,14 @@ const WhenGameUnitEnded = (props) => {
             width: Metrics.width * 0.7,
             height: Metrics.height * 0.35,
             borderRadius: 5,
-            backgroundColor: '#A59F95',
+            backgroundColor: '#B2956B',
+            opacity: 0.7,
             padding: Metrics.width * 0.05,
             marginHorizontal: Metrics.width * 0.1,
             marginVertical: Metrics.width * 0.4
         }}>
             <>
-                <Text style={{ fontSize: 24, alignSelf: 'center', color: color }}>{message}</Text>
+                <Text style={{ fontSize: 24, alignSelf: 'center', color: color}}>{message}</Text>
                 <Text style={{ fontSize: 22, alignSelf: 'center' }}> Skorun---{'>'} {totalScore}</Text>
                 {/*<Text style={{ fontSize: 24, alignSelf: 'center' }}> TOPLAMDA---{'>'} {totalScorePerUnit}</Text>*/}
                 <Text style={{ fontSize: 17, alignSelf: 'center', color: '#0F0F0F' }}>{props.solution}</Text>
@@ -60,13 +61,13 @@ const WhenGameUnitEnded = (props) => {
                          */}
                     <TouchableOpacity
                         onPress={_onPress_GoBackAndForth}
-                        style={{ backgroundColor: '#A3E79E', flex: 0.3, borderColor: '#0953FE', borderWidth: 1, paddingVertical: Metrics.height * 0.01, borderRadius: 5 }}>
-                        <Text style={{ color: 'purple', alignSelf: 'center' }}>Devam Et</Text>
+                        style={{ backgroundColor: '#79D7DE', flex: 0.3, borderColor: '#0953FE', borderWidth: 1, paddingVertical: Metrics.height * 0.01, borderRadius: 5 }}>
+                        <Text style={{ color: '#0953FE', alignSelf: 'center' }}>Devam Et</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={_onPress_GoBack}
-                        style={{ backgroundColor: '#A3E79E', flex: 0.3, borderColor: '#0953FE', borderWidth: 1, paddingVertical: Metrics.height * 0.01, borderRadius: 5 }}>
-                        <Text style={{ color: 'purple', alignSelf: 'center' }}>Diğer Bölümler</Text>
+                        style={{ backgroundColor: '#79D7DE', flex: 0.3, borderColor: '#0953FE', borderWidth: 1, paddingVertical: Metrics.height * 0.01, borderRadius: 5 }}>
+                        <Text style={{ color: '#0953FE', alignSelf: 'center' }}>Diğer Bölümler</Text>
                     </TouchableOpacity>
                 </View>
             </>

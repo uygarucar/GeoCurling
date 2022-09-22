@@ -5,7 +5,7 @@ import updateFB_isLocked from '../Utils/updateFB_isLocked'
 const AdPrompt = (props) => {
     const _onPress_goToCategories = props.onPress_goToCategories
     const _setModalVisibility = props.setModalVisibility
-    const message = 'Reklam izle ve bölümü aç'
+    const message = 'Reklam İzle \n         ve        \n  Bölümü Aç'
     const innerCategoryId = props.innerCategoryId
     const outerCategoryId = props.outerCategoryId
     const rewarded = props.rewarded
@@ -26,30 +26,31 @@ const AdPrompt = (props) => {
             width: Metrics.width * 0.7,
             height: Metrics.height * 0.35,
             borderRadius: 5,
-            backgroundColor: '#A59F95',
+            opacity: 0.95,
+            backgroundColor: '#B2956B',
             padding: Metrics.width * 0.05,
             marginHorizontal: Metrics.width * 0.1,
             marginVertical: Metrics.width * 0.4
         }}>
 
-            <Text style={{ fontSize: 24, alignSelf: 'center', color: 'green' }}>{message}</Text>
+            <Text style={{ fontSize: 24, alignSelf: 'center', color: '#4515AB' }}>{message}</Text>
             <TouchableOpacity
                 onPress={() => _onPress_enterTheSectionAndMakeItUnlocked(false, outerCategoryId, innerCategoryId)}
                 style={{
 
                     borderRadius: 20, justifyContent: 'center', alignContent: 'center',
-                    backgroundColor: '#CAEECB', flex: 0.1, borderColor: 'red', borderWidth: 1, paddingVertical: Metrics.height * 0.02
+                    backgroundColor: '#79D7DE', flex: 0.1, borderColor: '#0953FE', borderWidth: 1, paddingVertical: Metrics.height * 0.02
                 }}>
-                <Text style={{ color: 'purple', alignSelf: 'center', flex: 1 }}>TAMAM!</Text>
+                <Text style={{ color: '#0953FE', alignSelf: 'center', flex: 1,  }}>TAMAM!</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={() => _setModalVisibility(false)}
                 style={{
                     marginVertical: Metrics.height * 0.01,
                     borderRadius: 20,
-                    backgroundColor: '#CAEECB', flex: 0.1, borderColor: 'red', borderWidth: 1, paddingVertical: Metrics.height * 0.02
+                    backgroundColor: '#79D7DE', flex: 0.1, borderColor: '#0953FE', borderWidth: 1, paddingVertical: Metrics.height * 0.02
                 }}>
-                <Text style={{ color: 'purple', alignSelf: 'center', flex: 1 }} >HAYIR!</Text>
+                <Text style={{ color: '#0953FE', alignSelf: 'center', flex: 1 }} >HAYIR!</Text>
             </TouchableOpacity>
 
         </View>

@@ -16,7 +16,7 @@ const AppNavigation = () => {
                 name="home-screen"
                 component={HomeScreen}
                 options={{
-                    title: 'Home Screen',
+                    title: '',
                     headerTitleAlign: 'center',
                     headerStyle: {
                         backgroundColor: '#30D086'
@@ -28,7 +28,7 @@ const AppNavigation = () => {
                 name="help-screen"
                 component={HelpScreen}
                 options={{
-                    title: 'Help Screen',
+                    title: 'Nasıl Oynanır',
                     headerTitleAlign: 'center',
                     headerStyle: {
                         backgroundColor: '#30D086'
@@ -40,7 +40,7 @@ const AppNavigation = () => {
                 name="outer-categories-screen"
                 component={OuterCategoriesScreen}
                 options={{
-                    title: 'Outer Categories',
+                    title: '',
                     headerTitleAlign: 'center',
                     headerStyle: {
                         backgroundColor: '#30D086'
@@ -52,7 +52,7 @@ const AppNavigation = () => {
                 name="inner-categories-screen"
                 component={InnerCategoriesScreen}
                 options={{
-                    title:'Inner Categories',
+                    title:'',
                     headerTitleAlign: 'center',
                     headerStyle: {
                         backgroundColor: '#30D086'
@@ -64,7 +64,7 @@ const AppNavigation = () => {
                 name="play-screen"
                 component={PlayScreen}
                 options={{
-                    title:'Playing...',
+                    title:'',
                     headerTitleAlign: 'center',
                     headerStyle: {
                         backgroundColor: '#30D086'

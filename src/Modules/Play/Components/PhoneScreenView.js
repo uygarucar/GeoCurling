@@ -13,12 +13,13 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import WhenGameUnitEnded from './WhenGameUnitEnded';
 import { totalScoreSelector } from '../Redux/TotalScoreRedux';
 import { solutionTextSelector } from '../Redux/SolutionTextRedux';
+import { useNavigation } from '@react-navigation/native';
 
 
 
 const PhoneScreenView = (props) => {
     const [isModalVisible, setIsModalVisible] = useState(false)
-
+    const navigation = useNavigation()
     //
     let [totalScore, setTotalScore] = useState(null)
 
@@ -49,6 +50,18 @@ const PhoneScreenView = (props) => {
 
     const innerCategoryId = props.innerCategoryId
     const outerCategoryId = props.outerCategoryId
+
+    const _onPress_GoBackAndForth = () => {
+        navigation.goBack()
+        navigation.navigate("play-screen",{
+            innerCategoryId,
+            outerCategoryId
+        })
+    }
+
+    const _onPress_GoBack= () => {
+        navigation.goBack()
+    }
     return (
         <>
             <View style={{ flex: 1 }}>
@@ -71,7 +84,7 @@ const PhoneScreenView = (props) => {
                 />
             </View>
             <Modal
-                onBackdropPress={_onPress_setIsModalFalse}
+                onBackdropPress={null}
                 isVisible={isModalVisible}
                 style={{
                     justifyContent: 'center',
@@ -85,6 +98,8 @@ const PhoneScreenView = (props) => {
                     backdropOpacity: 0.8
                 }}>
                 <WhenGameUnitEnded
+                    onPress_GoBack= {_onPress_GoBack}
+                    onPress_GoBackAndForth = {_onPress_GoBackAndForth}
                     solution={solution}
                     innerCategoryId={innerCategoryId}
                     outerCategoryId={outerCategoryId}

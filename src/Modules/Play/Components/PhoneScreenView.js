@@ -12,6 +12,7 @@ import Modal from 'react-native-modal'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import WhenGameUnitEnded from './WhenGameUnitEnded';
 import { totalScoreSelector } from '../Redux/TotalScoreRedux';
+import { solutionTextSelector } from '../Redux/SolutionTextRedux';
 
 
 
@@ -21,9 +22,9 @@ const PhoneScreenView = (props) => {
     //
     let [totalScore, setTotalScore] = useState(null)
 
-    
-    const totalScorePerUnit = useSelector(totalScoreSelector)
 
+    const totalScorePerUnit = useSelector(totalScoreSelector)
+    const solution = useSelector(solutionTextSelector)
     //
     const onGameUnit_finish = (score) => {
         setTotalScore(score)
@@ -84,10 +85,11 @@ const PhoneScreenView = (props) => {
                     backdropOpacity: 0.8
                 }}>
                 <WhenGameUnitEnded
+                    solution={solution}
                     innerCategoryId={innerCategoryId}
                     outerCategoryId={outerCategoryId}
-                    totalScore={totalScore} 
-                    totalScorePerUnit= {totalScorePerUnit}/>
+                    totalScore={totalScore}
+                    totalScorePerUnit={totalScorePerUnit} />
             </Modal>
         </>
     )

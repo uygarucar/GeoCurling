@@ -12,6 +12,7 @@ import { currentLatitudeReducer } from '../Modules/Play/Redux/CurrentLatitudeRed
 import { currentLongitudeReducer } from '../Modules/Play/Redux/CurrentLongitudeRedux';
 import { ArrowVisibilityReducer } from '../Modules/Play/Redux/ArrowVisibilityRedux';
 import { totalScoreReducer } from '../Modules/Play/Redux/TotalScoreRedux';
+import { solutionTextReducer } from '../Modules/Play/Redux/SolutionTextRedux';
 export default combineReducers({
     [THEMING_NAMESPACE]: ThemeReducer,
     [LOCALIZATION_NAMESPACE]: LocalizationReducer,
@@ -23,7 +24,8 @@ export default combineReducers({
     currentLatitudeState: currentLatitudeReducer,
     currentLongitudeState: currentLongitudeReducer,
     arrowVisibilityState: ArrowVisibilityReducer,
-    totalScoreState: totalScoreReducer
+    totalScoreState: totalScoreReducer,
+    solutionTextState: solutionTextReducer
 });
 
 

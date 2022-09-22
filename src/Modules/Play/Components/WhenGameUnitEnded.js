@@ -2,11 +2,16 @@ import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { Metrics } from '../../../StylingConstants'
 import { useNavigation } from '@react-navigation/native'
+import { useSelector } from 'react-redux'
+import { solutionTextSelector } from '../Redux/SolutionTextRedux'
 
 
 
 
 const WhenGameUnitEnded = (props) => {
+
+    
+    
     const totalScore= props.totalScore
     let navigation = useNavigation()
     const totalScorePerUnit=  props.totalScorePerUnit
@@ -52,7 +57,7 @@ const WhenGameUnitEnded = (props) => {
                     <Text style={{ fontSize: 24, alignSelf: 'center', color: color }}>{message}</Text>
                     <Text style={{ fontSize: 22, alignSelf: 'center' }}> Skorun---{'>'} {totalScore}</Text>
                     {/*<Text style={{ fontSize: 24, alignSelf: 'center' }}> TOPLAMDA---{'>'} {totalScorePerUnit}</Text>*/}
-                    <Text>BİLGİ</Text>
+                    <Text style={{ fontSize: 17, alignSelf: 'center', color: '#0F0F0F' }}>{props.solution}</Text>
                     <View style={{ flex: 1, justifyContent: 'space-around', flexDirection: 'row', alignItems: 'flex-end' }}>
                         {/*
                         <TouchableOpacity style={{flex:0.3,  borderColor: 'red', borderWidth: 1, borderRadius: 3}}>

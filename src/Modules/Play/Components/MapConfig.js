@@ -78,6 +78,7 @@ const MapConfig = (props) => {
         <MapView provider={PROVIDER_GOOGLE}
             //customMapStyle={mapStyle}
             ref={mapRef}
+            mapType='terrain'
             minZoomLevel={9.2}
             maxZoomLevel={9.2}
             style={styles}

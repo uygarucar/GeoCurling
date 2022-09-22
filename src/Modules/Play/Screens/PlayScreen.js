@@ -13,7 +13,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { dispatchCoordinateForChosenTopic } from '../Utils/DispatchCoordinates';
 import StoneShape from '../Components/CurrentPlaceStoneShape';
 import useDispatchCurrent from '../CustomHooks/UseDispatchCurrent';
-import useDispatchTarget from '../CustomHooks/useDispatchTarget';
 import { currentLatitudeSelector } from '../Redux/CurrentLatitudeRedux';
 import { currentLongitudeSelector } from '../Redux/CurrentLongitudeRedux';
 import PhoneScreenView from '../Components/PhoneScreenView'

@@ -91,7 +91,7 @@ const subCategories = {
         [
             {
                 id: 1,
-                name: 'Su Varligi ve Madenler - Missing',
+                name: 'Madenler',
                 isLocked: false
             },
             {

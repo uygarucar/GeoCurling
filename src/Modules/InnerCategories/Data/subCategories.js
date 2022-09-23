@@ -78,7 +78,7 @@ const subCategories = {
             },
             {
                 id: 4,
-                name: 'BesiUreticiligiVeToprak',
+                name: 'Besin yetiştiriciliği ve Toprak',
                 isLocked: true
             },
             {

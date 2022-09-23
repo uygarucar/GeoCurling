@@ -37,8 +37,8 @@ const PhoneScreenView = (props) => {
         setIsModalVisible(true)
     }
 
-    const _onPress_setIsModalFalse = () => {
-        setIsModalVisible(false)
+    const _onPress_setIsModalFalse = async () => {
+        await setIsModalVisible(false)
     }
     const initialLatitude = props.initialLatitude;
     const initialLongitude = props.initialLongitude;
@@ -52,14 +52,17 @@ const PhoneScreenView = (props) => {
     const outerCategoryId = props.outerCategoryId
 
     const _onPress_GoBackAndForth = () => {
-        navigation.goBack()
-        navigation.navigate("play-screen",{
-            innerCategoryId,
-            outerCategoryId
-        })
+        _onPress_setIsModalFalse().then(
+            navigation.goBack(),
+            navigation.navigate("play-screen", {
+                innerCategoryId,
+                outerCategoryId
+            })
+        )
+
     }
 
-    const _onPress_GoBack= () => {
+    const _onPress_GoBack = () => {
         navigation.goBack()
     }
     return (
@@ -98,8 +101,8 @@ const PhoneScreenView = (props) => {
                     backdropOpacity: 0.8
                 }}>
                 <WhenGameUnitEnded
-                    onPress_GoBack= {_onPress_GoBack}
-                    onPress_GoBackAndForth = {_onPress_GoBackAndForth}
+                    onPress_GoBack={_onPress_GoBack}
+                    onPress_GoBackAndForth={_onPress_GoBackAndForth}
                     solution={solution}
                     innerCategoryId={innerCategoryId}
                     outerCategoryId={outerCategoryId}

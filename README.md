@@ -1,5 +1,11 @@
 # GeoCurling
 
+### Aim
+To teach Turkey's geography for an exam
+
+### Technologies used
+Hooks, Redux, Redux Saga, Firebase Auth, Firebase RTDB, Admob, React Navigation, Google Maps  
+
 Authentication..
 
 ![NeNerede-Authantication](https://user-images.githubusercontent.com/18735074/209407673-3ade9f02-ed5b-40c0-b308-174ff29021c0.gif)
